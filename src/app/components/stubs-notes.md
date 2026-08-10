@@ -1,0 +1,11 @@
+临时骨架清单（逐波替换为溯源实现）：
+- text.ts    ← VC 42438-43156
+- layout.ts  ← qK 43158-43754
+- scrollIndicator.ts ← zL 43755-43845
+- nav.ts     ← wL 43847-44404
+- vimeo.ts   ← z$ 44406-44584
+- glBridge.ts ← SL 44586-44663
+- pages/home.ts ← P$ 44665-45000
+- pages/onTrack.ts ← y$ 45002-45828
+- pages/offTrack.ts ← fL 45830-46000
+- pages/misc.ts ← 46002-46164

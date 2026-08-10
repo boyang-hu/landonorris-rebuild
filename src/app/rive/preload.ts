@@ -30,7 +30,7 @@ export type RiveCanvas = HTMLCanvasElement & {
   riveInputs?: rive.StateMachineInput[];
   riveScrollControl?: { timeline: gsap.core.Timeline; scrollTrigger: ScrollTrigger } | null;
   lenisScrollHandler?: ((e: unknown) => void) | null;
-  scrollInput?: number;
+  scrollInput?: { value: number | boolean };
   heroAnimation?: string;
 };
 
@@ -210,34 +210,6 @@ export function setHamburgerTheme(theme: string) {
       white.value = true;
     }
   }
-}
-
-/** pK 10098 — ln4 "logo-active" broadcast */
-export function setLogoActive(active: boolean) {
-  logoRegistry.forEach(({ instance }) => {
-    const input = instance
-      .stateMachineInputs('logo')
-      ?.find((i: rive.StateMachineInput) => i.name === 'logo-active');
-    if (input) input.value = active;
-  });
-}
-
-/** AC 10108 — ln4 logo color (mutually exclusive booleans; "black"/default -> dark-green) */
-export function setLogoColor(color: string) {
-  logoRegistry.forEach(({ instance }) => {
-    const inputs = instance.stateMachineInputs('logo');
-    if (!inputs) return;
-    const darkGreen = inputs.find((i) => i.name === 'color_dark-green');
-    const white = inputs.find((i) => i.name === 'color_white');
-    const lime = inputs.find((i) => i.name === 'color_lime');
-    if (!darkGreen || !white || !lime) return;
-    darkGreen.value = false;
-    white.value = false;
-    lime.value = false;
-    if (color === 'white') white.value = true;
-    else if (color === 'lime') lime.value = true;
-    else darkGreen.value = true;
-  });
 }
 
 export { rive };

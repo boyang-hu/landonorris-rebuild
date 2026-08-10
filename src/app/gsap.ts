@@ -28,7 +28,7 @@ export function debounce<T extends (...args: never[]) => void>(fn: T, ms: number
   return function (this: unknown, ...args: unknown[]) {
     clearTimeout(timer);
     timer = setTimeout(() => fn.apply(this, args as never[]), ms);
-  } as T;
+  } as unknown as T;
 }
 
 applyScrollerDefaults();

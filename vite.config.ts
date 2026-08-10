@@ -1,9 +1,10 @@
 import { defineConfig, type Plugin } from 'vite';
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
-import { join, extname, resolve } from 'node:path';
+import { join, extname, resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = __dirname;
+const ROOT = dirname(fileURLToPath(import.meta.url));
 const MIRROR_ASSETS = join(ROOT, 'legacy-mirror', 'assets');
 
 const MIME: Record<string, string> = {
