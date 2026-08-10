@@ -6,9 +6,23 @@
 **镜像 → 逆向（_pretty 行号坐标系）→ 严格溯源移植 → 里程碑推进 + 三重验证**。
 核心纪律：源站代码是唯一裁决；改动先归属到源码行号；死代码/bug 照抄不修；有意偏差必须登记。
 
-## 当前状态：Phase 0（镜像 + 技术栈分析）完成
+## 当前状态：重建完成（M0-M7 全部关闭，2026-08-10）
 
-- 2026-08-10 完成全站镜像：`legacy-mirror/`，470 文件 / 约 31MB，清单见 `legacy-mirror/mirror-manifest.json`
+复刻站已按方法论完成全量重建：Webflow DOM/CSS 外壳（shells 流水线）+ 自写 TypeScript
+应用层（`src/app/`，对照 47k 行 pretty bundle 逐函数移植，全部带行号溯源注释）。
+验收：`scripts/verify.mjs` 全 7 路由 × 桌面/移动回归门通过；真机 Chrome 三方对拍
+（线上 / 镜像 / 复刻）首页 hero 视觉一致；对拍截图存 `docs/compare/`。
+运行方式与部署边界见 `DEPLOY.md`；里程碑日志/偏差/怪癖登记见 `REBUILD_PLAN.md`。
+
+### 复刻栈（同栈同版本钉死）
+
+Vite 6 + TypeScript；three@0.174.0、gsap@3.13.0（ScrollTrigger/SplitText/MotionPath）、
+lenis@1.1.20、@rive-app/canvas-lite@2.26.4、@unseenco/taxi@1.8.0（偏差 6.7）、
+three-msdf-text-utils@1.5.0（偏差 6.8）。
+
+### 镜像
+
+- 2026-08-10 完成全站镜像：`legacy-mirror/`，508 文件 / 约 37MB（含双端 webp+ktx2 纹理变体），清单见 `legacy-mirror/mirror-manifest.json`
 - 逆向坐标系：`legacy-mirror/_pretty/`（js-beautify@1.15.1 钉死版本展开）
   - `lando.OFF+BRAND.gold-android-fix-03.pretty.js` — 主应用 bundle，47,120 行
   - `transitions-rive-isolate.pretty.js` — 已停用的历史过渡脚本（4,210 行，HTML 中被注释）
@@ -67,5 +81,13 @@ legacy-mirror/          源站镜像（URL 空间 1:1 落盘）
   assets/<host>/<path>  跨域资产按 host 组织
   _pretty/              js-beautify@1.15.1 展开的 bundle（逆向行号坐标系）
   mirror-manifest.json  权威清单（url → path/bytes/type）
-scripts/mirror-site.mjs 镜像爬虫
+docs/engine-notes/      M1 逆向笔记 ×6（行号取证）
+docs/compare/           对拍截图
+shells/（生成物）        gen-shells 从镜像生成的页面外壳（4 项登记变换）
+src/app/                应用层移植（gsap/scroll/transition/rive/components/pages/gl）
+  gl/                   Three 引擎（core/fluid/noise/world/scenes×6，GLSL 逐字）
+scripts/
+  mirror-site.mjs       镜像爬虫          gen-shells.mjs   外壳流水线
+  serve.mjs             镜像/dist 服务器   probe.mjs        CDP 无头探针
+  verify.mjs            全路由×双端回归门  postbuild.mjs    dist 规整
 ```
