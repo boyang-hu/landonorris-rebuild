@@ -2605,6 +2605,196 @@
       "path": "assets/assets.itsoffbrand.io/lando/rive/page-transition.riv",
       "bytes": 5508,
       "type": "(manual: runtime-loaded, fetched with Referer)"
+    },
+    "https://cdn.iubenda.com/images/site/icons/owner.png": {
+      "path": "assets/cdn.iubenda.com/images/site/icons/owner.png",
+      "bytes": 146,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/webp/disco/Norris_Helmet_mat_BaseColor.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/webp/disco/Norris_Helmet_mat_BaseColor.webp",
+      "bytes": 177136,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/webp/disco/disco_mask-01.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/webp/disco/disco_mask-01.webp",
+      "bytes": 74998,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/webp/gold/Norris_Helmet_mat_BaseColor.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/webp/gold/Norris_Helmet_mat_BaseColor.webp",
+      "bytes": 321508,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/webp/Norris_Helmet_mat_Roughness.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/webp/Norris_Helmet_mat_Roughness.webp",
+      "bytes": 25482,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/webp/Norris_Helmet_mat_Metallic.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/webp/Norris_Helmet_mat_Metallic.webp",
+      "bytes": 20486,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/ktx2/Norris_Helmet_mat_Roughness.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/ktx2/Norris_Helmet_mat_Roughness.ktx2",
+      "bytes": 364243,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/ktx2/Norris_Helmet_mat_Metallic.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/ktx2/Norris_Helmet_mat_Metallic.ktx2",
+      "bytes": 66610,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/ktx2/disco/disco_mask-01.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/ktx2/disco/disco_mask-01.ktx2",
+      "bytes": 470727,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/ktx2/disco/Norris_Helmet_mat_BaseColor.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/ktx2/disco/Norris_Helmet_mat_BaseColor.ktx2",
+      "bytes": 96371,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/helmet/ktx2/gold/Norris_Helmet_mat_BaseColor.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/helmet/ktx2/gold/Norris_Helmet_mat_BaseColor.ktx2",
+      "bytes": 284653,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/webp/shadow.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/webp/shadow.webp",
+      "bytes": 283478,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/webp/depth.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/webp/depth.webp",
+      "bytes": 3708,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/webp/alpha.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/webp/alpha.webp",
+      "bytes": 38874,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/webp/diffuse.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/webp/diffuse.webp",
+      "bytes": 292106,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/webp/shadow-softer-edit.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/webp/shadow-softer-edit.webp",
+      "bytes": 285764,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/webp/roughness.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/webp/roughness.webp",
+      "bytes": 125378,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/webp/shadow-to-zip-edit.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/webp/shadow-to-zip-edit.webp",
+      "bytes": 266780,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/ktx2/roughness.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/ktx2/roughness.ktx2",
+      "bytes": 224594,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/ktx2/shadow-softer-edit.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/ktx2/shadow-softer-edit.ktx2",
+      "bytes": 321721,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/ktx2/shadow-to-zip-edit.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/ktx2/shadow-to-zip-edit.ktx2",
+      "bytes": 316808,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/ktx2/shadow.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/ktx2/shadow.ktx2",
+      "bytes": 319542,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/ktx2/alpha.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/ktx2/alpha.ktx2",
+      "bytes": 172037,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/ktx2/depth.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/ktx2/depth.ktx2",
+      "bytes": 66599,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/head/ktx2/diffuse.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/head/ktx2/diffuse.ktx2",
+      "bytes": 334987,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/glass/webp/Norris_Glass_mat_Metallic.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/glass/webp/Norris_Glass_mat_Metallic.webp",
+      "bytes": 14748,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/glass/webp/Norris_Glass_mat_Roughness.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/glass/webp/Norris_Glass_mat_Roughness.webp",
+      "bytes": 21898,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/glass/webp/Norris_Glass_mat_BaseColor.webp": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/glass/webp/Norris_Glass_mat_BaseColor.webp",
+      "bytes": 44358,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/glass/ktx2/Norris_Glass_mat_BaseColor.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/glass/ktx2/Norris_Glass_mat_BaseColor.ktx2",
+      "bytes": 90920,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/glass/ktx2/Norris_Glass_mat_Roughness.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/glass/ktx2/Norris_Glass_mat_Roughness.ktx2",
+      "bytes": 217570,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://lando.itsoffbrand.io/gl/textures/glass/ktx2/Norris_Glass_mat_Metallic.ktx2": {
+      "path": "assets/lando.itsoffbrand.io/gl/textures/glass/ktx2/Norris_Glass_mat_Metallic.ktx2",
+      "bytes": 39065,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://assets.itsoffbrand.io/lando/rive/phrases.riv": {
+      "path": "assets/assets.itsoffbrand.io/lando/rive/phrases.riv",
+      "bytes": 68650,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://assets.itsoffbrand.io/lando/rive/reef.riv": {
+      "path": "assets/assets.itsoffbrand.io/lando/rive/reef.riv",
+      "bytes": 72667,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://assets.itsoffbrand.io/lando/rive/btn-ui.riv": {
+      "path": "assets/assets.itsoffbrand.io/lando/rive/btn-ui.riv",
+      "bytes": 4144,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://assets.itsoffbrand.io/lando/rive/signature.riv": {
+      "path": "assets/assets.itsoffbrand.io/lando/rive/signature.riv",
+      "bytes": 30851,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://assets.itsoffbrand.io/lando/rive/ln4.riv": {
+      "path": "assets/assets.itsoffbrand.io/lando/rive/ln4.riv",
+      "bytes": 3770,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://assets.itsoffbrand.io/lando/rive/mob-landscape.riv": {
+      "path": "assets/assets.itsoffbrand.io/lando/rive/mob-landscape.riv",
+      "bytes": 52818,
+      "type": "(manual: runtime-loaded)"
+    },
+    "https://assets.itsoffbrand.io/lando/rive/circuits.riv": {
+      "path": "assets/assets.itsoffbrand.io/lando/rive/circuits.riv",
+      "bytes": 36636,
+      "type": "(manual: runtime-loaded)"
     }
   }
 }
