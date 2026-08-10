@@ -61,6 +61,10 @@ function shellRouter(): Plugin {
       server.middlewares.use((req, _res, next) => {
         const url = (req.url ?? '').split('?')[0].replace(/\/$/, '') || '/';
         if (routes[url]) req.url = routes[url];
+        else if (!extname(url) && !url.startsWith('/shells') && !url.startsWith('/ext') && !url.startsWith('/@') && !url.startsWith('/src') && !url.startsWith('/node_modules')) {
+          // unknown clean URL -> 404 template, mirroring the origin's Webflow behavior
+          req.url = '/shells/404.html';
+        }
         next();
       });
     },
