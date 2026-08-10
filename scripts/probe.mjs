@@ -154,6 +154,14 @@ if (evalExpr) {
   console.log('EVAL:', JSON.stringify(r.result?.value ?? r.result?.description, null, 1));
 }
 
+// second eval after a delay — for asserting on async outcomes (e.g. taxi nav)
+const evalAfter = flag('evalAfter', null);
+if (evalAfter) {
+  await new Promise((r) => setTimeout(r, Number(flag('evalAfterDelay', 2000))));
+  const r = await send('Runtime.evaluate', { expression: evalAfter, returnByValue: true });
+  console.log('EVAL-AFTER:', JSON.stringify(r.result?.value ?? r.result?.description, null, 1));
+}
+
 const shot = flag('shot', null);
 if (shot) {
   const { data } = await send('Page.captureScreenshot', { format: 'png' });

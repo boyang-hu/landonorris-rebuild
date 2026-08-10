@@ -8,14 +8,14 @@ import './gsap';
 import { initLandoGL } from './gl/params';
 import { loadPageTransition } from './transition';
 import { preloadAllRiveFiles } from './rive/preload';
-import { glLoad } from './gl';
+import { glLoad, constructGlApp } from './gl';
 import { initScroll } from './scroll';
 import { initRouter } from './router';
 import { printBanner } from './utils';
 
-// EZ (41535): landoGL config + (later) GL app construction. WebGL2 check and
-// bI = new RQ(...) land with M5; gl-fallback class mirrors 41684.
+// EZ (41535): landoGL config + GL app construction (WebGL2-gated, 41681-41684)
 initLandoGL();
+constructGlApp();
 
 console.time('debug');
 history.scrollRestoration = 'manual';
