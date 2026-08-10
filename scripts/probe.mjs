@@ -110,11 +110,17 @@ ws.onmessage = (ev) => {
       if (!m.params.canceled) failures.push(`FAILED ${m.params.errorText} ${u}`);
       break;
     }
+    case 'Log.entryAdded': {
+      const e = m.params.entry;
+      if (e.level === 'error') pageErrors.push(`[${e.source}] ${e.text}`.slice(0, 300));
+      break;
+    }
   }
 };
 
 await new Promise((r) => (ws.onopen = r));
 await send('Network.enable');
+await send('Log.enable');
 await send('Runtime.enable');
 await send('Page.enable');
 await send('Emulation.setDeviceMetricsOverride', {

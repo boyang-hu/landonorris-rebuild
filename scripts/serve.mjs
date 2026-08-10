@@ -63,6 +63,8 @@ const MIME = {
 const TEXT_REWRITE = new Set(['.html', '.css', '.js', '.mjs', '.json', '.svg']);
 
 function rewrite(text, ext) {
+  // Rewritten bytes can no longer match SRI hashes; drop integrity attrs (HTML only).
+  if (ext === '.html') text = text.replace(/ integrity="[^"]*"/g, '');
   for (const h of EXT_HOSTS) {
     text = text.replaceAll(`https://${h}/`, `/ext/${h}/`).replaceAll(`http://${h}/`, `/ext/${h}/`);
     // Protocol-relative form only in markup/styles: inside JS it is often
