@@ -5,7 +5,7 @@
   "type": "module",
   "description": "1:1 engineering rebuild of landonorris.com for learning purposes",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 5180",
     "build": "vite build && node scripts/postbuild.mjs",
     "serve:mirror": "node scripts/serve.mjs --port 5177",
     "serve:dist": "node scripts/serve.mjs --port 5178 --root dist",
