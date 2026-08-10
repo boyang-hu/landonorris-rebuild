@@ -71,7 +71,8 @@ Three r174 / GSAP 3.13.0（ScrollTrigger/SplitText/Observer/MotionPath）/ Lenis
 ## §7 里程碑日志（倒序）
 
 ### 2026-08-10 M7 关闭
-- scripts/verify.mjs：全 7 路由 × 桌面/移动回归门（probe 含 Log 域安全报错监听）。
+- scripts/verify.mjs：全 7 路由 × 桌面/移动回归门 **14/14 ALL PASS**（probe 含 Log 域安全报错监听）。
+- dist 生产构建验收通过（serve:dist + 探针 CLEAN + SPA 多跳导航 CLEAN）。
 - 真机 Chrome 三方对拍：线上 = 镜像（SRI 修复后）= 复刻，首页 hero 视觉一致。
 - 修复：镜像 serve.mjs SRI 剥离（6.10）——此前镜像 CSS 被 Chrome 静默拦截，
   探针未见（安全报错走 Log.entryAdded），M0.5 的"CLEAN"存在盲区，已补监听。
