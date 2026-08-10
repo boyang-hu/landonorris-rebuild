@@ -69,7 +69,9 @@ export class World {
       (this.scenes[i].renderPlane.mesh.material as ShaderMaterial).dispose();
       if (this.scenes[i].scene)
         this.scenes[i].scene!.traverse((obj) => {
-          this.scenes[i].scene!.remove(obj);
+          // source passes obj.name (a string) — a no-op in three, and load-bearing:
+          // actually removing children mid-traverse corrupts the walk (quirk)
+          this.scenes[i].scene!.remove(obj.name as never);
           const mesh = obj as Mesh;
           if (!mesh.isMesh) return;
           mesh.geometry.dispose();

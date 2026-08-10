@@ -31,7 +31,9 @@ function extAssets(): Plugin {
     name: 'ext-assets',
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
-        const url = decodeURIComponent((req.url ?? '').split('?')[0]);
+        let url = decodeURIComponent((req.url ?? '').split('?')[0]);
+        // iubenda badge resolves its icons against the page origin (see serve.mjs)
+        if (url.startsWith('/images/site/')) url = '/ext/cdn.iubenda.com' + url;
         if (!url.startsWith('/ext/')) return next();
         const file = join(MIRROR_ASSETS, url.slice('/ext/'.length));
         if (!existsSync(file)) return next();

@@ -66,6 +66,7 @@ Three r174 / GSAP 3.13.0（ScrollTrigger/SplitText/Observer/MotionPath）/ Lenis
 | Q10 | heroflip 第二段贝塞尔把 bounds.height 写成宽度（正方形平面） | pretty 45700 |
 | Q11 | isDebug 时 shadow.default 被重复加载一次 | pretty 41360 |
 | Q12 | 桌面用 webp / ≤991px 用 ktx2 纹理（分叉在 innerWidth，非 UA） | pretty 41538/41296 |
+| Q13 | World.destroy 的 traverse 里 `scene.remove(Q.name)` 传字符串（three 中为 no-op）——该"bug"是承重的：真删除会破坏遍历。复刻曾"修好"导致转场崩溃，已按怪癖回抄 | pretty 35740 |
 
 ## §7 里程碑日志（倒序）
 

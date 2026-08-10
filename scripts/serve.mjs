@@ -101,7 +101,10 @@ createServer(async (req, res) => {
     let file;
     if (path.startsWith('/images/site/')) path = '/ext/cdn.iubenda.com' + path;
     if (path.startsWith('/ext/')) {
-      file = await tryFile(join(ROOT, 'assets', path.slice('/ext/'.length)));
+      // mirror layout keeps external assets under assets/<host>; dist links them at ext/<host>
+      file =
+        (await tryFile(join(ROOT, 'assets', path.slice('/ext/'.length)))) ||
+        (await tryFile(join(ROOT, path)));
     } else {
       file = await tryFile(join(ROOT, path));
       if (!file && !extname(path)) file = await tryFile(join(ROOT, path, 'index.html'));
