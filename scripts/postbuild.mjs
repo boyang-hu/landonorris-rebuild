@@ -7,7 +7,7 @@
  * (deviation 6.4, same policy as careers-kimi's public/ symlink). Deploy by
  * dereferencing (rsync -L / cp -RL).
  */
-import { rename, rm, symlink, readdir, mkdir } from 'node:fs/promises';
+import { rename, rm, symlink, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { existsSync } from 'node:fs';
 
@@ -23,6 +23,21 @@ if (existsSync(SHELLS)) {
   }
   await rm(SHELLS, { recursive: true, force: true });
 }
+
+// Vite's build HTML pass re-percent-encodes srcset URLs (%20 -> %2520), which
+// breaks files whose names contain spaces. The shells contain no %2520, so a
+// blanket restore is an exact parity fix.
+async function fixDoubleEncoding(dir) {
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const p = join(dir, entry.name);
+    if (entry.isDirectory()) await fixDoubleEncoding(p);
+    else if (entry.name.endsWith('.html')) {
+      const html = await readFile(p, 'utf8');
+      if (html.includes('%2520')) await writeFile(p, html.replaceAll('%2520', '%20'));
+    }
+  }
+}
+await fixDoubleEncoding(DIST);
 
 const ext = join(DIST, 'ext');
 await rm(ext, { recursive: true, force: true });

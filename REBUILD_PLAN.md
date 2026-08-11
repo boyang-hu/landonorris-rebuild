@@ -49,6 +49,7 @@ Three r174 / GSAP 3.13.0（ScrollTrigger/SplitText/Observer/MotionPath）/ Lenis
 | 6.9 | lil-gui/stats-gl 仅作 ?debug 桩，不复刻完整调试面板 | 非站点功能；?debug 为开发者通道 |
 | 6.10 | 镜像 serve.mjs 在改写 HTML 时剥离 SRI integrity 属性 | 改写后的字节无法匹配原哈希，Chrome 会静默拦截主 CSS（本地服务层行为，镜像磁盘文件保持原样） |
 | 6.11 | shells 剥离 GA 反代脚本与 gtag 内联（同 6.1 的构建期实现） | 遥测非站点行为 |
+| 6.12 | postbuild 把 dist HTML 中的 %2520 还原为 %20 | vite 构建的 HTML 资产管线会把 srcset 里已编码的 %20 二次编码，含空格文件名的图（helmet 墙 7 款）全部 404；shells 源无 %2520，整体替换即精确恢复源编码 |
 
 ## §Q 怪癖登记（源站 bug/死代码，照抄不修）
 
@@ -69,6 +70,12 @@ Three r174 / GSAP 3.13.0（ScrollTrigger/SplitText/Observer/MotionPath）/ Lenis
 | Q13 | World.destroy 的 traverse 里 `scene.remove(Q.name)` 传字符串（three 中为 no-op）——该"bug"是承重的：真删除会破坏遍历。复刻曾"修好"导致转场崩溃，已按怪癖回抄 | pretty 35740 |
 
 ## §7 里程碑日志（倒序）
+
+### 2026-08-10 M7 追加（用户目视验收发现）
+- 头盔墙 7 款含空格文件名的图 404：vite build 对 srcset 二次编码 %20→%2520（登记 6.12，
+  postbuild 还原）。全站 URL×磁盘全量审计后补抓 1 件带括号文件名的漏网图
+  （Britain-25 (1).webp，正则截断盲区）；plugins/placeholder.svg 线上 CDN 本身 403（源站怪癖）。
+- 教训：srcset/style 内 URL 的编码保真需要纳入构建期对拍——已由全量审计脚本覆盖。
 
 ### 2026-08-10 M7 关闭
 - scripts/verify.mjs：全 7 路由 × 桌面/移动回归门 **14/14 ALL PASS**（probe 含 Log 域安全报错监听）。
