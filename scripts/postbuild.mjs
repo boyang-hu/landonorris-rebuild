@@ -7,7 +7,7 @@
  * (deviation 6.4, same policy as careers-kimi's public/ symlink). Deploy by
  * dereferencing (rsync -L / cp -RL).
  */
-import { rename, rm, symlink, readdir, readFile, writeFile } from 'node:fs/promises';
+import { rename, rm, symlink, readdir, readFile, writeFile, cp } from 'node:fs/promises';
 import { join } from 'node:path';
 import { existsSync } from 'node:fs';
 
@@ -38,6 +38,12 @@ async function fixDoubleEncoding(dir) {
   }
 }
 await fixDoubleEncoding(DIST);
+
+// iubenda's badge script resolves its icons against the page origin (see
+// serve.mjs note); bake the mirrored icons into dist so static hosting needs
+// no rewrite rule.
+const iubendaIcons = join(ROOT, 'legacy-mirror', 'assets', 'cdn.iubenda.com', 'images');
+if (existsSync(iubendaIcons)) await cp(iubendaIcons, join(DIST, 'images'), { recursive: true });
 
 const ext = join(DIST, 'ext');
 await rm(ext, { recursive: true, force: true });
