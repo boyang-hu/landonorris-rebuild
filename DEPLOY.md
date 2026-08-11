@@ -27,6 +27,17 @@ node scripts/verify.mjs --origin http://localhost:5178   # 验 dist
 node scripts/probe.mjs <url> --shot out.png --scroll 0.5 # 单页探针
 ```
 
+## 当前部署（2026-08-11）
+
+- 预览地址：**https://landonorris-rebuild.boyang.hu**（noindex + HSTS）
+- 服务器：V.PS 1Panel 静态站（与前作同机同约定）；站点目录
+  `/opt/1panel/1panel/www/sites/landonorris-rebuild/index`（owner boyang，可直接 rsync）；
+  nginx 配置 `/opt/1panel/1panel/www/conf.d/landonorris-rebuild.conf`（root 所有，
+  改动经 ~/deploy-staging 暂存 + sudo cp + 容器内 nginx -t && reload）
+- 重新部署：本地 `bash scripts/deploy.sh`（gitignored，含主机/端口/密钥约定）
+- 已知轻微偏差：/partnerships 线上源站返回 404 状态（页面已下架），我们因镜像落盘了
+  该路径的 404 变体文件而返回 200——内容相同（not-found 模板），仅状态码不同
+
 ## 1Panel 部署（选「静态网站」，不是 Node.js）
 
 站点是纯静态产物：无 SSR、无 API、无服务端逻辑（serve.mjs 仅本地开发用）。
