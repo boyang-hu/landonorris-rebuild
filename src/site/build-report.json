@@ -1,0 +1,102 @@
+{
+  "config": "scripts/shell-config.src.mjs",
+  "pages": [
+    {
+      "rel": "index.html",
+      "mirrorBytes": 219553,
+      "builtBytes": 217901,
+      "transforms": {
+        "T-ENTRY": 1,
+        "T-GA": 3,
+        "T-LOCALIZE": 396,
+        "T-NOINDEX": 1,
+        "T-SRI": 4,
+        "T-SVG": 1
+      }
+    },
+    {
+      "rel": "calendar/index.html",
+      "mirrorBytes": 857877,
+      "builtBytes": 855567,
+      "transforms": {
+        "T-ENTRY": 1,
+        "T-GA": 3,
+        "T-LOCALIZE": 615,
+        "T-NOINDEX": 1,
+        "T-SRI": 4
+      }
+    },
+    {
+      "rel": "on-track/index.html",
+      "mirrorBytes": 290853,
+      "builtBytes": 289173,
+      "transforms": {
+        "T-ENTRY": 1,
+        "T-GA": 3,
+        "T-LOCALIZE": 405,
+        "T-NOINDEX": 1,
+        "T-SRI": 4
+      }
+    },
+    {
+      "rel": "off-track/index.html",
+      "mirrorBytes": 127393,
+      "builtBytes": 126439,
+      "transforms": {
+        "T-ENTRY": 1,
+        "T-GA": 3,
+        "T-LOCALIZE": 163,
+        "T-NOINDEX": 1,
+        "T-SRI": 4
+      }
+    },
+    {
+      "rel": "partnerships/index.html",
+      "mirrorBytes": 74685,
+      "builtBytes": 74046,
+      "transforms": {
+        "T-ENTRY": 1,
+        "T-GA": 3,
+        "T-LOCALIZE": 58,
+        "T-NOINDEX": 1,
+        "T-SRI": 4
+      }
+    },
+    {
+      "rel": "legal/privacy-policy/index.html",
+      "mirrorBytes": 85085,
+      "builtBytes": 84401,
+      "transforms": {
+        "T-ENTRY": 1,
+        "T-GA": 3,
+        "T-LOCALIZE": 73,
+        "T-NOINDEX": 1,
+        "T-SRI": 4
+      }
+    },
+    {
+      "rel": "legal/terms-conditions/index.html",
+      "mirrorBytes": 93289,
+      "builtBytes": 92608,
+      "transforms": {
+        "T-ENTRY": 1,
+        "T-GA": 3,
+        "T-LOCALIZE": 72,
+        "T-NOINDEX": 1,
+        "T-SRI": 4
+      }
+    },
+    {
+      "rel": "404.html",
+      "mirrorBytes": 74685,
+      "builtBytes": 74046,
+      "transforms": {
+        "T-ENTRY": 1,
+        "T-GA": 3,
+        "T-LOCALIZE": 58,
+        "T-NOINDEX": 1,
+        "T-SRI": 4
+      }
+    }
+  ]
+}

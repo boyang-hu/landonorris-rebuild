@@ -1,0 +1,58 @@
+$ node scripts/skill/probe.mjs http://127.0.0.1:22001/legal/privacy-policy --no-external --wait 8000 --scroll 0.5
+verdict: PASS (registered: 6.3-iubenda-icons-mirror, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host)
+
+
+[probe] target http://127.0.0.1:22001/legal/privacy-policy (side MIRROR)
+[probe] cdp port 22011 = slot 1 / probe.cdp / side MIRROR
+
+=== console (9) ===
+[debug] Starting initial load...
+[debug] Starting basic initialization...
+[log] No Reef Rive canvases found on page
+[debug] Initializing page: legal
+[warning] No specific initialization for page: legal, initializing defaults
+[debug] Page enter started
+[debug] Page enter completed
+[log] %c
+   ██╗      █████╗ ███╗   ██╗██████╗  ██████╗ 
+   ██║     ██╔══██╗████╗  ██║██╔══██╗██╔═══██╗
+   ██║     ███████║██╔██╗ ██║██║  ██║██║   ██║
+   ██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║
+   ███████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ 
+  %c
+   ███╗   ██╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
+   ████╗  ██║██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
+   ██╔██╗ ██║██║   ██║██████╔╝██████╔╝██║███████╗
+   ██║╚██╗██║██║   ██║██╔══██╗██╔══██╗██║╚════██║
+   ██║ ╚████║╚██████╔╝██║  ██║██║  ██║██║███████║
+   ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+  
+   %c%c color: #d2ff00; font: 400 1em monospace;  background-color: #d2ff00; color: black; font: 400 1em monospace; padding: 0.5em 0; font-weight: bold; 
+[log] resize issue prevention
+=== page errors (2) ===
+[network] Failed to load resource: the server responded with a status of 404 (Not Found)
+[network] Failed to load resource: net::ERR_CONNECTION_CLOSED
+=== request failures (2) ===
+HTTP 404 http://127.0.0.1:22001/images/site/icons/owner.png
+FAILED net::ERR_CONNECTION_CLOSED https://ext/cdn.iubenda.com/iubenda_badge.css
+=== external requests (2, FATAL) ===
+1x www.iubenda.com
+1x ext
+
+RESULT: 6 problems
+[chrome] LEFTOVER: 9 orphaned 'probe' Chrome process(es) from a previous run of this
+[chrome]   workspace are still alive (oldest 00:02). Reaping them before this run measures anything —
+[chrome]   background load inflates the reference side's self-comparison band, and an inflated band is a
+[chrome]   pixel gate that silently forgives real cross-side residuals (see this file's header).
+[chrome]   pid 66655 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
+[chrome]   pid 66656 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
+[chrome]   pid 66657 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
+[chrome]   pid 66659 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
+[chrome]   pid 66661 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
+[chrome]   pid 66662 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
+[chrome]   pid 66663 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
+[chrome]   pid 66664 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
+[chrome]   pid 66676 (ppid 66650, up 00:00) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
+[chrome]   WARNING: 9 process(es) survived SIGKILL: 66655, 66656, 66657, 66659, 66661, 66662, 66663, 66664, 66692
+[chrome] NOTE: 1 'probe' Chrome process(es) with a LIVE parent are running — not touching them. If they hold this run's port, the port check below will name them.

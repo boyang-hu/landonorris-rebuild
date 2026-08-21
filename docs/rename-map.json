@@ -344,5 +344,1256 @@
   "lifecycle.ts#dispatchPageInit": "the page switch duplicated inside mL (46176-46234) and cL (46247-46293) written once; REBUILD_PLAN §6.16",
   "router.ts#taxi": "src-only accessor for y_ (core)",
   "scroll.ts#getScrollManager": "src-only accessor for d$ (manager)"
- }
+ },
+ "evidence": {
+  "BD": {
+   "src": "detectBrowser",
+   "tier": 0,
+   "why": "human judgement; provenance: BD 34 — UA classes consumed by the css-safari style block",
+   "portLine": 57
+  },
+  "ED": {
+   "src": "resetWebflow",
+   "tier": 1,
+   "why": "source global/event `Webflow` ↔ webflow",
+   "portLine": 64
+  },
+  "ID": {
+   "src": "refreshCurrentLinks",
+   "tier": 2,
+   "why": "string `w--current` ↔ current",
+   "portLine": 69
+  },
+  "CD": {
+   "src": "printBanner",
+   "tier": 0,
+   "why": "human judgement; provenance: CD 56 — console banner",
+   "portLine": 79
+  },
+  "KD": {
+   "src": "watchBreakpointReload",
+   "tier": 3,
+   "why": "property `.reload` ↔ reload",
+   "portLine": 98
+  },
+  "dR": {
+   "src": "applyScrollerDefaults",
+   "tier": 3,
+   "why": "property `.defaults` ↔ defaults",
+   "portLine": 117
+  },
+  "t2": {
+   "src": "debounce",
+   "tier": 0,
+   "why": "human judgement; provenance: t2 9415 — trailing debounce",
+   "portLine": 124
+  },
+  "uR": {
+   "src": "SCROLLER",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 132
+  },
+  "g8": {
+   "src": "setMenuClosedState",
+   "tier": 2,
+   "why": "string `Close menu` ↔ menu",
+   "portLine": 147
+  },
+  "HE": {
+   "src": "setHamburgerTheme",
+   "tier": 0,
+   "why": "human judgement; provenance: HE 9446 — hamburger color theme",
+   "portLine": 155
+  },
+  "kI": {
+   "src": "preloadAllRiveFiles",
+   "tier": 2,
+   "why": "string `No Rive files to preload` ↔ preload,rive,files",
+   "portLine": 165
+  },
+  "mR": {
+   "src": "settle",
+   "tier": 0,
+   "why": "human judgement; provenance: mR 9473",
+   "portLine": 182
+  },
+  "sR": {
+   "src": "dispatchComponentsReady",
+   "tier": 1,
+   "why": "source global/event `dispatchEvent` ↔ dispatch",
+   "portLine": 190
+  },
+  "A4": {
+   "src": "loadRiveFile",
+   "tier": 3,
+   "why": "property `.RiveFile` ↔ rive,file",
+   "portLine": 195
+  },
+  "cR": {
+   "src": "riveUrl",
+   "tier": 0,
+   "why": "human judgement; provenance: cR 9501",
+   "portLine": 210
+  },
+  "u8": {
+   "src": "fitFromAttr",
+   "tier": 0,
+   "why": "human judgement; provenance: u8 9506 — fit attribute mapping (alignment is always Center)",
+   "portLine": 215
+  },
+  "lR": {
+   "src": "resizeAll",
+   "tier": 3,
+   "why": "property `.resizeDrawingSurfaceToCanvas` ↔ resize",
+   "portLine": 229
+  },
+  "IH": {
+   "src": "instanceOf",
+   "tier": 0,
+   "why": "human judgement; provenance: IH 9526",
+   "portLine": 235
+  },
+  "Q4": {
+   "src": "cleanupCanvas",
+   "tier": 3,
+   "why": "property `.cleanup` ↔ cleanup",
+   "portLine": 239
+  },
+  "UI": {
+   "src": "instances",
+   "tier": 0,
+   "why": "human judgement; provenance: UI — live Rive instances, resized together (10266)",
+   "portLine": 965
+  },
+  "JI": {
+   "src": "pendingCount",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 965
+  },
+  "s0": {
+   "src": "allLoaded",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 965
+  },
+  "pR": {
+   "src": "RIVE_BASE",
+   "tier": 2,
+   "why": "string `https://assets.itsoffbrand.io/lando/rive/` ↔ rive",
+   "portLine": 965
+  },
+  "p6": {
+   "src": "RIVE_MANIFEST",
+   "tier": 2,
+   "why": "string `https://assets.itsoffbrand.io/lando/rive/` ↔ rive",
+   "portLine": 965
+  },
+  "DB": {
+   "src": "fileCache",
+   "tier": 0,
+   "why": "human judgement; provenance: DB — RiveFile cache, exposed as window.loadedRiveFiles (10274-10275)",
+   "portLine": 965
+  },
+  "JH": {
+   "src": "logoRegistry",
+   "tier": 0,
+   "why": "human judgement; provenance: JH — ln4 logo registry: {instance, canvas} (10280)",
+   "portLine": 965
+  },
+  "CH": {
+   "src": "playOnEnter",
+   "tier": 3,
+   "why": "property `.play` ↔ play",
+   "portLine": 254
+  },
+  "oR": {
+   "src": "bindScrollDriven",
+   "tier": 1,
+   "why": "source global/event `scrollY` ↔ scroll",
+   "portLine": 282
+  },
+  "KH": {
+   "src": "isInHeroContainer",
+   "tier": 2,
+   "why": "string `data-hero-animation-container` ↔ hero,container",
+   "portLine": 378
+  },
+  "B4": {
+   "src": "initReef",
+   "tier": 2,
+   "why": "string `Reef file not found in loaded files` ↔ reef",
+   "portLine": 387
+  },
+  "E4": {
+   "src": "initSignature",
+   "tier": 2,
+   "why": "string `Signature file not found in loaded files` ↔ signature",
+   "portLine": 444
+  },
+  "I4": {
+   "src": "initCircuits",
+   "tier": 2,
+   "why": "string `Circuits file not found in loaded files` ↔ circuits",
+   "portLine": 499
+  },
+  "C4": {
+   "src": "initBtnUi",
+   "tier": 2,
+   "why": "string `btn-ui` ↔ btn",
+   "portLine": 578
+  },
+  "iR": {
+   "src": "initNavHamburger",
+   "tier": 2,
+   "why": "string `[data-nav-ham]` ↔ nav",
+   "portLine": 634
+  },
+  "K4": {
+   "src": "initPhrases",
+   "tier": 2,
+   "why": "string `Phrases file not found in loaded files` ↔ phrases",
+   "portLine": 704
+  },
+  "nR": {
+   "src": "initLn4Logo",
+   "tier": 2,
+   "why": "string `LN4 Logo file not found in loaded files` ↔ ln4,logo",
+   "portLine": 751
+  },
+  "pK": {
+   "src": "setLogoActive",
+   "tier": 2,
+   "why": "string `logo-active` ↔ logo,active",
+   "portLine": 807
+  },
+  "AC": {
+   "src": "setLogoColor",
+   "tier": 2,
+   "why": "string `color_dark-green` ↔ color",
+   "portLine": 817
+  },
+  "S1": {
+   "src": "initRiveComponents",
+   "tier": 0,
+   "why": "human judgement; provenance: S1 10134",
+   "portLine": 843
+  },
+  "o0": {
+   "src": "fireHeroRiveAnimations",
+   "tier": 2,
+   "why": "string `Cannot fire hero animations - Rive files not fully` ↔ fire,hero,rive,animations",
+   "portLine": 847
+  },
+  "aR": {
+   "src": "MobileLandscape",
+   "tier": 2,
+   "why": "string `landscape` ↔ landscape",
+   "portLine": 899
+  },
+  "rR": {
+   "src": "createMobileLandscape",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 962
+  },
+  "Y9": {
+   "src": "Camera",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 1049
+  },
+  "$9": {
+   "src": "Renderer",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 1061
+  },
+  "W9": {
+   "src": "HeadDefault",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 1088
+  },
+  "FT": {
+   "src": "randomGoogleVariant",
+   "tier": 0,
+   "why": "human judgement; provenance: R9 30939-30942 — 50% chance the variant boots as \"Google\"",
+   "portLine": 1193
+  },
+  "o5": {
+   "src": "createLensFlareMaterial",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 1198
+  },
+  "i5": {
+   "src": "createDiscoMaterial",
+   "tier": 3,
+   "why": "property `.tDiscoMask` ↔ disco",
+   "portLine": 1267
+  },
+  "I8": {
+   "src": "DiscoController",
+   "tier": 2,
+   "why": "string `disco` ↔ disco",
+   "portLine": 1348
+  },
+  "F9": {
+   "src": "Helmet",
+   "tier": 2,
+   "why": "string `helmet` ↔ helmet",
+   "portLine": 1416
+  },
+  "N9": {
+   "src": "LightingDefault",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 1633
+  },
+  "O9": {
+   "src": "HeadScene",
+   "tier": 2,
+   "why": "string `head` ↔ head",
+   "portLine": 1643
+  },
+  "V9": {
+   "src": "TrackPoint",
+   "tier": 2,
+   "why": "string `lando-gl__point` ↔ point",
+   "portLine": 2265
+  },
+  "z9": {
+   "src": "Tracks",
+   "tier": 2,
+   "why": "string `gl-tracks-isTransitioning` ↔ tracks",
+   "portLine": 2279
+  },
+  "UN": {
+   "src": "trackVert",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 2612
+  },
+  "k9": {
+   "src": "TracksScene",
+   "tier": 2,
+   "why": "string `tracks` ↔ tracks",
+   "portLine": 2708
+  },
+  "w9": {
+   "src": "BackgroundScene",
+   "tier": 2,
+   "why": "string `background` ↔ background",
+   "portLine": 2838
+  },
+  "_9": {
+   "src": "CarouselScene",
+   "tier": 2,
+   "why": "string `carousel` ↔ carousel",
+   "portLine": 2953
+  },
+  "y9": {
+   "src": "HelmetScrollScene",
+   "tier": 2,
+   "why": "string `helmet-scroll` ↔ helmet,scroll",
+   "portLine": 3139
+  },
+  "x9": {
+   "src": "NotFoundScene",
+   "tier": 2,
+   "why": "string `not-found` ↔ not,found",
+   "portLine": 3378
+  },
+  "f9": {
+   "src": "BackgroundNoise",
+   "tier": 0,
+   "why": "human judgement; provenance: f9 34761",
+   "portLine": 3721
+  },
+  "AI": {
+   "src": "faceVert",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 3834
+  },
+  "tN": {
+   "src": "colorFrag",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 3850
+  },
+  "AO": {
+   "src": "lineVert",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 3866
+  },
+  "qY": {
+   "src": "advectionFrag",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 3882
+  },
+  "IO": {
+   "src": "mouseVert",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4003
+  },
+  "KO": {
+   "src": "mouseFrag",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4019
+  },
+  "GO": {
+   "src": "viscousFrag",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4117
+  },
+  "qO": {
+   "src": "divergenceFrag",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4196
+  },
+  "DO": {
+   "src": "poissonFrag",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4250
+  },
+  "XO": {
+   "src": "pressureFrag",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4318
+  },
+  "zE": {
+   "src": "ShaderPass",
+   "tier": 0,
+   "why": "human judgement; provenance: zE 34964",
+   "portLine": 3924
+  },
+  "b9": {
+   "src": "Advection",
+   "tier": 0,
+   "why": "human judgement; provenance: b9 — Advection (with boundary line)",
+   "portLine": 3939
+  },
+  "wJ": {
+   "src": "FluidMouse",
+   "tier": 3,
+   "why": "property `.mouseMoved` ↔ mouse",
+   "portLine": 4035
+  },
+  "h9": {
+   "src": "ExternalForce",
+   "tier": 0,
+   "why": "human judgement; provenance: h9 — ExternalForce",
+   "portLine": 4067
+  },
+  "v9": {
+   "src": "Viscous",
+   "tier": 0,
+   "why": "human judgement; provenance: v9 — Viscous (disabled by default, ported for parity)",
+   "portLine": 4141
+  },
+  "g9": {
+   "src": "Divergence",
+   "tier": 0,
+   "why": "human judgement; provenance: g9 — Divergence",
+   "portLine": 4213
+  },
+  "u9": {
+   "src": "Poisson",
+   "tier": 0,
+   "why": "human judgement; provenance: u9 — Poisson",
+   "portLine": 4270
+  },
+  "d9": {
+   "src": "Pressure",
+   "tier": 0,
+   "why": "human judgement; provenance: d9 — Pressure",
+   "portLine": 4340
+  },
+  "p9": {
+   "src": "FluidSimulation",
+   "tier": 0,
+   "why": "human judgement; provenance: p9 35421 — simulation orchestration (options verbatim)",
+   "portLine": 4381
+  },
+  "m9": {
+   "src": "FluidCursor",
+   "tier": 0,
+   "why": "human judgement; provenance: m9 35544 — visible fluid output (60fps throttled)",
+   "portLine": 4504
+  },
+  "c9": {
+   "src": "IdleState",
+   "tier": 3,
+   "why": "property `.idleInterval` ↔ idle",
+   "portLine": 4536
+  },
+  "VO": {
+   "src": "simplexChunk",
+   "tier": 0,
+   "why": "human judgement; provenance: VO 35631 — 3D simplex noise, registered as ShaderChunk.simplex (world ctor)",
+   "portLine": 4591
+  },
+  "l9": {
+   "src": "World",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4669
+  },
+  "PJ": {
+   "src": "EventEmitter",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4757
+  },
+  "s9": {
+   "src": "Time",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4816
+  },
+  "o9": {
+   "src": "Sizes",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4840
+  },
+  "t9": {
+   "src": "Debug",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4855
+  },
+  "e9": {
+   "src": "Mouse",
+   "tier": 3,
+   "why": "property `.isMouseHolding` ↔ mouse",
+   "portLine": 4872
+  },
+  "AZ": {
+   "src": "ShaderChunks",
+   "tier": 0,
+   "why": "human judgement; provenance: AZ 38117",
+   "portLine": 4968
+  },
+  "BZ": {
+   "src": "Assets",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 4981
+  },
+  "RQ": {
+   "src": "GL",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 5197
+  },
+  "G$": {
+   "src": "singleton",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 5255
+  },
+  "eM": {
+   "src": "glLoad",
+   "tier": 3,
+   "why": "property `.load` ↔ load",
+   "portLine": 5269
+  },
+  "AL": {
+   "src": "glInit",
+   "tier": 0,
+   "why": "human judgement; provenance: AL 41522",
+   "portLine": 5272
+  },
+  "yU": {
+   "src": "glAdd",
+   "tier": 3,
+   "why": "property `.add` ↔ add",
+   "portLine": 5276
+  },
+  "QL": {
+   "src": "glDestroyWorld",
+   "tier": 3,
+   "why": "property `.destroy` ↔ destroy",
+   "portLine": 5280
+  },
+  "vQ": {
+   "src": "GL_BASE",
+   "tier": 0,
+   "why": "human judgement; provenance: vQ 41533 (via local /ext mapping)",
+   "portLine": 5283
+  },
+  "iQ": {
+   "src": "texFormat",
+   "tier": 0,
+   "why": "human judgement; provenance: iQ 41538 — desktop webp, <=991px ktx2",
+   "portLine": 5283
+  },
+  "bI": {
+   "src": "app",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 5283
+  },
+  "EZ": {
+   "src": "initLandoGL",
+   "tier": 1,
+   "why": "source global/event `landoGL` ↔ lando",
+   "portLine": 5288
+  },
+  "BL": {
+   "src": "loadPageTransition",
+   "tier": 2,
+   "why": "string `page-transition` ↔ transition",
+   "portLine": 5439
+  },
+  "EL": {
+   "src": "transitionOut",
+   "tier": 0,
+   "why": "human judgement; provenance: EL 41724 — cover the page (leaving); called from lifecycle onLeave only",
+   "portLine": 5477
+  },
+  "H$": {
+   "src": "transitionIn",
+   "tier": 0,
+   "why": "human judgement; provenance: H$ 41732 — reveal the page (arriving)",
+   "portLine": 5485
+  },
+  "ZK": {
+   "src": "wrap",
+   "tier": 0,
+   "why": "human judgement; provenance: ZK / IZ / Z$ / xJ / lj (41746-41748)",
+   "portLine": 5496
+  },
+  "IZ": {
+   "src": "canvas",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 5496
+  },
+  "Z$": {
+   "src": "btn",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 5496
+  },
+  "xJ": {
+   "src": "inputs",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 5496
+  },
+  "lj": {
+   "src": "instances",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 5496
+  },
+  "q$": {
+   "src": "initDom",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 5498
+  },
+  "JZ": {
+   "src": "SplitTextManager",
+   "tier": 2,
+   "why": "string `GSAP and SplitText plugin must be loaded first` ↔ split,text",
+   "portLine": 5511
+  },
+  "e0": {
+   "src": "initOvalScroll",
+   "tier": 2,
+   "why": "string `[data-oval-scroll]` ↔ oval",
+   "portLine": 5628
+  },
+  "AE": {
+   "src": "initAnimHigh",
+   "tier": 2,
+   "why": "string `[data-anim-high]` ↔ anim",
+   "portLine": 5715
+  },
+  "UZ": {
+   "src": "initStatListReveal",
+   "tier": 2,
+   "why": "string `[data-stat-list]` ↔ stat",
+   "portLine": 5790
+  },
+  "QE": {
+   "src": "initTextHover",
+   "tier": 0,
+   "why": "human judgement; provenance: QE 42775 — [data-anim=\"text-hover\"] char roll",
+   "portLine": 5848
+  },
+  "fJ": {
+   "src": "initImgHighlight",
+   "tier": 2,
+   "why": "string `[data-img-highlight]` ↔ img",
+   "portLine": 5901
+  },
+  "NL": {
+   "src": "initCarCounter",
+   "tier": 2,
+   "why": "string `[data-car-counter]` ↔ car",
+   "portLine": 5965
+  },
+  "k0": {
+   "src": "playHeroTextTimelines",
+   "tier": 2,
+   "why": "string `[data-hero-animation-container]` ↔ hero",
+   "portLine": 6002
+  },
+  "GZ": {
+   "src": "formatText",
+   "tier": 0,
+   "why": "human judgement; provenance: GZ 42943 = Q_ + A_ + B_ + E_ — [data-text-format]",
+   "portLine": 6016
+  },
+  "A_": {
+   "src": "applyFlexDisplay",
+   "tier": 2,
+   "why": "string `flex` ↔ flex",
+   "portLine": 6020
+  },
+  "Q_": {
+   "src": "cleanupFormatting",
+   "tier": 3,
+   "why": "property `._formattingCleanup` ↔ cleanup,formatting",
+   "portLine": 6031
+  },
+  "B_": {
+   "src": "formatPositions",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 6039
+  },
+  "E_": {
+   "src": "formatRounds",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 6052
+  },
+  "OL": {
+   "src": "initRichTextReveal",
+   "tier": 2,
+   "why": "string `[split-rich-text]` ↔ rich",
+   "portLine": 6065
+  },
+  "F$": {
+   "src": "cleanupRichTextReveal",
+   "tier": 2,
+   "why": "string `[split-rich-text]` ↔ rich",
+   "portLine": 6193
+  },
+  "I_": {
+   "src": "initHorizontalScroll",
+   "tier": 2,
+   "why": "string `[data-horizontal-section]` ↔ horizontal",
+   "portLine": 6234
+  },
+  "C_": {
+   "src": "initHorizontalTextReveal",
+   "tier": 2,
+   "why": "string `.s.is-horizontal-track` ↔ horizontal",
+   "portLine": 6308
+  },
+  "Z8": {
+   "src": "initHorizontalSections",
+   "tier": 0,
+   "why": "human judgement; provenance: Z8 43293 — desktop only",
+   "portLine": 6369
+  },
+  "H8": {
+   "src": "killHorizontalSections",
+   "tier": 2,
+   "why": "string `[data-horizontal-section]` ↔ horizontal",
+   "portLine": 6373
+  },
+  "O$": {
+   "src": "initMarquees",
+   "tier": 0,
+   "why": "human judgement; provenance: O$ 43303 — marquees (lazy via IntersectionObserver)",
+   "portLine": 6379
+  },
+  "LL": {
+   "src": "destroyMarquees",
+   "tier": 0,
+   "why": "human judgement; provenance: LL 43374",
+   "portLine": 6450
+  },
+  "ZZ": {
+   "src": "initHelmetGrid",
+   "tier": 2,
+   "why": "string `[data-helmet-grid]` ↔ helmet",
+   "portLine": 6468
+  },
+  "HZ": {
+   "src": "resetHelmetGrid",
+   "tier": 2,
+   "why": "string `[data-helmet-grid]` ↔ helmet",
+   "portLine": 6501
+  },
+  "q8": {
+   "src": "initSocialCallout",
+   "tier": 2,
+   "why": "string `.callout-socials-card-w` ↔ callout",
+   "portLine": 6513
+  },
+  "bJ": {
+   "src": "initCampCollection",
+   "tier": 2,
+   "why": "string `.camp-collection-w` ↔ camp,collection",
+   "portLine": 6791
+  },
+  "K_": {
+   "src": "killCampTriggers",
+   "tier": 2,
+   "why": "string `.camp-collection-w` ↔ camp",
+   "portLine": 6817
+  },
+  "ML": {
+   "src": "horizontalTweens",
+   "tier": 0,
+   "why": "human judgement; provenance: ML 43750 — horizontal container tweens, looked up by C_",
+   "portLine": 6826
+  },
+  "VL": {
+   "src": "hideTimer",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 6831
+  },
+  "vU": {
+   "src": "visible",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 6831
+  },
+  "J_": {
+   "src": "HIDE_DELAY",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 6831
+  },
+  "qZ": {
+   "src": "createScrollIndicator",
+   "tier": 1,
+   "why": "source global/event `scrollY` ↔ scroll",
+   "portLine": 6831
+  },
+  "L$": {
+   "src": "initNavScale",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 6926
+  },
+  "V$": {
+   "src": "initNavTheme",
+   "tier": 1,
+   "why": "source global/event `themeScrollTriggers` ↔ theme",
+   "portLine": 6989
+  },
+  "kL": {
+   "src": "initNavMenu",
+   "tier": 2,
+   "why": "string `[data-nav-wrap]` ↔ nav",
+   "portLine": 7080
+  },
+  "hJ": {
+   "src": "navScaleTween",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 7478
+  },
+  "YZ": {
+   "src": "destroyAllVideos",
+   "tier": 3,
+   "why": "property `.destroyAll` ↔ destroy",
+   "portLine": 7488
+  },
+  "U_": {
+   "src": "vimeoManager",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 7491
+  },
+  "PL": {
+   "src": "initGlColorTracks",
+   "tier": 2,
+   "why": "string `Invalid color values for element:` ↔ color",
+   "portLine": 7671
+  },
+  "$Z": {
+   "src": "triggers",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 7744
+  },
+  "Z_": {
+   "src": "initStickyHeroSequence",
+   "tier": 2,
+   "why": "string `.hero-eyebrow-tracker` ↔ hero",
+   "portLine": 7753
+  },
+  "H_": {
+   "src": "initOtotSection",
+   "tier": 2,
+   "why": "string `[data-otot-section]` ↔ otot",
+   "portLine": 7811
+  },
+  "k$": {
+   "src": "initOtotBottomParallax",
+   "tier": 2,
+   "why": "string `[data-otot-bottom]` ↔ otot",
+   "portLine": 7848
+  },
+  "q_": {
+   "src": "initExeVisor",
+   "tier": 2,
+   "why": "string `[data-exe-visor]` ↔ exe",
+   "portLine": 7866
+  },
+  "Y_": {
+   "src": "initExeSection",
+   "tier": 2,
+   "why": "string `[data-exe-section]` ↔ exe",
+   "portLine": 7883
+  },
+  "$_": {
+   "src": "initHomeSwipeToggle",
+   "tier": 2,
+   "why": "string `[data-home-swipe-toggle]` ↔ home,swipe",
+   "portLine": 7914
+  },
+  "D_": {
+   "src": "destroyHomeSwipeToggle",
+   "tier": 2,
+   "why": "string `[data-home-swipe-wrap]` ↔ home,swipe",
+   "portLine": 8000
+  },
+  "w$": {
+   "src": "initHomePage",
+   "tier": 0,
+   "why": "human judgement; provenance: w$ 44924 — home init",
+   "portLine": 8012
+  },
+  "W_": {
+   "src": "killStickyHero",
+   "tier": 3,
+   "why": "property `.kill` ↔ kill",
+   "portLine": 8021
+  },
+  "R_": {
+   "src": "killHeroAnim",
+   "tier": 2,
+   "why": "string `[data-hero-anim]` ↔ hero",
+   "portLine": 8027
+  },
+  "X_": {
+   "src": "killOtot",
+   "tier": 2,
+   "why": "string `[data-otot-section]` ↔ otot",
+   "portLine": 8033
+  },
+  "F_": {
+   "src": "killOtotBottom",
+   "tier": 2,
+   "why": "string `[data-otot-bottom]` ↔ otot",
+   "portLine": 8039
+  },
+  "N_": {
+   "src": "killExeVisor",
+   "tier": 2,
+   "why": "string `[data-exe-visor]` ↔ exe",
+   "portLine": 8045
+  },
+  "O_": {
+   "src": "killExeSection",
+   "tier": 2,
+   "why": "string `[data-exe-section]` ↔ exe",
+   "portLine": 8051
+  },
+  "M_": {
+   "src": "killSocialCallout",
+   "tier": 2,
+   "why": "string `.callout-socials-card-w` ↔ callout",
+   "portLine": 8057
+  },
+  "TL": {
+   "src": "cleanupHomePage",
+   "tier": 0,
+   "why": "human judgement; provenance: TL 44979 — home cleanup",
+   "portLine": 8067
+  },
+  "w0": {
+   "src": "swipeState",
+   "tier": 0,
+   "why": "human judgement; provenance: w0 (44997)",
+   "portLine": 8075
+  },
+  "S$": {
+   "src": "initCountdowns",
+   "tier": 0,
+   "why": "human judgement; provenance: S$ 45002 — countdowns (\"DD/MM/YYYY HH:MM\" parsed as UTC)",
+   "portLine": 8093
+  },
+  "jL": {
+   "src": "clearCountdowns",
+   "tier": 0,
+   "why": "human judgement; provenance: jL 45043",
+   "portLine": 8136
+  },
+  "L_": {
+   "src": "initPodiumParallax",
+   "tier": 0,
+   "why": "human judgement; provenance: L_ 45052 — podium text parallax",
+   "portLine": 8143
+  },
+  "T$": {
+   "src": "initStatHover",
+   "tier": 2,
+   "why": "string `[data-stat-list]` ↔ stat",
+   "portLine": 8174
+  },
+  "V_": {
+   "src": "initPodiumScrub",
+   "tier": 2,
+   "why": "string `[data-podium-media]` ↔ podium",
+   "portLine": 8288
+  },
+  "j$": {
+   "src": "initCalendarSync",
+   "tier": 2,
+   "why": "string `\\uD83D\\uDD04 Initializing calendar sync` ↔ calendar,sync",
+   "portLine": 8380
+  },
+  "_L": {
+   "src": "initHeroflipGl",
+   "tier": 0,
+   "why": "human judgement; provenance: _L 45620 — heroflip GL helmet flight path (writes landoGL bounds/PROGRESS)",
+   "portLine": 8711
+  },
+  "_$": {
+   "src": "initOnTrackPage",
+   "tier": 0,
+   "why": "human judgement; provenance: _$ 45779 — on-track init",
+   "portLine": 8870
+  },
+  "yL": {
+   "src": "cleanupOnTrackPage",
+   "tier": 3,
+   "why": "property `.cleanup` ↔ cleanup",
+   "portLine": 8882
+  },
+  "z_": {
+   "src": "initHeroflipImages",
+   "tier": 0,
+   "why": "human judgement; provenance: z_ 45830 — image-layer heroflip on a motion path",
+   "portLine": 8924
+  },
+  "x$": {
+   "src": "initOffTrackPage",
+   "tier": 0,
+   "why": "human judgement; provenance: x$ 45982",
+   "portLine": 9076
+  },
+  "xL": {
+   "src": "cleanupOffTrackPage",
+   "tier": 0,
+   "why": "human judgement; provenance: xL 45989",
+   "portLine": 9083
+  },
+  "DZ": {
+   "src": "heroflipCleanup",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 9087
+  },
+  "f$": {
+   "src": "initPartnershipsPage",
+   "tier": 0,
+   "why": "human judgement; provenance: f$ 46002",
+   "portLine": 9099
+  },
+  "bL": {
+   "src": "cleanupPartnershipsPage",
+   "tier": 0,
+   "why": "human judgement; provenance: bL 46009 — empty in source",
+   "portLine": 9106
+  },
+  "P_": {
+   "src": "pruneEmptyMoreList",
+   "tier": 2,
+   "why": "string `[data-more-list]` ↔ more",
+   "portLine": 9129
+  },
+  "WZ": {
+   "src": "initPartnershipsItemPage",
+   "tier": 0,
+   "why": "human judgement; provenance: WZ 46041",
+   "portLine": 9138
+  },
+  "vL": {
+   "src": "cleanupPartnershipsItemPage",
+   "tier": 0,
+   "why": "human judgement; provenance: vL 46050",
+   "portLine": 9147
+  },
+  "S_": {
+   "src": "initCalendarHistory",
+   "tier": 2,
+   "why": "string `Toggle calendar history item` ↔ calendar,history",
+   "portLine": 9156
+  },
+  "b$": {
+   "src": "initCalendarPage",
+   "tier": 0,
+   "why": "human judgement; provenance: b$ 46106",
+   "portLine": 9203
+  },
+  "T_": {
+   "src": "initGlSwitchers",
+   "tier": 2,
+   "why": "string `switchers` ↔ switchers",
+   "portLine": 9218
+  },
+  "h$": {
+   "src": "initNotFoundPage",
+   "tier": 0,
+   "why": "human judgement; provenance: h$ 46150",
+   "portLine": 9247
+  },
+  "dL": {
+   "src": "cleanupNotFoundPage",
+   "tier": 0,
+   "why": "human judgement; provenance: dL 46158",
+   "portLine": 9255
+  },
+  "mL": {
+   "src": "initialLoad",
+   "tier": 0,
+   "why": "human judgement; provenance: mL 46166 — first load",
+   "portLine": 9266
+  },
+  "cL": {
+   "src": "transitionEnter",
+   "tier": 2,
+   "why": "string `No page name provided for transition in` ↔ transition",
+   "portLine": 9337
+  },
+  "lL": {
+   "src": "transitionLeave",
+   "tier": 2,
+   "why": "string `No page name provided for transition out` ↔ transition",
+   "portLine": 9397
+  },
+  "v$": {
+   "src": "TRANSITION_MS",
+   "tier": 0,
+   "why": "human judgement; provenance: v$ 46337",
+   "portLine": 9437
+  },
+  "YK": {
+   "src": "scrollIndicator",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 9437
+  },
+  "RZ": {
+   "src": "splitManager",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 9437
+  },
+  "oB": {
+   "src": "PAGES",
+   "tier": 0,
+   "why": "human judgement; provenance: oB 46357",
+   "portLine": 9437
+  },
+  "g$": {
+   "src": "EVENTS",
+   "tier": 0,
+   "why": "human judgement; provenance: g$ 46367",
+   "portLine": 9437
+  },
+  "oL": {
+   "src": "DefaultTransition",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 9476
+  },
+  "iL": {
+   "src": "DefaultRenderer",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 9476
+  },
+  "y_": {
+   "src": "core",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 9476
+  },
+  "aL": {
+   "src": "initRouter",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 9480
+  },
+  "QV": {
+   "src": "LenisManager",
+   "tier": 1,
+   "why": "source global/event `lenis` ↔ lenis",
+   "portLine": 9584
+  },
+  "d$": {
+   "src": "manager",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": 9655
+  },
+  "EV": {
+   "src": "initScroll",
+   "tier": 0,
+   "why": "human judgement; provenance: EV 47092 — create singleton + expose window.lenisStart/lenisStop",
+   "portLine": 9656
+  },
+  "m_": {
+   "src": "allRiveLoaded",
+   "tier": 0,
+   "why": "human judgement; provenance: m_ 47106 — resolve when every manifest rive file is in",
+   "portLine": 9673
+  },
+  "c_": {
+   "src": "boot",
+   "tier": 0,
+   "why": "human judgement; provenance: c_ 47113",
+   "portLine": 9680
+  },
+  "tR": {
+   "src": "WebGLSupport",
+   "tier": 1,
+   "why": "source global/event `WebGL2RenderingContext` ↔ web",
+   "portLine": 993
+  },
+  "GN": {
+   "src": "trackFrag",
+   "tier": 0,
+   "why": "human judgement (no provenance comment found)",
+   "portLine": null
+  }
+ },
+ "_evidence_doc": "evidence tiers per rename (tools/grade-renames.mjs): 1 = a global/event the source itself names, 2 = a string the body consumes/produces, 3 = a property name, 0 = human judgement from the notes (why = provenance comment). See docs/rename-review.md for the manual spot-check."
 }

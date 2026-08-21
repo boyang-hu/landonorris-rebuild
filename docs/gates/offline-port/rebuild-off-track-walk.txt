@@ -1,0 +1,48 @@
+$ node scripts/skill/probe.mjs http://127.0.0.1:22002/off-track --no-external --wait 8000 --walk 16 --walk-dwell 700
+verdict: PASS
+
+
+[probe] target http://127.0.0.1:22002/off-track (side REBUILD)
+[probe] cdp port 22012 = slot 1 / probe.cdp / side REBUILD
+
+=== console (7) ===
+[debug] Starting initial load...
+[debug] Starting basic initialization...
+[debug] Initializing page: off-track
+[debug] Page enter started
+[debug] Page enter completed
+[log] %c
+   ██╗      █████╗ ███╗   ██╗██████╗  ██████╗ 
+   ██║     ██╔══██╗████╗  ██║██╔══██╗██╔═══██╗
+   ██║     ███████║██╔██╗ ██║██║  ██║██║   ██║
+   ██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║
+   ███████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ 
+  %c
+   ███╗   ██╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
+   ████╗  ██║██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
+   ██╔██╗ ██║██║   ██║██████╔╝██████╔╝██║███████╗
+   ██║╚██╗██║██║   ██║██╔══██╗██╔══██╗██║╚════██║
+   ██║ ╚████║╚██████╔╝██║  ██║██║  ██║██║███████║
+   ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+  
+   %c%c color: #d2ff00; font: 400 1em monospace;  background-color: #d2ff00; color: black; font: 400 1em monospace; padding: 0.5em 0; font-weight: bold; 
+[log] resize issue prevention
+=== page errors (0) ===
+=== request failures (0) ===
+=== external requests (0, FATAL) ===
+
+RESULT: CLEAN
+[chrome] LEFTOVER: 7 orphaned 'probe' Chrome process(es) from a previous run of this
+[chrome]   workspace are still alive (oldest 00:19). Reaping them before this run measures anything —
+[chrome]   background load inflates the reference side's self-comparison band, and an inflated band is a
+[chrome]   pixel gate that silently forgives real cross-side residuals (see this file's header).
+[chrome]   pid 69029 (ppid 69025, up 00:19) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-k1OD0l
+[chrome]   pid 69030 (ppid 69025, up 00:19) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-k1OD0l
+[chrome]   pid 69031 (ppid 69025, up 00:18) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-k1OD0l
+[chrome]   pid 69054 (ppid 69025, up 00:18) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-k1OD0l
+[chrome]   pid 69057 (ppid 69025, up 00:18) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-k1OD0l
+[chrome]   pid 69058 (ppid 69025, up 00:18) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-k1OD0l
+[chrome]   pid 69059 (ppid 69025, up 00:18) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-k1OD0l
+[chrome]   WARNING: 7 process(es) survived SIGKILL: 69029, 69030, 69031, 69054, 69057, 69058, 69059
+[chrome] NOTE: 1 'probe' Chrome process(es) with a LIVE parent are running — not touching them. If they hold this run's port, the port check below will name them.

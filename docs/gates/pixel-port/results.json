@@ -1,0 +1,79 @@
+{
+ "TOL_CONST": 0.5,
+ "SELF_SESSIONS": 4,
+ "MIN_COLOURS": 100,
+ "results": [
+  {
+   "route": "/",
+   "vp": "desktop",
+   "f": 0,
+   "state": "idle",
+   "slug": "desktop-home-000",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 1,
+      "colours": 25749
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 25748
+     },
+     {
+      "mean": 0,
+      "worst": 1,
+      "colours": 25749
+     },
+     {
+      "mean": 0,
+      "worst": 1,
+      "colours": 25748
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 1,
+      "colours": 25749
+     },
+     {
+      "mean": 0,
+      "worst": 1,
+      "colours": 25751
+     },
+     {
+      "mean": 0,
+      "worst": 1,
+      "colours": 25750
+     },
+     {
+      "mean": 0,
+      "worst": 1,
+      "colours": 25749
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 1,
+    "worstCell": [
+     2,
+     33
+    ],
+    "similarityPct": 100
+   },
+   "crossColours": [
+    25749,
+    25750
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:15:02.705Z"
+  }
+ ]
+}

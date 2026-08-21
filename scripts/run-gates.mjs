@@ -16,6 +16,7 @@
  *                                                          --only re-runs the named cells and merges them into the
  *                                                          existing results (a cell invalidated by a machine sleep etc.)
  *   --target src|port   which rebuild side to gate (default src = dist/; port = port/site + mirror assets)
+ *   node scripts/run-gates.mjs standalone                 copy src/ out, install offline, build, probe the copy (readable-source.md §4.3)
  *   node scripts/run-gates.mjs all
  *
  * Servers: the skill's serve.mjs, one per side (ports from scripts/skill/lib/ports.mjs).
@@ -61,9 +62,9 @@ const RESIDUALS = [
   { id: '6.3-iubenda-badge-css-host', route: LEGAL, side: 'both', kind: 'external',
     match: (host) => host === 'ext',
     why: 'same malformed https:/ext/... request as above, counted by the probe as an off-origin host' },
-  { id: '6.3-iubenda-icons-mirror', route: LEGAL, side: 'mirror', kind: 'failure',
+  { id: '6.3-iubenda-icons', route: LEGAL, side: 'mirror-or-port', kind: 'failure',
     match: (s, base) => s === `HTTP 404 ${base}/images/site/icons/owner.png`,
-    why: 'badge icons resolved against the page origin; the mirror has no /images/site (dist bakes them in, postbuild.mjs)' },
+    why: 'badge icons resolved against the page origin; neither the mirror nor the no-copy port has /images/site (src/public/images bakes them in, assets-restore.mjs)' },
 ];
 
 // ---------------------------------------------------------------------------
@@ -76,7 +77,7 @@ const SIDES = {
   mirror: { root: join(ROOT, 'mirror'), port: allocPort('serve', 'mirror'), extra: [] },
   rebuild: TARGET === 'port'
     ? { root: join(ROOT, 'port', 'site'), port: allocPort('serve', 'rebuild'), extra: ['--fallback-root', join(ROOT, 'mirror')] }
-    : { root: join(ROOT, 'dist'), port: allocPort('serve', 'rebuild'), extra: [] },
+    : { root: join(ROOT, 'src', 'dist'), port: allocPort('serve', 'rebuild'), extra: [] },
 };
 const spawned = [];
 async function ensureServer(side) {
@@ -117,7 +118,8 @@ function parseProbe(out) {
 function judge(parsed, { route, side, base }) {
   const used = new Set(); const unexplained = [];
   const allow = (kind, item) => {
-    const r = RESIDUALS.find((x) => x.kind === kind && (x.side === 'both' || x.side === side) && x.route(route) && x.match(item, base));
+    const sideOk = (x) => x.side === 'both' || x.side === side || (x.side === 'mirror-or-port' && (side === 'mirror' || (side === 'rebuild' && TARGET === 'port')));
+    const r = RESIDUALS.find((x) => x.kind === kind && sideOk(x) && x.route(route) && x.match(item, base));
     if (r) used.add(r.id); return !!r;
   };
   for (const f of parsed.failures) if (!allow('failure', f)) unexplained.push('failure: ' + f);
@@ -178,7 +180,7 @@ async function gateOffline() {
     console.log(`[gates] verify-offline ${side}: ${offline[side] ? 'PASS' : 'FAIL'}`);
   }
   const pass = results.filter((r) => r.v.ok).length;
-  const lines = [`# offline gate — ${new Date().toISOString().slice(0, 10)}`, '',
+  const lines = [`# offline gate — ${new Date().toISOString().slice(0, 10)} — target ${TARGET} (${SIDES.rebuild.root.replace(ROOT + '/', '')}${TARGET === 'port' ? ', assets via --fallback-root mirror' : ''})`, '',
     `CLEAN + zero-outbound (probe.mjs --no-external), ${results.length} cells examined = 2 sides × (${ROUTES.length} routes × 2 viewports + ${WALK_ROUTES.desktop.length + WALK_ROUTES.mobile.length} full-scroll walks). **${pass}/${results.length} PASS**. Static half (verify-offline.mjs): mirror ${offline.mirror ? 'PASS' : 'FAIL'}, rebuild ${offline.rebuild ? 'PASS' : 'FAIL'}.`, '',
     'PASS* = clean except for registered residuals (listed per cell; definitions in scripts/run-gates.mjs RESIDUALS, deviations in REBUILD_PLAN §6).', '',
     '| cell | result | probe RESULT | registered residuals used | unexplained |', '|---|---|---|---|---|'];
@@ -186,7 +188,7 @@ async function gateOffline() {
   lines.push('', '## registered residuals', '', '| id | side | routes | reason |', '|---|---|---|---|');
   for (const x of RESIDUALS) lines.push(`| ${x.id} | ${x.side} | ${ROUTES.filter(x.route).join(', ')} | ${x.why} |`);
   await writeFile(join(out, 'summary.md'), lines.join('\n') + '\n');
-  console.log(`[gates] offline: ${pass}/${results.length} cells PASS; summary docs/gates/offline/summary.md`);
+  console.log(`[gates] offline (${TARGET}): ${pass}/${results.length} cells PASS; summary ${out.replace(ROOT + '/', '')}/summary.md`);
   return pass === results.length && offline.mirror && offline.rebuild;
 }
 
@@ -342,7 +344,7 @@ async function gatePixel() {
     moved.push({ key, checkpoints: rs.length, distinct: distinct.size, ok: rs.length < 2 || distinct.size > 1 });
   }
   const pass = results.filter((r) => r.verdict === 'PASS').length;
-  const L = [`# pixel gate — ${new Date().toISOString().slice(0, 10)}`, '',
+  const L = [`# pixel gate — ${new Date().toISOString().slice(0, 10)} — target ${TARGET} (${SIDES.rebuild.root.replace(ROOT + '/', '')})`, '',
     `Quantified A/B pixel gate (scripts/skill/pixelcompare.mjs, 64×40 grid luma metric, 1280×800 desktop / 390×844 mobile, PNG) under the determinism shim (probe-shim.js via ?__probe on both serve.mjs sides; pump ${PUMP} = dt,frames; scroll applied at load and at +1500 ms virtual; state clicks at +1200 ms virtual). **${pass}/${results.length} cells PASS.** Per cell: ${SELF_SESSIONS} self-band sessions per side, interleaved mirror/rebuild, then one cross-side run; tolerance = max(self band of both sides) + ${TOL_CONST} — fixed before any cross-side number. Non-empty-frame precondition: ≥ ${MIN_COLOURS} colours on both frames.`, '',
     '| cell | self band mirror (4) | self band rebuild (4) | band | cross meanAbsDiff | worst cell | similarity | verdict |', '|---|---|---|---|---|---|---|---|'];
   for (const r of results) L.push(`| ${r.slug} | ${r.samples.mirror.map((x) => x.mean).join(' / ') || '—'} | ${r.samples.rebuild.map((x) => x.mean).join(' / ') || '—'} | ${r.band} | ${r.cross?.meanAbsDiff ?? '—'} | ${r.cross ? r.cross.worstCellDiff + (r.cross.worstCell ? ' @' + r.cross.worstCell.join(',') : '') : '—'} | ${r.cross?.similarityPct ?? '—'}% | ${r.verdict === 'PASS' ? 'PASS' : '**' + r.verdict + '**'}${r.reason ? ' — ' + r.reason : ''} |`);
@@ -355,11 +357,49 @@ async function gatePixel() {
   return pass === results.length && moved.every((m) => m.ok);
 }
 
+// ---------------------------------------------------------------------------
+// Standalone gate (readable-source.md §4.3): the skill's verify-standalone.mjs copies src/
+// OUTSIDE the repo, installs offline and builds; then — because "build success ≠ correct" —
+// the COPY's dist is served by a plain static server and every route is probed for CLEAN +
+// zero-outbound (legal routes keep the registered iubenda residuals).
+// ---------------------------------------------------------------------------
+async function gateStandalone() {
+  const out = join(GATES_ROOT, 'standalone'); await rm(out, { recursive: true, force: true }); await mkdir(out, { recursive: true });
+  const argv = [join(SKILL, 'verify-standalone.mjs'), '--src', join(ROOT, 'src'), '--full', '--keep'];
+  let code = 0, text = '';
+  try { const r = await run('node', argv, { maxBuffer: 64 * 1024 * 1024, cwd: ROOT }); text = r.stdout + r.stderr; } catch (e) { code = e.code ?? 1; text = (e.stdout || '') + (e.stderr || ''); }
+  await writeFile(join(out, 'verify-standalone.txt'), `$ node ${argv.map((a) => a.replace(ROOT + '/', '')).join(' ')}\nexit ${code}\n\n` + text);
+  const copy = (text.match(/copying to (\S+)/) || [])[1];
+  console.log(`[gates] standalone: verify-standalone ${code === 0 ? 'PASS' : 'FAIL'}${copy ? ' (copy kept at ' + copy + ')' : ''}`);
+  if (code !== 0 || !copy) return false;
+  const dist = join(copy, 'dist');
+  const port = allocPort('serve', 'unset');
+  const child = spawn('node', [join(SKILL, 'serve.mjs'), '--root', dist, '--port', String(port)], { stdio: ['ignore', 'pipe', 'pipe'] });
+  spawned.push(child);
+  const base = `http://127.0.0.1:${port}`;
+  for (let i = 0; i < 40 && !(await fetchIdentity(base)); i++) await new Promise((r) => setTimeout(r, 250));
+  const results = [];
+  for (const route of ROUTES) {
+    const r = await probe(base + route, ['--scroll', '0.5', '--cdp-port', String(allocPort('probe.cdp', 'unset'))]);
+    const parsed = parseProbe(r.out); const v = judge(parsed, { route, side: 'rebuild', base });
+    await writeFile(join(out, `copy${route === '/' ? '-home' : route.replace(/\//g, '-')}.txt`), `$ node ${r.argv.map((a) => a.replace(ROOT + '/', '')).join(' ')}\nverdict: ${v.ok ? 'PASS' : 'FAIL'}\n${v.unexplained.map((u) => 'UNEXPLAINED ' + u).join('\n')}\n\n` + r.out);
+    results.push({ route, v, parsed });
+    console.log(`[gates] standalone copy ${route.padEnd(26)} ${v.ok ? (v.used.length ? 'PASS*' : 'CLEAN') : 'FAIL'}  ${parsed.result}${v.unexplained.length ? '  <- ' + v.unexplained.join(' | ') : ''}`);
+  }
+  try { child.kill('SIGTERM'); } catch {}
+  await rm(copy, { recursive: true, force: true }).catch(() => {});
+  const pass = results.filter((r) => r.v.ok).length;
+  await writeFile(join(out, 'summary.md'), [`# standalone gate — ${new Date().toISOString().slice(0, 10)}`, '', `src/ copied outside the repository, \`npm install --offline\`, \`npm run build\` (verify-standalone.mjs --full): **PASS**. The copy's dist served as plain static files and probed with --no-external on ${ROUTES.length} routes: **${pass}/${results.length} PASS** (legal routes: registered iubenda residuals only).`, '', '| route | result | probe RESULT | residuals | unexplained |', '|---|---|---|---|---|', ...results.map((r) => `| ${r.route} | ${r.v.ok ? (r.v.used.length ? 'PASS*' : 'CLEAN') : '**FAIL**'} | ${r.parsed.result} | ${r.v.used.join(', ') || '—'} | ${r.v.unexplained.join('<br>') || '—'} |`)].join('\n') + '\n');
+  console.log(`[gates] standalone: ${pass}/${results.length} routes PASS on the copy`);
+  return pass === results.length;
+}
+
 let ok = true;
 if (cmd === 'mirror' || cmd === 'all') ok = (await gateMirror()) && ok;
+if (cmd === 'standalone' || cmd === 'all') ok = (await gateStandalone()) && ok;
 if (cmd === 'pixel' || cmd === 'all') ok = (await gatePixel()) && ok;
 if (cmd === 'symbols' || cmd === 'all') ok = (await gateSymbols()) && ok;
 if (cmd === 'offline' || cmd === 'all') ok = (await gateOffline()) && ok;
-if (!['mirror', 'offline', 'symbols', 'pixel', 'all'].includes(cmd)) { console.error('usage: run-gates.mjs <mirror|offline|symbols|pixel|all> [--resample N]'); process.exit(2); }
+if (!['mirror', 'offline', 'symbols', 'pixel', 'standalone', 'all'].includes(cmd)) { console.error('usage: run-gates.mjs <mirror|offline|symbols|pixel|standalone|all> [--target src|port] [--resample N] [--only cells]'); process.exit(2); }
 reap();
 process.exit(ok ? 0 : 1);

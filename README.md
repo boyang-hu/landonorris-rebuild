@@ -6,7 +6,7 @@
 **镜像 → 逆向（_pretty 行号坐标系）→ 严格溯源移植 → 里程碑推进 + 三重验证**。
 核心纪律：源站代码是唯一裁决；改动先归属到源码行号；死代码/bug 照抄不修；有意偏差必须登记。
 
-## 当前状态：重建完成（M0-M7，2026-08-10）+ skill v0.1.51 对账补门（M8，2026-08-20）
+## 当前状态：重建完成（M0-M7，2026-08-10）+ skill v0.1.51 对账补门（M8，2026-08-20）+ 三段重整 M9（2026-08-21）
 
 复刻站已按方法论完成全量重建：Webflow DOM/CSS 外壳（shells 流水线）+ 自写 TypeScript
 应用层（`src/app/`，对照 47k 行 pretty bundle 逐函数移植，全部带行号溯源注释）。
@@ -84,27 +84,36 @@ three-msdf-text-utils@1.5.0（偏差 6.8）。
 
 ## 目录
 
+三段坐标系 **mirror → port → src**（skill 的「证据 → 移植 → 源码」，单向依赖）：
+
 ```
-mirror/          源站镜像（URL 空间 1:1 落盘，只读）
-  assets/<host>/<path>  跨域资产按 host 组织
-  _pretty/              js-beautify@1.15.1 展开的 bundle（逆向行号坐标系）
-  mirror-manifest.json  权威清单（url → path/bytes/type/sha256 + aliases）
-  inventory.tsv / urlpath-policy.json / external.txt   账本 / 映射策略 / 闭包决策
-port/_gen/app.gen.js    bundle 应用区段的逐字切片（scripts/slices.config.mjs，sha256 钉死；追溯性，从不执行）
-docs/engine-notes/      M1 逆向笔记 ×6（行号取证）
-docs/rename-map.json    port 声明 ↔ src 声明（一对一 / 折叠 / esbuild 管道 / 孤儿登记）
-docs/gates/             各门产物（mirror / offline / symbols / pixel）+ README
-docs/compare/           M7 对拍截图
-shells/（生成物）        gen-shells 从镜像生成的页面外壳（登记变换：GA 剥离、/ext 改写、SRI 剥离、入口替换、SVG 修正）
-src/app/                应用层移植（gsap/scroll/transition/rive/components/pages/gl）
-  gl/                   Three 引擎（core/fluid/noise/world/scenes×6，GLSL 逐字）
+mirror/                 ① 只读证据：源站 URL 空间 1:1 落盘（508 文件 / 35MB，2026-08-10 快照）
+  assets/<host>/<path>     跨域资产按 host 组织
+  _pretty/                 js-beautify@1.15.1 展开的 bundle（逆向行号坐标系，README 记再生命令，可逐字节再生）
+  mirror-manifest.json     权威账本（url → path/bytes/type/sha256 + aliases）
+  inventory.tsv / urlpath-policy.json / external.txt / netcapture.tsv   账本 / 映射策略 / 闭包与 GAP 决策 / 真浏览器对账
+port/                   ② 逐字移植（机器读，永不手改，能运行）
+  _gen/app.gen.js          esbuild 运行时 + 全部应用区段的字节切片（30 片，sha256 守卫，classic script）
+  vendor-globals.js        压缩 vendor 名 → 钉死 npm 包的别名表（每行带品牌/行号证据）
+  site/（生成物）           skill build-site 生成的外壳 + 前奏 + 切片；伺服时资产从 mirror 回落（不复制）
+src/                    ③ 人写的工程：可读、可改、自包含（自己的 package.json；复制到任何地方 npm install --offline && npm run build）
+  app/                     应用层 TypeScript（gsap/scroll/transition/rive/components/pages/gl），每个声明带 pretty 行号
+  site/（生成物，已提交）    skill build-site 生成的外壳（入口 /app/main.ts）
+  public/ext/（盘上有 git 无） 源站资产副本（npm run assets:restore），账本 ASSETS.md
+  README.md                怎么跑 / 坐标系怎么读 / 注释三档
+docs/
+  engine-notes.md + engine-notes/   M1 逆向笔记（入口 + 6 份行号取证）
+  fingerprint/             Step 0 指纹报告与判级（A 类）
+  rename-map.json / rename-review.md   port 声明 ↔ src 声明（一对一 / 折叠 / esbuild 管道 / 孤儿 / 证据档位）+ 人工抽查
+  gates/                   各门产物（mirror / offline / offline-port / symbols / pixel / pixel-port / standalone）
+  compare/                 M7 对拍截图
 scripts/
-  run-gates.mjs         全部验收门的调用 + 豁免清单（mirror|offline|symbols|pixel|all）
-  gen-shells.mjs / postbuild.mjs / lib/ext-rewrite.mjs   构建流水线（/ext 改写唯一实现）
-  ledger-backfill.mjs / ledger-reconcile.mjs             镜像账本补列与对账（6.13）
-  slices.config.mjs / verify-decls.mjs                   port/ 切片表、声明对账门
-  skill/                website-rebuild-skill v0.1.51 判据脚本逐字拷贝（零依赖；serve/probe/verify-*/pixelcompare/extract-source…）
-  mirror-site.mjs / serve.mjs / probe.mjs / verify.mjs   M0–M7 时期的项目脚本（保留；门已改用 scripts/skill/）
-tools/                  skill 生产工具（name-modules / modules-to-src / make-standalone，需安装依赖，门不 import）
+  run-gates.mjs            全部验收门的调用 + 豁免清单（mirror|offline|symbols|pixel|standalone|all，--target src|port）
+  shell-config.{port,src}.mjs / lib/shell-common.mjs   策略 A 登记变换表（两侧同一张表）
+  slices.config.mjs / verify-decls.mjs                 port/ 切片表、声明对账门
+  assets-restore.mjs / ledger-backfill.mjs / ledger-reconcile.mjs   资产复制进 src / 镜像账本
+  skill/                   website-rebuild-skill v0.1.51 判据脚本逐字拷贝（零依赖）
+  mirror-site.mjs / serve.mjs / probe.mjs / verify.mjs   M0–M7 时期的项目脚本（保留作历史；门已改用 scripts/skill/）
+tools/                  允许依赖的生产工具：free-idents（vendor 自由标识符）、grade-renames（命名证据档位）+ skill 自带三件
 .claude/skills/website-rebuild/   项目级 skill（SKILL.md + references + scripts + tools）
 ```

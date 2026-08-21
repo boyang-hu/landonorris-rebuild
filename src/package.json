@@ -1,0 +1,27 @@
+{
+  "name": "landonorris-rebuild-src",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Readable, self-contained source of the landonorris.com study rebuild (stage ③ of mirror → port → src). Copy this directory anywhere: npm install --offline && npm run build.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node postbuild.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@rive-app/canvas-lite": "2.26.4",
+    "@unseenco/taxi": "1.8.0",
+    "gsap": "3.13.0",
+    "lenis": "1.1.20",
+    "three": "0.174.0",
+    "three-msdf-text-utils": "1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.2.0",
+    "@types/three": "0.174.0",
+    "typescript": "5.9.3",
+    "vite": "6.3.5"
+  }
+}

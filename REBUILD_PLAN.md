@@ -86,7 +86,15 @@ Three r174 / GSAP 3.13.0（ScrollTrigger/SplitText/Observer/MotionPath）/ Lenis
 
 ## §7 里程碑日志（倒序）
 
-### 2026-08-21 M9 阶段一：规范目录 + Step 0/M0 补全 + port/ 可运行（进行中）
+### 2026-08-21 M9 阶段二：src/ 自包含包 + 自包含门 + 命名证据（进行中）
+- `src/` 成为独立包：自己的 `package.json`（依赖精确钉死，`.npmrc` legacy-peer-deps）、`vite.config.ts`、`tsconfig.json`、`postbuild.mjs`；外壳 `src/site/` 由 skill `build-site.mjs`（`shell-config.src.mjs`，入口 `/app/main.ts`）生成并**提交**，`verify-shell` 全部 hunk 可回放；资产 `src/public/ext/<host>/`（499 个文件、35MB，盘上有 git 无）由 `scripts/assets-restore.mjs` 从镜像复制、文本资产经 skill `localizeShapes` 改写（与外壳同一实现），账本 `src/ASSETS.md`；iubenda 图标进 `public/images`。
+- 旧流水线退役：`gen-shells.mjs` / 根 `postbuild.mjs` / `lib/ext-rewrite.mjs` / 根 `vite.config.ts` / `tsconfig.json` / `shells/` 删除；根 `package.json` 只剩 port 前奏与门需要的依赖（+ esbuild），src 有自己的。`dist/` → `src/dist`（门、deploy.sh 同步）。
+- **自包含门**：`verify-standalone.mjs --src src --full` —— 静态面 551 文件 0 条逃逸（曾 1 条：src/package.json 里 `../scripts/assets-restore.mjs`，改为只在仓库根提供）；复制到仓库外临时目录、`npm install --offline`、`npm run build` **PASS**。运行器加 `standalone` 门：对复制件的 dist 起纯静态服务逐路由跑 CLEAN + 零外联。
+- 命名证据：`tools/grade-renames.mjs` 给 208 条一对一重命名打档位（tier1 源码自发布全局 8 / tier2 字符串 69 / tier3 属性 17 / tier0 人工 114），写入 `rename-map.json` 的 `evidence` 节；`docs/rename-review.md` 人工抽查 30 条 tier0，30/30 成立。
+- 注释三档：普查 195 条事实（带行号）/ 17 条复刻注记（偏差/怪癖）/ **0 条推测**；约定写进 `src/README.md`（推测以 `?` 前缀）。
+- `docs/engine-notes.md` 按模板建为入口（bundle 形态判定、区段地图、技术栈表、启动链、已证伪假设）。
+
+### 2026-08-21 M9 阶段一：规范目录 + Step 0/M0 补全 + port/ 可运行
 - `legacy-mirror/` → `mirror/`（全仓引用同步，字节未动，账本/切片/门全部复验 PASS）；`_pretty/` 用 skill `beautify-bundle.mjs`（js-beautify@1.15.1）原地再生：4 个文件与 08-10 产物**逐字节相同**（主 bundle sha256 `3a888487…` 不变，坐标系可再生），文件名改为 skill 约定的源名（去掉 `.pretty`），生成 `_pretty/README.md` 再生账本。
 - Step 0：`fingerprint.mjs` 六步探测 → `docs/fingerprint/verdict.md` 判 **A 类**（双抓 byte-identical、无框架标记、three 强签名、bundle 内 `/api/` 2 处都是 Vimeo 播放器加载器）。顺手记下源站漂移（6.21）。
 - M0 第二遍：`netcapture.mjs` 真浏览器 7 路由 × 双视口 250 请求，246 HAVE / 4 GAP，GAP 与表外 host 逐条决策进 `external.txt`（DRIFT/STUB/CONTENT），镜像自检门仍 PASS。

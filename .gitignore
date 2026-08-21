@@ -4,3 +4,7 @@ dist/
 shells/
 dist/
 scripts/deploy.sh
+src/node_modules/
+src/public/ext/
+src/public/images/
+src/dist/

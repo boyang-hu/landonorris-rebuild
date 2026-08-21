@@ -8,15 +8,18 @@
 ```bash
 npm install --legacy-peer-deps   # three-msdf-text-utils 的 peer 声明过严（偏差 6.8）
 
-# 复刻站（dev）
-npm run dev                      # http://localhost:5180（需先 npm run shells 生成外壳）
+# 复刻站 src/（自包含包）
+npm run assets:restore           # 第一次：把 mirror/assets 复制进 src/public/ext（盘上 35MB，git 不收）
+npm run dev                      # = npm --prefix src run dev → http://localhost:5180
+npm run build                    # = src:shells（skill build-site 生成 src/site）+ src 内 vite build → src/dist（自包含，资产是真实文件）
+npm run src:serve                # skill serve.mjs --root src/dist（22002，像 nginx 一样原样伺服）
+
+# 逐字移植 port/
+npm run port:build               # esbuild 别名前奏 + build-site 外壳 → port/site
+npm run port:serve               # serve.mjs --root port/site --fallback-root mirror（资产不复制）
 
 # 源站镜像（对拍基准）
-npm run serve:mirror             # skill serve.mjs，端口由 lib/ports.mjs 分配（本机 22001）
-
-# 生产构建 + 本地验收
-npm run build                    # shells → vite → postbuild；dist/ext 物化（二进制软链 + 改写的文本资产）
-npm run serve:dist               # 22002；dist 像 nginx 一样被原样伺服（无 ext 改写）
+npm run serve:mirror             # 22001
 ```
 
 ## 验证（M8 起）
@@ -39,7 +42,7 @@ node scripts/skill/verify-offline.mjs --base https://landonorris-rebuild.boyang.
   `/opt/1panel/1panel/www/sites/landonorris-rebuild/index`（owner boyang，可直接 rsync）；
   nginx 配置 `/opt/1panel/1panel/www/conf.d/landonorris-rebuild.conf`（root 所有，
   改动经 ~/deploy-staging 暂存 + sudo cp + 容器内 nginx -t && reload）
-- 重新部署：本地 `bash scripts/deploy.sh`（gitignored，含主机/端口/密钥约定；内部 `npm run build` + `rsync -avzL --delete`）
+- 重新部署：本地 `bash scripts/deploy.sh`（gitignored，含主机/端口/密钥约定；内部 `npm run src:build` + `rsync -avz --delete src/dist/`——M9 起 dist 自包含，不再需要 `-L`）
 - 2026-08-20 起 dist 对静态托管**真正零外联**：Webflow CSS 里的字体/图片 url 与 preconnect 裸 host 都被改写到 /ext/（REBUILD_PLAN 6.2/6.4 修订）。此前线上版本每次加载都从 cdn.prod.website-files.com 取字体——要重新部署一次。
 - 已知轻微偏差：/partnerships 线上源站返回 404 状态（页面已下架），我们因镜像落盘了
   该路径的 404 变体文件而返回 200——内容相同（not-found 模板），仅状态码不同
