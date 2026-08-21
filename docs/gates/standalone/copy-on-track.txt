@@ -1,0 +1,32 @@
+$ node /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/skill/probe.mjs http://127.0.0.1:22000/on-track --no-external --wait 8000 --scroll 0.5 --cdp-port 22010
+verdict: PASS
+
+
+[probe] target http://127.0.0.1:22000/on-track (side UNSET)
+[probe] cdp port 22010 = slot 1 / probe.cdp / side UNSET [EXPLICIT]
+
+=== console (4) ===
+[debug] Starting basic initialization...
+[debug] Initializing page: on-track
+[log] %c
+   ██╗      █████╗ ███╗   ██╗██████╗  ██████╗
+   ██║     ██╔══██╗████╗  ██║██╔══██╗██╔═══██╗
+   ██║     ███████║██╔██╗ ██║██║  ██║██║   ██║
+   ██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║
+   ███████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝
+  %c
+   ███╗   ██╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
+   ████╗  ██║██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
+   ██╔██╗ ██║██║   ██║██████╔╝██████╔╝██║███████╗
+   ██║╚██╗██║██║   ██║██╔══██╗██╔══██╗██║╚════██║
+   ██║ ╚████║╚██████╔╝██║  ██║██║  ██║██║███████║
+   ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+
+   %c%c color: #d2ff00; font: 400 1em monospace;  background-color: #d2ff00; color: black; font: 400 1em monospace; padding: 0.5em 0; font-weight: bold; 
+[log] resize issue prevention
+=== page errors (0) ===
+=== request failures (0) ===
+=== external requests (0, FATAL) ===
+
+RESULT: CLEAN

@@ -1,42 +1,42 @@
 $ node scripts/skill/verify-offline.mjs --base http://127.0.0.1:22002 --routes /,/calendar,/on-track,/off-track,/partnerships,/legal/privacy-policy,/legal/terms-conditions,/nope-404
 
 
-=== /  (HTTP 200, 217469 B) ===
+=== /  (HTTP 200, 217887 B) ===
   ok   class 1 — no external preconnect / dns-prefetch / preload
   ok   class 2/3 — no sendBeacon/fetch/Image call site names an external absolute URL
   info external absolute URLs remaining in bytes: 0
 
-=== /calendar  (HTTP 200, 855030 B) ===
+=== /calendar  (HTTP 200, 855370 B) ===
   ok   class 1 — no external preconnect / dns-prefetch / preload
   ok   class 2/3 — no sendBeacon/fetch/Image call site names an external absolute URL
   info external absolute URLs remaining in bytes: 0
 
-=== /on-track  (HTTP 200, 288688 B) ===
+=== /on-track  (HTTP 200, 289038 B) ===
   ok   class 1 — no external preconnect / dns-prefetch / preload
   ok   class 2/3 — no sendBeacon/fetch/Image call site names an external absolute URL
   info external absolute URLs remaining in bytes: 0
 
-=== /off-track  (HTTP 200, 125987 B) ===
+=== /off-track  (HTTP 200, 126423 B) ===
   ok   class 1 — no external preconnect / dns-prefetch / preload
   ok   class 2/3 — no sendBeacon/fetch/Image call site names an external absolute URL
   info external absolute URLs remaining in bytes: 0
 
-=== /partnerships  (HTTP 200, 73634 B) ===
+=== /partnerships  (HTTP 200, 74070 B) ===
   ok   class 1 — no external preconnect / dns-prefetch / preload
   ok   class 2/3 — no sendBeacon/fetch/Image call site names an external absolute URL
   info external absolute URLs remaining in bytes: 0
 
-=== /legal/privacy-policy  (HTTP 200, 83987 B) ===
+=== /legal/privacy-policy  (HTTP 200, 84423 B) ===
   ok   class 1 — no external preconnect / dns-prefetch / preload
   ok   class 2/3 — no sendBeacon/fetch/Image call site names an external absolute URL
   info external absolute URLs remaining in bytes: 0
 
-=== /legal/terms-conditions  (HTTP 200, 92154 B) ===
+=== /legal/terms-conditions  (HTTP 200, 92590 B) ===
   ok   class 1 — no external preconnect / dns-prefetch / preload
   ok   class 2/3 — no sendBeacon/fetch/Image call site names an external absolute URL
   info external absolute URLs remaining in bytes: 0
 
-=== /nope-404  (HTTP 404, 73634 B) ===
+=== /nope-404  (HTTP 404, 74070 B) ===
   ok   class 1 — no external preconnect / dns-prefetch / preload
   ok   class 2/3 — no sendBeacon/fetch/Image call site names an external absolute URL
   info external absolute URLs remaining in bytes: 0

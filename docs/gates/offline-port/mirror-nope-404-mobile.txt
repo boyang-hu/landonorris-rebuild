@@ -41,17 +41,3 @@ HTTP 404 http://127.0.0.1:22001/nope-404
 === external requests (0, FATAL) ===
 
 RESULT: 2 problems
-[chrome] LEFTOVER: 8 orphaned 'probe' Chrome process(es) from a previous run of this
-[chrome]   workspace are still alive (oldest 00:02). Reaping them before this run measures anything —
-[chrome]   background load inflates the reference side's self-comparison band, and an inflated band is a
-[chrome]   pixel gate that silently forgives real cross-side residuals (see this file's header).
-[chrome]   pid 68040 (ppid 67978, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-BWp2Fr
-[chrome]   pid 68041 (ppid 67978, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-BWp2Fr
-[chrome]   pid 68042 (ppid 67978, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-BWp2Fr
-[chrome]   pid 68047 (ppid 67978, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-BWp2Fr
-[chrome]   pid 68078 (ppid 67978, up 00:01) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-BWp2Fr
-[chrome]   pid 68079 (ppid 67978, up 00:01) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-BWp2Fr
-[chrome]   pid 68080 (ppid 67978, up 00:01) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-BWp2Fr
-[chrome]   pid 68081 (ppid 67978, up 00:01) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-BWp2Fr
-[chrome]   WARNING: 8 process(es) survived SIGKILL: 68040, 68041, 68042, 68047, 68078, 68079, 68080, 68081
-[chrome] NOTE: 1 'probe' Chrome process(es) with a LIVE parent are running — not touching them. If they hold this run's port, the port check below will name them.

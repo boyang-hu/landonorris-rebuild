@@ -33,19 +33,3 @@ verdict: PASS
 === external requests (0, FATAL) ===
 
 RESULT: CLEAN
-[chrome] LEFTOVER: 10 orphaned 'probe' Chrome process(es) from a previous run of this
-[chrome]   workspace are still alive (oldest 00:10). Reaping them before this run measures anything —
-[chrome]   background load inflates the reference side's self-comparison band, and an inflated band is a
-[chrome]   pixel gate that silently forgives real cross-side residuals (see this file's header).
-[chrome]   pid 64644 (ppid 64638, up 00:10) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   pid 64645 (ppid 64638, up 00:10) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   pid 64647 (ppid 64638, up 00:10) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   pid 64650 (ppid 64638, up 00:10) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   pid 64657 (ppid 64638, up 00:09) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   pid 64658 (ppid 64638, up 00:09) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   pid 64660 (ppid 64638, up 00:09) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   pid 64683 (ppid 64638, up 00:07) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   pid 64689 (ppid 64638, up 00:05) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   pid 64690 (ppid 64638, up 00:05) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-WJ5sNa
-[chrome]   WARNING: 10 process(es) survived SIGKILL: 64644, 64645, 64647, 64650, 64657, 64658, 64660, 64683, 64689, 64690
-[chrome] NOTE: 1 'probe' Chrome process(es) with a LIVE parent are running — not touching them. If they hold this run's port, the port check below will name them.

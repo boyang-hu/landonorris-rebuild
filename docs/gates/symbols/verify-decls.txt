@@ -1,9 +1,9 @@
 $ node /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/verify-decls.mjs --port /Users/boyang/Documents/GitHub/landonorris-rebuild/port/_gen/app.gen.js --src /Users/boyang/Documents/GitHub/landonorris-rebuild/src/app --map /Users/boyang/Documents/GitHub/landonorris-rebuild/docs/rename-map.json --list
-exit 1
+exit 0
 
-=== verify-decls  port=/Users/boyang/Documents/GitHub/landonorris-rebuild/port/_gen/app.gen.js (294 declarations)  src=/Users/boyang/Documents/GitHub/landonorris-rebuild/src/app (231 declarations)  map=/Users/boyang/Documents/GitHub/landonorris-rebuild/docs/rename-map.json ===
+=== verify-decls  port=/Users/boyang/Documents/GitHub/landonorris-rebuild/port/_gen/app.gen.js (300 declarations)  src=/Users/boyang/Documents/GitHub/landonorris-rebuild/src/app (231 declarations)  map=/Users/boyang/Documents/GitHub/landonorris-rebuild/docs/rename-map.json ===
 
---- 1 coverage: 294/294 port declarations classified (208 declarations, 8 collapsed, 77 plumbing, 1 omitted-registered) ---
+--- 1 coverage: 300/300 port declarations classified (208 declarations, 8 collapsed, 83 plumbing, 1 omitted-registered) ---
   info omitted e2: dead store: `e2 = K` (9967, the hamburger Rive instance) is assigned and never read; not ported — quirk Q14 / REBUILD_PLAN §6.16
   ok   every port declaration is classified
   ok   no stale map entries
@@ -23,14 +23,20 @@ exit 1
   ok   no unregistered orphans (21 registered)
 
 --- 5 content: template-string constants ---
-  FAIL GN -> trackFrag: literal differs (port 1452 chars, src 1129 chars)
+  ok   13/13 mapped template-string constants are identical modulo whitespace
 
 --- full table ---
-BD    L   34 function   -> detectBrowser
-ED    L   41 function   -> resetWebflow
-ID    L   46 function   -> refreshCurrentLinks
-CD    L   56 function   -> printBanner
-KD    L   75 function   -> watchBreakpointReload
+YV    L    1 var        -> plumbing: esbuild runtime helper __create (Object.create) — bundler plumbing, L1; src is real ESM
+WV    L    7 var        -> plumbing: esbuild runtime helper __hasOwnProp — L7
+dJ    L    8 var        -> plumbing: esbuild runtime helper __toESM — L8 (app: dJ(cU(), 1) = the rive namespace import)
+DK    L   21 var        -> plumbing: esbuild runtime helper __commonJS — L21 (wraps the rive UMD)
+QD    L   24 var        -> plumbing: esbuild runtime helper __export — L24
+VA    L   32 var        -> plumbing: esbuild runtime helper __esm — L32 (every lazy module init wrapper)
+BD    L   35 function   -> detectBrowser
+ED    L   42 function   -> resetWebflow
+ID    L   47 function   -> refreshCurrentLinks
+CD    L   57 function   -> printBanner
+KD    L   76 function   -> watchBreakpointReload
 dR    L 9409 function   -> applyScrollerDefaults
 t2    L 9416 function   -> debounce
 r2    L 9424 chain      -> plumbing: gsap defaults object `{}` (r2 = {}; E1.defaults(r2)) — inlined as the literal in gsap.ts:15 `gsap.defaults({})`
@@ -321,4 +327,4 @@ EV    L47093 wrapper    -> initScroll
 m_    L47107 function   -> allRiveLoaded
 c_    L47114 function   -> boot
 
-FAIL — 1 assertion(s) failed.
+PASS — port and src declarations reconcile.

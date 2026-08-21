@@ -39,3 +39,4 @@ verdict: PASS
 === external requests (0, FATAL) ===
 
 RESULT: CLEAN
+[chrome] NOTE: 1 'probe' Chrome process(es) with a LIVE parent are running — not touching them. If they hold this run's port, the port check below will name them.

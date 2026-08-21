@@ -317,7 +317,13 @@
   "BV": "esbuild empty namespace object for the Lenis-manager module (BV = {})",
   "p_": "alias: p_ = d$ (47097) — the module export of the LenisManager singleton (src: getScrollManager reads `manager` directly)",
   "eR": "alias: eR = tR (AX wrapper 10331) — src imports WebGLSupport directly",
-  "AX": "esbuild __esm init wrapper — eR = tR; src has no alias"
+  "AX": "esbuild __esm init wrapper — eR = tR; src has no alias",
+  "YV": "esbuild runtime helper __create (Object.create) — bundler plumbing, L1; src is real ESM",
+  "WV": "esbuild runtime helper __hasOwnProp — L7",
+  "dJ": "esbuild runtime helper __toESM — L8 (app: dJ(cU(), 1) = the rive namespace import)",
+  "DK": "esbuild runtime helper __commonJS — L21 (wraps the rive UMD)",
+  "QD": "esbuild runtime helper __export — L24",
+  "VA": "esbuild runtime helper __esm — L32 (every lazy module init wrapper)"
  },
  "omitted": {
   "e2": "dead store: `e2 = K` (9967, the hamburger Rive instance) is assigned and never read; not ported — quirk Q14 / REBUILD_PLAN §6.16"

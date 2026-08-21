@@ -1,53 +1,53 @@
-# offline gate — 2026-08-21
+# offline gate — 2026-08-21 — target port (/Users/boyang/Documents/GitHub/landonorris-rebuild/port/site, assets via --fallback-root mirror)
 
-CLEAN + zero-outbound (probe.mjs --no-external), 42 cells examined = 2 sides × (8 routes × 2 viewports + 5 full-scroll walks). **40/42 PASS**. Static half (verify-offline.mjs): mirror PASS, rebuild PASS.
+CLEAN + zero-outbound (probe.mjs --no-external), 42 cells examined = 2 sides × (8 routes × 2 viewports + 5 full-scroll walks). **42/42 PASS**. Static half (verify-offline.mjs): mirror PASS, rebuild PASS.
 
 PASS* = clean except for registered residuals (listed per cell; definitions in scripts/run-gates.mjs RESIDUALS, deviations in REBUILD_PLAN §6).
 
 | cell | result | probe RESULT | registered residuals used | unexplained |
 |---|---|---|---|---|
-| rebuild-home | CLEAN | CLEAN | — | — |
 | mirror-home | CLEAN | CLEAN | — | — |
-| rebuild-home-mobile | CLEAN | CLEAN | — | — |
+| rebuild-home | CLEAN | CLEAN | — | — |
 | mirror-home-mobile | CLEAN | CLEAN | — | — |
+| rebuild-home-mobile | CLEAN | CLEAN | — | — |
 | rebuild-calendar | CLEAN | CLEAN | — | — |
 | mirror-calendar | CLEAN | CLEAN | — | — |
-| rebuild-calendar-mobile | CLEAN | CLEAN | — | — |
 | mirror-calendar-mobile | CLEAN | CLEAN | — | — |
-| rebuild-on-track | CLEAN | CLEAN | — | — |
+| rebuild-calendar-mobile | CLEAN | CLEAN | — | — |
 | mirror-on-track | CLEAN | CLEAN | — | — |
-| rebuild-on-track-mobile | CLEAN | CLEAN | — | — |
+| rebuild-on-track | CLEAN | CLEAN | — | — |
 | mirror-on-track-mobile | CLEAN | CLEAN | — | — |
-| rebuild-off-track | CLEAN | CLEAN | — | — |
+| rebuild-on-track-mobile | CLEAN | CLEAN | — | — |
 | mirror-off-track | CLEAN | CLEAN | — | — |
-| rebuild-off-track-mobile | CLEAN | CLEAN | — | — |
+| rebuild-off-track | CLEAN | CLEAN | — | — |
 | mirror-off-track-mobile | CLEAN | CLEAN | — | — |
-| rebuild-partnerships | CLEAN | CLEAN | — | — |
+| rebuild-off-track-mobile | CLEAN | CLEAN | — | — |
 | mirror-partnerships | CLEAN | CLEAN | — | — |
-| rebuild-partnerships-mobile | CLEAN | CLEAN | — | — |
+| rebuild-partnerships | CLEAN | CLEAN | — | — |
 | mirror-partnerships-mobile | CLEAN | CLEAN | — | — |
-| rebuild-legal-privacy-policy | **FAIL** | 6 problems | 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host | failure: HTTP 404 http://127.0.0.1:22002/images/site/icons/owner.png<br>page error: [network] Failed to load resource: net::ERR_CONNECTION_CLOSED<br>page error: [network] Failed to load resource: the server responded with a status of 404 (Not Found) |
-| mirror-legal-privacy-policy | PASS* | 6 problems | 6.3-iubenda-icons-mirror, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host | — |
-| rebuild-legal-privacy-policy-mobile | **FAIL** | 6 problems | 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host | failure: HTTP 404 http://127.0.0.1:22002/images/site/icons/owner.png<br>page error: [network] Failed to load resource: the server responded with a status of 404 (Not Found)<br>page error: [network] Failed to load resource: net::ERR_CONNECTION_CLOSED |
-| mirror-legal-privacy-policy-mobile | PASS* | 6 problems | 6.3-iubenda-icons-mirror, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host | — |
-| rebuild-legal-terms-conditions | CLEAN | CLEAN | — | — |
+| rebuild-partnerships-mobile | CLEAN | CLEAN | — | — |
+| mirror-legal-privacy-policy | PASS* | 6 problems | 6.3-iubenda-icons, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host | — |
+| rebuild-legal-privacy-policy | PASS* | 6 problems | 6.3-iubenda-icons, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host | — |
+| mirror-legal-privacy-policy-mobile | PASS* | 6 problems | 6.3-iubenda-icons, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host | — |
+| rebuild-legal-privacy-policy-mobile | PASS* | 6 problems | 6.3-iubenda-icons, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host | — |
 | mirror-legal-terms-conditions | CLEAN | CLEAN | — | — |
-| rebuild-legal-terms-conditions-mobile | CLEAN | CLEAN | — | — |
+| rebuild-legal-terms-conditions | CLEAN | CLEAN | — | — |
 | mirror-legal-terms-conditions-mobile | CLEAN | CLEAN | — | — |
-| rebuild-nope-404 | PASS* | 2 problems | 404-semantics | — |
+| rebuild-legal-terms-conditions-mobile | CLEAN | CLEAN | — | — |
 | mirror-nope-404 | PASS* | 2 problems | 404-semantics | — |
-| rebuild-nope-404-mobile | PASS* | 2 problems | 404-semantics | — |
+| rebuild-nope-404 | PASS* | 2 problems | 404-semantics | — |
 | mirror-nope-404-mobile | PASS* | 2 problems | 404-semantics | — |
-| rebuild-home-walk | CLEAN | CLEAN | — | — |
+| rebuild-nope-404-mobile | PASS* | 2 problems | 404-semantics | — |
 | mirror-home-walk | CLEAN | CLEAN | — | — |
-| rebuild-calendar-walk | CLEAN | CLEAN | — | — |
+| rebuild-home-walk | CLEAN | CLEAN | — | — |
 | mirror-calendar-walk | CLEAN | CLEAN | — | — |
-| rebuild-on-track-walk | CLEAN | CLEAN | — | — |
+| rebuild-calendar-walk | CLEAN | CLEAN | — | — |
 | mirror-on-track-walk | CLEAN | CLEAN | — | — |
-| rebuild-off-track-walk | CLEAN | CLEAN | — | — |
+| rebuild-on-track-walk | CLEAN | CLEAN | — | — |
 | mirror-off-track-walk | CLEAN | CLEAN | — | — |
-| rebuild-home-mobile-walk | CLEAN | CLEAN | — | — |
+| rebuild-off-track-walk | CLEAN | CLEAN | — | — |
 | mirror-home-mobile-walk | CLEAN | CLEAN | — | — |
+| rebuild-home-mobile-walk | CLEAN | CLEAN | — | — |
 
 ## registered residuals
 
@@ -57,4 +57,4 @@ PASS* = clean except for registered residuals (listed per cell; definitions in s
 | 6.3-iubenda-api | both | /legal/privacy-policy, /legal/terms-conditions | legal body is fetched from iubenda's online API (source behaviour; deviation 6.3) |
 | 6.3-iubenda-badge-css | both | /legal/privacy-policy, /legal/terms-conditions | iubenda.js re-prefixes its stylesheet URL with "https:" after the /ext/<host>/ rewrite (both sides identically); decorative badge CSS (deviation 6.3) |
 | 6.3-iubenda-badge-css-host | both | /legal/privacy-policy, /legal/terms-conditions | same malformed https:/ext/... request as above, counted by the probe as an off-origin host |
-| 6.3-iubenda-icons-mirror | mirror | /legal/privacy-policy, /legal/terms-conditions | badge icons resolved against the page origin; the mirror has no /images/site (dist bakes them in, postbuild.mjs) |
+| 6.3-iubenda-icons | mirror-or-port | /legal/privacy-policy, /legal/terms-conditions | badge icons resolved against the page origin; neither the mirror nor the no-copy port has /images/site (src/public/images bakes them in, assets-restore.mjs) |

@@ -1,0 +1,40 @@
+$ node /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/skill/probe.mjs http://127.0.0.1:22000/nope-404 --no-external --wait 8000 --scroll 0.5 --cdp-port 22010
+verdict: PASS
+
+
+[probe] target http://127.0.0.1:22000/nope-404 (side UNSET)
+[probe] cdp port 22010 = slot 1 / probe.cdp / side UNSET [EXPLICIT]
+
+=== console (10) ===
+[debug] Starting basic initialization...
+[warning] Scroll indicator elements not found
+[log] No Reef Rive canvases found on page
+[log] No Signature Rive canvases found on page
+[log] div.utility__gl
+[debug] Initializing page: not-found
+[log] switchers NodeList(4)
+[log] gl Object
+[log] %c
+   ██╗      █████╗ ███╗   ██╗██████╗  ██████╗
+   ██║     ██╔══██╗████╗  ██║██╔══██╗██╔═══██╗
+   ██║     ███████║██╔██╗ ██║██║  ██║██║   ██║
+   ██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║
+   ███████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝
+  %c
+   ███╗   ██╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
+   ████╗  ██║██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
+   ██╔██╗ ██║██║   ██║██████╔╝██████╔╝██║███████╗
+   ██║╚██╗██║██║   ██║██╔══██╗██╔══██╗██║╚════██║
+   ██║ ╚████║╚██████╔╝██║  ██║██║  ██║██║███████║
+   ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+
+   %c%c color: #d2ff00; font: 400 1em monospace;  background-color: #d2ff00; color: black; font: 400 1em monospace; padding: 0.5em 0; font-weight: bold; 
+[log] resize issue prevention
+=== page errors (1) ===
+[network] Failed to load resource: the server responded with a status of 404 (Not Found)
+=== request failures (1) ===
+HTTP 404 http://127.0.0.1:22000/nope-404
+=== external requests (0, FATAL) ===
+
+RESULT: 2 problems

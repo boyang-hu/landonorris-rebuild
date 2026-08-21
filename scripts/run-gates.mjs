@@ -353,7 +353,7 @@ async function gatePixel() {
   L.push('', '## driven states', '', ...Object.entries(STATES).filter(([k]) => k !== 'idle').map(([k, v]) => `- **${k}**: ${v.why}`), '', '## states enumerated but NOT driven (open items, not covered)', '', ...UNDRIVEN_STATES.map((s) => `- ${s}`), '', 'Composites of every cross-side run: docs/gates/pixel/composites/<cell>.jpg ([rebuild | mirror | diff]). Raw numbers: results.json.');
   await writeFile(join(out, 'summary.md'), L.join('\n') + '\n');
   await rm(scratch, { recursive: true, force: true });
-  console.log(`[gates] pixel: ${pass}/${results.length} PASS; summary docs/gates/pixel/summary.md`);
+  console.log(`[gates] pixel (${TARGET}): ${pass}/${results.length} PASS; summary ${out.replace(ROOT + '/', '')}/summary.md`);
   return pass === results.length && moved.every((m) => m.ok);
 }
 

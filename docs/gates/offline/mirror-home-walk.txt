@@ -33,3 +33,12 @@ verdict: PASS
 === external requests (0, FATAL) ===
 
 RESULT: CLEAN
+[chrome] LEFTOVER: 3 orphaned 'probe' Chrome process(es) from a previous run of this
+[chrome]   workspace are still alive (oldest 00:01). Reaping them before this run measures anything —
+[chrome]   background load inflates the reference side's self-comparison band, and an inflated band is a
+[chrome]   pixel gate that silently forgives real cross-side residuals (see this file's header).
+[chrome]   pid 45217 (ppid 44641, up 00:01) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-3C2zeC
+[chrome]   pid 45218 (ppid 44641, up 00:01) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-3C2zeC
+[chrome]   pid 45219 (ppid 44641, up 00:01) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-3C2zeC
+[chrome]   WARNING: 3 process(es) survived SIGKILL: 45217, 45218, 45219
+[chrome] NOTE: 1 'probe' Chrome process(es) with a LIVE parent are running — not touching them. If they hold this run's port, the port check below will name them.

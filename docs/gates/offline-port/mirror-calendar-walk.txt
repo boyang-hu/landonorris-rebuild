@@ -33,17 +33,3 @@ verdict: PASS
 === external requests (0, FATAL) ===
 
 RESULT: CLEAN
-[chrome] LEFTOVER: 8 orphaned 'probe' Chrome process(es) from a previous run of this
-[chrome]   workspace are still alive (oldest 00:04). Reaping them before this run measures anything —
-[chrome]   background load inflates the reference side's self-comparison band, and an inflated band is a
-[chrome]   pixel gate that silently forgives real cross-side residuals (see this file's header).
-[chrome]   pid 68642 (ppid 68638, up 00:04) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-d6TM7V
-[chrome]   pid 68643 (ppid 68638, up 00:04) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-d6TM7V
-[chrome]   pid 68644 (ppid 68638, up 00:04) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-d6TM7V
-[chrome]   pid 68646 (ppid 68638, up 00:04) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-d6TM7V
-[chrome]   pid 68651 (ppid 68638, up 00:03) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-d6TM7V
-[chrome]   pid 68652 (ppid 68638, up 00:03) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-d6TM7V
-[chrome]   pid 68653 (ppid 68638, up 00:03) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-d6TM7V
-[chrome]   pid 68654 (ppid 68638, up 00:03) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-d6TM7V
-[chrome]   WARNING: 8 process(es) survived SIGKILL: 68642, 68643, 68644, 68646, 68651, 68652, 68653, 68654
-[chrome] NOTE: 1 'probe' Chrome process(es) with a LIVE parent are running — not touching them. If they hold this run's port, the port check below will name them.

@@ -1,6 +1,6 @@
-$ node scripts/skill/verify-mirror.mjs --mirror legacy-mirror --origin https://landonorris.com --allow-missing legacy-mirror/external.txt --max-report 200
+$ node scripts/skill/verify-mirror.mjs --mirror mirror --origin https://landonorris.com --allow-missing mirror/external.txt --max-report 200
 
-=== verify-mirror  /Users/boyang/Documents/GitHub/landonorris-rebuild/legacy-mirror ===
+=== verify-mirror  /Users/boyang/Documents/GitHub/landonorris-rebuild/mirror ===
   origin        https://landonorris.com
   ledger        551 files recorded, 6 failed rows
   query policy: all params except [site]
@@ -33,7 +33,7 @@ $ node scripts/skill/verify-mirror.mjs --mirror legacy-mirror --origin https://l
          assets/cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/68ea48448e634fcc425b0e28_transp.webp  94 B  (peer group webp, median 40078 B)
 
 --- gate CLOSURE (reference set − disk set = ∅) ---
-  info excuses from /Users/boyang/Documents/GitHub/landonorris-rebuild/legacy-mirror/external.txt: 52 exact URL(s), 0 whole-host, 0 declared prefix(es)
+  info excuses from /Users/boyang/Documents/GitHub/landonorris-rebuild/mirror/external.txt: 56 exact URL(s), 3 whole-host, 0 declared prefix(es)
   info scanned 126 text files (0 of them identified by sniffing the bytes, not by extension), 475 distinct references
   ok   closure — reference set − disk set = ∅
 

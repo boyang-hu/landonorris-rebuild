@@ -38,3 +38,13 @@ HTTP 404 http://127.0.0.1:22002/nope-404
 === external requests (0, FATAL) ===
 
 RESULT: 2 problems
+[chrome] LEFTOVER: 4 orphaned 'probe' Chrome process(es) from a previous run of this
+[chrome]   workspace are still alive (oldest 00:01). Reaping them before this run measures anything —
+[chrome]   background load inflates the reference side's self-comparison band, and an inflated band is a
+[chrome]   pixel gate that silently forgives real cross-side residuals (see this file's header).
+[chrome]   pid 44446 (ppid 44442, up 00:01) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-P4jSGr
+[chrome]   pid 44447 (ppid 44442, up 00:01) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-P4jSGr
+[chrome]   pid 44453 (ppid 44442, up 00:00) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-P4jSGr
+[chrome]   pid 44454 (ppid 44442, up 00:00) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22011-P4jSGr
+[chrome]   WARNING: 6 process(es) survived SIGKILL: 44446, 44447, 44453, 44454, 44494, 44535
+[chrome] NOTE: 1 'probe' Chrome process(es) with a LIVE parent are running — not touching them. If they hold this run's port, the port check below will name them.

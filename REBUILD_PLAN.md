@@ -23,7 +23,7 @@
 - [x] M6 各页专属逻辑（calendar 同步/404 切换器/heroflip）
 - [x] M7 三重验证 + 收尾（verify.mjs 全路由×双端门 + 真机对拍）
 - [x] M8 skill v0.1.51 对账补门（2026-08-20）：镜像自检门 / 零外联完整断言面 / 像素门（自比带宽+确定性 shim）/ 冷头清点 + 符号门（port/ 切片 + rename-map）；全部判据固化在 `scripts/run-gates.mjs`，产物在 `docs/gates/`
-- [ ] M9 按 skill 三段契约重整（2026-08-21 起）：① `mirror/` 规范目录 + Step 0 判级记录 + netcapture 第二遍 + `_pretty` 可再生复核；② `port/` 从坐标产物变为**可运行的逐字移植**（esbuild 运行时切入、vendor 别名表、skill 外壳流水线、`--fallback-root` 不复制资产）并过 CLEAN/零外联/像素门；③ `src/` 自包含包（自己的 package.json、资产账本 + `assets:restore`、外壳进包、`src/README.md`、注释三档、rename-map 证据档位）+ `verify-standalone --full`
+- [x] M9 按 skill 三段契约重整（2026-08-21，关闭）：① `mirror/` 规范目录 + Step 0 判级记录 + netcapture 第二遍 + `_pretty` 可再生复核；② `port/` 从坐标产物变为**可运行的逐字移植**（esbuild 运行时切入、vendor 别名表、skill 外壳流水线、`--fallback-root` 不复制资产）并过 CLEAN/零外联/像素门；③ `src/` 自包含包（自己的 package.json、资产账本 + `assets:restore`、外壳进包、`src/README.md`、注释三档、rename-map 证据档位）+ `verify-standalone --full`
 
 ## §2 源站技术栈（Phase 0 结论，详见 README；M1 后补充行号）
 
@@ -86,7 +86,21 @@ Three r174 / GSAP 3.13.0（ScrollTrigger/SplitText/Observer/MotionPath）/ Lenis
 
 ## §7 里程碑日志（倒序）
 
-### 2026-08-21 M9 阶段二：src/ 自包含包 + 自包含门 + 命名证据（进行中）
+### 2026-08-21 M9 关闭：三段全部过门
+| 门 | port/（逐字移植） | src/（可读工程） |
+|---|---|---|
+| 镜像自检（五项 + external.txt 56 条精确豁免 + 3 个 host 豁免） | PASS | PASS |
+| 外壳字节（verify-shell，8 页，每个 hunk 可由变换表回放） | PASS（225 hunk） | PASS（225 hunk） |
+| CLEAN + 零外联（42 格 + 静态面两侧） | **42/42** | **42/42** |
+| 像素（29 格位置×状态，两侧各 4 次自比交错建带宽） | **29/29**（27 格跨侧 0） | **29/29**（27 格跨侧 0） |
+| 声明对账（verify-decls：300 port 声明 ↔ 233 src 声明） | — | PASS（208 一对一 / 8 折叠 / 83 管道 / 1 登记未移植 / 21 孤儿登记；13/13 GLSL 逐字） |
+| 自包含（verify-standalone --full + 复制件逐路由探针） | — | PASS（复制到仓库外、离线安装、构建；8/8 路由 CLEAN/PASS*） |
+| 切片 --check / --balance-check、零依赖门、资产账本 --check | PASS | PASS |
+
+- 像素门两侧观察到的**仪器熵**（都在自比带宽内，同侧对照同量级，§6.1.1 不归因于移植）：① `mobile-home-000` 拍在头盔飞入的过渡中段，移动端 KTX2 在 worker 里按真实时间解码，起点随资产到达漂移（port 自比恒 2.46、src 一轮 3.96 一轮 0）；② `desktop-home-000` 在本机同时跑另一个项目的门时，两侧自比都出现一次 5.38（worst 165 @[37,20]，首屏文字/头盔区）——负载改变了字体/资产到达帧。两条都已登记，容差没有为它们放宽（带宽是实测的）。
+- port 侧首跑像素门 27/29，2 格因并发负载各缺一个自比样本（INVALID，`--only` 补跑后 29/29）；零外联门首跑 40/42，差的是 iubenda 图标残差只登记给镜像侧，port 与镜像同样不复制资产——运行器把该残差作用域改为"镜像或 port"，重跑 42/42。
+
+### 2026-08-21 M9 阶段二：src/ 自包含包 + 自包含门 + 命名证据
 - `src/` 成为独立包：自己的 `package.json`（依赖精确钉死，`.npmrc` legacy-peer-deps）、`vite.config.ts`、`tsconfig.json`、`postbuild.mjs`；外壳 `src/site/` 由 skill `build-site.mjs`（`shell-config.src.mjs`，入口 `/app/main.ts`）生成并**提交**，`verify-shell` 全部 hunk 可回放；资产 `src/public/ext/<host>/`（499 个文件、35MB，盘上有 git 无）由 `scripts/assets-restore.mjs` 从镜像复制、文本资产经 skill `localizeShapes` 改写（与外壳同一实现），账本 `src/ASSETS.md`；iubenda 图标进 `public/images`。
 - 旧流水线退役：`gen-shells.mjs` / 根 `postbuild.mjs` / `lib/ext-rewrite.mjs` / 根 `vite.config.ts` / `tsconfig.json` / `shells/` 删除；根 `package.json` 只剩 port 前奏与门需要的依赖（+ esbuild），src 有自己的。`dist/` → `src/dist`（门、deploy.sh 同步）。
 - **自包含门**：`verify-standalone.mjs --src src --full` —— 静态面 551 文件 0 条逃逸（曾 1 条：src/package.json 里 `../scripts/assets-restore.mjs`，改为只在仓库根提供）；复制到仓库外临时目录、`npm install --offline`、`npm run build` **PASS**。运行器加 `standalone` 门：对复制件的 dist 起纯静态服务逐路由跑 CLEAN + 零外联。

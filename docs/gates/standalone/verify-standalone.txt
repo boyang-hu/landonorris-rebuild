@@ -1,0 +1,20 @@
+$ node /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/skill/verify-standalone.mjs --src /Users/boyang/Documents/GitHub/landonorris-rebuild/src --full --keep
+exit 0
+
+=== verify-standalone ===
+  src   src
+
+  ok   src/package.json present (landonorris-rebuild-src)
+  ok   no file:/link: dependencies escaping src/
+  ok   no references escape src/ (552 files scanned)
+
+  copying to /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/standalone-gwV8af/src (outside /Users/boyang/Documents/GitHub/landonorris-rebuild)
+  npm install --offline --no-audit --no-fund … ok
+  npm run build … ok
+
+  kept: /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/standalone-gwV8af/src
+
+  ⚠    build success ≠ correct. Point probe.mjs --walk and the pixel gate at the
+       copy: an asset only reachable from an untested route can still be missing.
+
+PASS — copied out, installed offline, built.

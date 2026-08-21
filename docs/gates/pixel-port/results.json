@@ -74,6 +74,1962 @@
    "reason": "",
    "notes": [],
    "ranAt": "2026-08-21T17:15:02.705Z"
+  },
+  {
+   "route": "/",
+   "vp": "desktop",
+   "f": 0.17,
+   "state": "idle",
+   "slug": "desktop-home-017",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 4705
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 4705
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 4705
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 4705
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 4705
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 4705
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 4705
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 4705
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    4705,
+    4705
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:31:09.446Z"
+  },
+  {
+   "route": "/",
+   "vp": "desktop",
+   "f": 0.33,
+   "state": "idle",
+   "slug": "desktop-home-033",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 18293
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 18287
+     },
+     {
+      "mean": 0.03,
+      "worst": 1,
+      "colours": 18293
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 18293
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 18305
+     },
+     {
+      "mean": 0.02,
+      "worst": 1,
+      "colours": 18287
+     },
+     {
+      "mean": 0.01,
+      "worst": 1,
+      "colours": 18278
+     },
+     {
+      "mean": 0.02,
+      "worst": 1,
+      "colours": 18293
+     }
+    ]
+   },
+   "band": 0.03,
+   "tol": 0.53,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    18293,
+    18293
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:20:19.149Z"
+  },
+  {
+   "route": "/",
+   "vp": "desktop",
+   "f": 0.5,
+   "state": "idle",
+   "slug": "desktop-home-050",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0.03,
+      "worst": 1,
+      "colours": 49385
+     },
+     {
+      "mean": 0.03,
+      "worst": 1,
+      "colours": 49385
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 49385
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 49385
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 49385
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 49385
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 49385
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 49385
+     }
+    ]
+   },
+   "band": 0.03,
+   "tol": 0.53,
+   "cross": {
+    "meanAbsDiff": 0.03,
+    "worstCellDiff": 1,
+    "worstCell": [
+     12,
+     32
+    ],
+    "similarityPct": 100
+   },
+   "crossColours": [
+    49385,
+    49461
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:23:01.554Z"
+  },
+  {
+   "route": "/",
+   "vp": "desktop",
+   "f": 0.67,
+   "state": "idle",
+   "slug": "desktop-home-067",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 30137
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 30137
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 30137
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 30137
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 30137
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 30137
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 30137
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 30137
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    30137,
+    30137
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:33:49.208Z"
+  },
+  {
+   "route": "/",
+   "vp": "desktop",
+   "f": 0.83,
+   "state": "idle",
+   "slug": "desktop-home-083",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 8583
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 8583
+     },
+     {
+      "mean": 0.01,
+      "worst": 1,
+      "colours": 8583
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 8583
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 8583
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 8583
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 8583
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 8583
+     }
+    ]
+   },
+   "band": 0.01,
+   "tol": 0.51,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    8583,
+    8583
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:28:15.533Z"
+  },
+  {
+   "route": "/",
+   "vp": "desktop",
+   "f": 1,
+   "state": "idle",
+   "slug": "desktop-home-100",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14121
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14121
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14121
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14121
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14121
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14121
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14121
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14121
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    14121,
+    14121
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:30:56.914Z"
+  },
+  {
+   "route": "/",
+   "vp": "desktop",
+   "f": 0,
+   "state": "menu-open",
+   "slug": "desktop-home-000-menu-open",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 6127
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 6127
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 6127
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 6127
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 6127
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 6125
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 6125
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 6125
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    6127,
+    6127
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:33:38.503Z"
+  },
+  {
+   "route": "/calendar",
+   "vp": "desktop",
+   "f": 0,
+   "state": "idle",
+   "slug": "desktop-calendar-000",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2858
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2858
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2858
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2858
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2858
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2858
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2858
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2858
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    2858,
+    2858
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:36:11.901Z"
+  },
+  {
+   "route": "/calendar",
+   "vp": "desktop",
+   "f": 0.33,
+   "state": "idle",
+   "slug": "desktop-calendar-033",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2614
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2614
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2614
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2614
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2614
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2614
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2614
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 2614
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    2614,
+    2614
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:38:45.401Z"
+  },
+  {
+   "route": "/calendar",
+   "vp": "desktop",
+   "f": 0.67,
+   "state": "idle",
+   "slug": "desktop-calendar-067",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 1375
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 1375
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 1375
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 1375
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 1375
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 1375
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 1375
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 1375
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    1375,
+    1375
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:41:18.842Z"
+  },
+  {
+   "route": "/calendar",
+   "vp": "desktop",
+   "f": 1,
+   "state": "idle",
+   "slug": "desktop-calendar-100",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13675
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13675
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13675
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13675
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13675
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13675
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13675
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13675
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    13675,
+    13675
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:43:56.211Z"
+  },
+  {
+   "route": "/on-track",
+   "vp": "desktop",
+   "f": 0,
+   "state": "idle",
+   "slug": "desktop-on-track-000",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0.01,
+      "worst": 2.7,
+      "colours": 13528
+     },
+     {
+      "mean": 0.01,
+      "worst": 1.7,
+      "colours": 13526
+     },
+     {
+      "mean": 0.01,
+      "worst": 2,
+      "colours": 13526
+     },
+     {
+      "mean": 0.01,
+      "worst": 1.7,
+      "colours": 13525
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 2,
+      "colours": 13526
+     },
+     {
+      "mean": 0,
+      "worst": 2.7,
+      "colours": 13523
+     },
+     {
+      "mean": 0,
+      "worst": 2,
+      "colours": 13528
+     },
+     {
+      "mean": 0,
+      "worst": 2,
+      "colours": 13528
+     }
+    ]
+   },
+   "band": 0.01,
+   "tol": 0.51,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 1.7,
+    "worstCell": [
+     51,
+     35
+    ],
+    "similarityPct": 100
+   },
+   "crossColours": [
+    13525,
+    13526
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:46:35.660Z"
+  },
+  {
+   "route": "/on-track",
+   "vp": "desktop",
+   "f": 0.25,
+   "state": "idle",
+   "slug": "desktop-on-track-025",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 19513
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 19513
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 19513
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 19513
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 19513
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 19513
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 19513
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 19513
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    19513,
+    19513
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:49:14.199Z"
+  },
+  {
+   "route": "/on-track",
+   "vp": "desktop",
+   "f": 0.5,
+   "state": "idle",
+   "slug": "desktop-on-track-050",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 16822
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 16821
+     },
+     {
+      "mean": 0.02,
+      "worst": 1,
+      "colours": 16821
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 16821
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 16822
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 16821
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 16822
+     },
+     {
+      "mean": 0,
+      "worst": 0.7,
+      "colours": 16822
+     }
+    ]
+   },
+   "band": 0.02,
+   "tol": 0.52,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0.7,
+    "worstCell": [
+     33,
+     39
+    ],
+    "similarityPct": 100
+   },
+   "crossColours": [
+    16822,
+    16823
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:51:53.393Z"
+  },
+  {
+   "route": "/on-track",
+   "vp": "desktop",
+   "f": 0.75,
+   "state": "idle",
+   "slug": "desktop-on-track-075",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 33187
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 33187
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 33187
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 33187
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 33187
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 33187
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 33187
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 33187
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0.04,
+    "worstCellDiff": 1,
+    "worstCell": [
+     27,
+     7
+    ],
+    "similarityPct": 100
+   },
+   "crossColours": [
+    33106,
+    33187
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:54:34.490Z"
+  },
+  {
+   "route": "/on-track",
+   "vp": "desktop",
+   "f": 1,
+   "state": "idle",
+   "slug": "desktop-on-track-100",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13757
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13757
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13757
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13757
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13757
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13757
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13757
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13757
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    13757,
+    13757
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:57:15.695Z"
+  },
+  {
+   "route": "/off-track",
+   "vp": "desktop",
+   "f": 0,
+   "state": "idle",
+   "slug": "desktop-off-track-000",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 17977
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 17977
+     },
+     {
+      "mean": 0.13,
+      "worst": 17,
+      "colours": 17989
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 17977
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 17977
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 17977
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 17977
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 17977
+     }
+    ]
+   },
+   "band": 0.13,
+   "tol": 0.63,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    17977,
+    17977
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T17:59:45.021Z"
+  },
+  {
+   "route": "/off-track",
+   "vp": "desktop",
+   "f": 0.33,
+   "state": "idle",
+   "slug": "desktop-off-track-033",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 34221
+     },
+     {
+      "mean": 0.03,
+      "worst": 0.7,
+      "colours": 34275
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 34221
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 34221
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 34221
+     },
+     {
+      "mean": 0.01,
+      "worst": 0.7,
+      "colours": 34221
+     },
+     {
+      "mean": 0.01,
+      "worst": 0.7,
+      "colours": 34221
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 34221
+     }
+    ]
+   },
+   "band": 0.03,
+   "tol": 0.53,
+   "cross": {
+    "meanAbsDiff": 0.01,
+    "worstCellDiff": 0.7,
+    "worstCell": [
+     50,
+     13
+    ],
+    "similarityPct": 100
+   },
+   "crossColours": [
+    34221,
+    34221
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:02:15.284Z"
+  },
+  {
+   "route": "/off-track",
+   "vp": "desktop",
+   "f": 0.67,
+   "state": "idle",
+   "slug": "desktop-off-track-067",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0.03,
+      "worst": 1,
+      "colours": 29185
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 29185
+     },
+     {
+      "mean": 0.01,
+      "worst": 0.7,
+      "colours": 29185
+     },
+     {
+      "mean": 0.04,
+      "worst": 1,
+      "colours": 29375
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0.04,
+      "worst": 1,
+      "colours": 29375
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 29344
+     },
+     {
+      "mean": 0.04,
+      "worst": 1,
+      "colours": 29197
+     },
+     {
+      "mean": 0.02,
+      "worst": 1,
+      "colours": 29197
+     }
+    ]
+   },
+   "band": 0.04,
+   "tol": 0.54,
+   "cross": {
+    "meanAbsDiff": 0.04,
+    "worstCellDiff": 1,
+    "worstCell": [
+     11,
+     5
+    ],
+    "similarityPct": 100
+   },
+   "crossColours": [
+    29153,
+    29344
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:04:46.588Z"
+  },
+  {
+   "route": "/off-track",
+   "vp": "desktop",
+   "f": 1,
+   "state": "idle",
+   "slug": "desktop-off-track-100",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14092
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14092
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14092
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14092
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14092
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14092
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14092
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 14092
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    14092,
+    14092
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:07:17.963Z"
+  },
+  {
+   "route": "/partnerships",
+   "vp": "desktop",
+   "f": 0,
+   "state": "idle",
+   "slug": "desktop-partnerships-000",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13606
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13606
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13606
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13606
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13606
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13606
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13606
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 13606
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    13606,
+    13606
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:09:48.826Z"
+  },
+  {
+   "route": "/partnerships",
+   "vp": "desktop",
+   "f": 0,
+   "state": "variant-dark",
+   "slug": "desktop-partnerships-000-variant-dark",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12787
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12787
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12787
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12787
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12787
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12787
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12787
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12787
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    12787,
+    12787
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:12:21.157Z"
+  },
+  {
+   "route": "/",
+   "vp": "mobile",
+   "f": 0,
+   "state": "idle",
+   "slug": "mobile-home-000",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 31232
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 31232
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 31232
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 31232
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 2.46,
+      "worst": 179,
+      "colours": 31504
+     },
+     {
+      "mean": 2.46,
+      "worst": 179,
+      "colours": 31504
+     },
+     {
+      "mean": 2.46,
+      "worst": 179,
+      "colours": 31504
+     },
+     {
+      "mean": 2.46,
+      "worst": 179,
+      "colours": 31504
+     }
+    ]
+   },
+   "band": 2.46,
+   "tol": 2.96,
+   "cross": {
+    "meanAbsDiff": 2.46,
+    "worstCellDiff": 179,
+    "worstCell": [
+     32,
+     21
+    ],
+    "similarityPct": 99
+   },
+   "crossColours": [
+    31504,
+    31232
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:14:53.589Z"
+  },
+  {
+   "route": "/",
+   "vp": "mobile",
+   "f": 0,
+   "state": "menu-open",
+   "slug": "mobile-home-000-menu-open",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 969
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 969
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 969
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 969
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 969
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 969
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 969
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 969
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    969,
+    969
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:17:25.121Z"
+  },
+  {
+   "route": "/on-track",
+   "vp": "mobile",
+   "f": 0,
+   "state": "idle",
+   "slug": "mobile-on-track-000",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0.04,
+      "worst": 20.3,
+      "colours": 10516
+     },
+     {
+      "mean": 0.03,
+      "worst": 18,
+      "colours": 10516
+     },
+     {
+      "mean": 0.02,
+      "worst": 10.7,
+      "colours": 10517
+     },
+     {
+      "mean": 0.03,
+      "worst": 10.3,
+      "colours": 10518
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0.02,
+      "worst": 8.3,
+      "colours": 10513
+     },
+     {
+      "mean": 0.02,
+      "worst": 11.7,
+      "colours": 10514
+     },
+     {
+      "mean": 0.02,
+      "worst": 11.3,
+      "colours": 10510
+     },
+     {
+      "mean": 0.02,
+      "worst": 14.3,
+      "colours": 10512
+     }
+    ]
+   },
+   "band": 0.04,
+   "tol": 0.54,
+   "cross": {
+    "meanAbsDiff": 0.04,
+    "worstCellDiff": 21,
+    "worstCell": [
+     39,
+     22
+    ],
+    "similarityPct": 100
+   },
+   "crossColours": [
+    10514,
+    10511
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:19:58.050Z"
+  },
+  {
+   "route": "/on-track",
+   "vp": "mobile",
+   "f": 0.33,
+   "state": "idle",
+   "slug": "mobile-on-track-033",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12585
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12585
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12585
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12585
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12585
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12585
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12585
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 12585
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    12585,
+    12585
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:22:32.416Z"
+  },
+  {
+   "route": "/on-track",
+   "vp": "mobile",
+   "f": 0.67,
+   "state": "idle",
+   "slug": "mobile-on-track-067",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 52233
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 52233
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 52233
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 52233
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 52233
+     },
+     {
+      "mean": 0.14,
+      "worst": 2.3,
+      "colours": 52233
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 52233
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 52233
+     }
+    ]
+   },
+   "band": 0.14,
+   "tol": 0.64,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    52233,
+    52233
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:25:08.964Z"
+  },
+  {
+   "route": "/on-track",
+   "vp": "mobile",
+   "f": 1,
+   "state": "idle",
+   "slug": "mobile-on-track-100",
+   "samples": {
+    "mirror": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 9249
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 9249
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 9249
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 9249
+     }
+    ],
+    "rebuild": [
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 9249
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 9249
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 9249
+     },
+     {
+      "mean": 0,
+      "worst": 0,
+      "colours": 9249
+     }
+    ]
+   },
+   "band": 0,
+   "tol": 0.5,
+   "cross": {
+    "meanAbsDiff": 0,
+    "worstCellDiff": 0,
+    "worstCell": null,
+    "similarityPct": 100
+   },
+   "crossColours": [
+    9249,
+    9249
+   ],
+   "verdict": "PASS",
+   "reason": "",
+   "notes": [],
+   "ranAt": "2026-08-21T18:27:44.145Z"
   }
  ]
 }

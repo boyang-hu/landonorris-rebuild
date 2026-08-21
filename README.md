@@ -6,19 +6,20 @@
 **镜像 → 逆向（_pretty 行号坐标系）→ 严格溯源移植 → 里程碑推进 + 三重验证**。
 核心纪律：源站代码是唯一裁决；改动先归属到源码行号；死代码/bug 照抄不修；有意偏差必须登记。
 
-## 当前状态：重建完成（M0-M7，2026-08-10）+ skill v0.1.51 对账补门（M8，2026-08-20）+ 三段重整 M9（2026-08-21）
+## 当前状态：M0-M7 重建（2026-08-10）→ M8 补门（2026-08-20）→ **M9 按 skill 三段契约完成（2026-08-21）**
 
-复刻站已按方法论完成全量重建：Webflow DOM/CSS 外壳（shells 流水线）+ 自写 TypeScript
-应用层（`src/app/`，对照 47k 行 pretty bundle 逐函数移植，全部带行号溯源注释）。
-M8 按 website-rebuild-skill v0.1.51（装在 `.claude/skills/website-rebuild`，判据脚本拷在
-`scripts/skill/`）补齐了当年没有的几道门，全部固化在 `scripts/run-gates.mjs`，产物在 `docs/gates/`：
+项目现在完整符合 website-rebuild-skill v0.1.51 的三段产物契约：`mirror/`（只读证据）→ `port/`（逐字切片，**能运行并过门**）→ `src/`（可读、自包含的 TypeScript 工程）。每道门固化在 `scripts/run-gates.mjs`（`--target port|src`），产物在 `docs/gates/`：
 
-| 门 | 结果 |
-|---|---|
-| 镜像自检（映射单射 / 账本 sha256 / 真实性 / 闭包 / 回源抽样） | PASS，551 行账本、52 条闭包决策（`mirror/external.txt`） |
-| 零外联 + CLEAN（2 侧 × 8 路由 × 2 视口 + 5 条全滚动 walk；静态面 verify-offline） | 42/42 PASS；抓到并修掉两处真实外联（preconnect 裸 host、CSS 字体走 CDN） |
-| 符号等价（`port/_gen/app.gen.js` 29 片逐字切片 ↔ `src/app`，`docs/rename-map.json`） | 294/294 port 声明归位，0 未登记孤儿，13/13 GLSL 字面量逐字相同 |
-| 像素对拍（probe-shim 确定性泵；29 格 = 位置 × 状态；每格两侧各 4 次自比交错建带宽，再跨侧） | 29/29 PASS，27 格跨侧 meanAbsDiff = 0；过程中抓到并修掉一个真移植差异（Q17 导航主题死分支） |
+| 门 | port/（逐字移植） | src/（可读工程） |
+|---|---|---|
+| 镜像自检（映射单射 / 账本 sha256 / 真实性 / 闭包 / 回源抽样；netcapture GAP 逐条决策） | PASS | PASS |
+| 外壳字节门（skill verify-shell，8 页 225 hunk 全部由变换表回放） | PASS | PASS |
+| 零外联 + CLEAN（2 侧 × 8 路由 × 2 视口 + 5 条全滚动 walk；静态面 verify-offline） | 42/42 | 42/42 |
+| 像素对拍（probe-shim 确定性泵；29 格位置×状态；每格两侧各 4 次自比交错建带宽） | 29/29，27 格跨侧 = 0 | 29/29，27 格跨侧 = 0 |
+| 声明对账（300 port 声明 ↔ 233 src 声明；13/13 GLSL 逐字） | — | PASS |
+| 自包含（复制到仓库外 → 离线安装 → 构建 → 复制件逐路由探针） | — | PASS 8/8 |
+
+M8 首次补门时抓到并修掉的三处真问题：preconnect 裸 host 外联、dist 从 CDN 取字体、Q17 导航主题死分支。
 
 运行方式与部署边界见 `DEPLOY.md`；里程碑日志/偏差/怪癖登记见 `REBUILD_PLAN.md`（§6.13–6.18 / §7 2026-08-20）。
 

@@ -1,5 +1,5 @@
 $ node scripts/skill/probe.mjs http://127.0.0.1:22001/legal/privacy-policy --no-external --wait 8000 --mobile --scroll 0.5
-verdict: PASS (registered: 6.3-iubenda-icons-mirror, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host)
+verdict: PASS (registered: 6.3-iubenda-icons, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host)
 
 
 [probe] target http://127.0.0.1:22001/legal/privacy-policy (side MIRROR)

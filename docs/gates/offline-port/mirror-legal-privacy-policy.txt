@@ -1,5 +1,5 @@
 $ node scripts/skill/probe.mjs http://127.0.0.1:22001/legal/privacy-policy --no-external --wait 8000 --scroll 0.5
-verdict: PASS (registered: 6.3-iubenda-icons-mirror, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host)
+verdict: PASS (registered: 6.3-iubenda-icons, 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host)
 
 
 [probe] target http://127.0.0.1:22001/legal/privacy-policy (side MIRROR)
@@ -41,18 +41,3 @@ FAILED net::ERR_CONNECTION_CLOSED https://ext/cdn.iubenda.com/iubenda_badge.css
 1x ext
 
 RESULT: 6 problems
-[chrome] LEFTOVER: 9 orphaned 'probe' Chrome process(es) from a previous run of this
-[chrome]   workspace are still alive (oldest 00:02). Reaping them before this run measures anything —
-[chrome]   background load inflates the reference side's self-comparison band, and an inflated band is a
-[chrome]   pixel gate that silently forgives real cross-side residuals (see this file's header).
-[chrome]   pid 66655 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
-[chrome]   pid 66656 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
-[chrome]   pid 66657 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
-[chrome]   pid 66659 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
-[chrome]   pid 66661 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
-[chrome]   pid 66662 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
-[chrome]   pid 66663 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
-[chrome]   pid 66664 (ppid 66650, up 00:02) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
-[chrome]   pid 66676 (ppid 66650, up 00:00) /var/folders/b4/mvphnll96cs6l6v6w4lbp57r0000gn/T/wrs-chrome-s1-probe-p22012-mkgZ29
-[chrome]   WARNING: 9 process(es) survived SIGKILL: 66655, 66656, 66657, 66659, 66661, 66662, 66663, 66664, 66692
-[chrome] NOTE: 1 'probe' Chrome process(es) with a LIVE parent are running — not touching them. If they hold this run's port, the port check below will name them.

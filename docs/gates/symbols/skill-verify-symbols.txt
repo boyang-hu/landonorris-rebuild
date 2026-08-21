@@ -2,32 +2,32 @@ $ node /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/skill/verify-s
 exit 1
 
 === verify-symbols ===
-  port  port/_gen  260 top-level declarations
+  port  port/_gen  266 top-level declarations
   src   src/app  231 top-level declarations
   map   216 renames, 20 registered orphans
 
-  FAIL 74 port declaration(s) absent from src/:
-         r2   port/_gen/app.gen.js:97
-         LB   port/_gen/app.gen.js:99
-         jQ   port/_gen/app.gen.js:930
-         vC   port/_gen/app.gen.js:937
-         eR   port/_gen/app.gen.js:1007
-         AX   port/_gen/app.gen.js:1008
-         g5   port/_gen/app.gen.js:1022
-         u5   port/_gen/app.gen.js:1046
-         c5   port/_gen/app.gen.js:1150
-         EY   port/_gen/app.gen.js:1159
-         n5   port/_gen/app.gen.js:1309
-         X9   port/_gen/app.gen.js:1375
-         a5   port/_gen/app.gen.js:1590
-         r5   port/_gen/app.gen.js:1604
-         t5   port/_gen/app.gen.js:2218
-         JN   port/_gen/app.gen.js:2241
-         ZN   port/_gen/app.gen.js:2667
-         HN   port/_gen/app.gen.js:2793
-         qN   port/_gen/app.gen.js:2906
-         sN   port/_gen/app.gen.js:2913
-         … 54 more
+  FAIL 80 port declaration(s) absent from src/:
+         YV   port/_gen/app.gen.js:21
+         WV   port/_gen/app.gen.js:27
+         dJ   port/_gen/app.gen.js:28
+         DK   port/_gen/app.gen.js:41
+         QD   port/_gen/app.gen.js:44
+         VA   port/_gen/app.gen.js:52
+         r2   port/_gen/app.gen.js:132
+         LB   port/_gen/app.gen.js:134
+         jQ   port/_gen/app.gen.js:965
+         vC   port/_gen/app.gen.js:972
+         eR   port/_gen/app.gen.js:1042
+         AX   port/_gen/app.gen.js:1043
+         g5   port/_gen/app.gen.js:1057
+         u5   port/_gen/app.gen.js:1081
+         c5   port/_gen/app.gen.js:1185
+         EY   port/_gen/app.gen.js:1194
+         n5   port/_gen/app.gen.js:1344
+         X9   port/_gen/app.gen.js:1410
+         a5   port/_gen/app.gen.js:1625
+         r5   port/_gen/app.gen.js:1639
+         … 60 more
 
   FAIL 2 src symbol(s) claimed by more than one port declaration:
          hideBrand  ←  k_, j_
