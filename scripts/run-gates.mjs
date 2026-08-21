@@ -15,6 +15,7 @@
  *                                                          M/R/M/R, then one cross-side run judged against the band.
  *                                                          --only re-runs the named cells and merges them into the
  *                                                          existing results (a cell invalidated by a machine sleep etc.)
+ *   --target src|port   which rebuild side to gate (default src = dist/; port = port/site + mirror assets)
  *   node scripts/run-gates.mjs all
  *
  * Servers: the skill's serve.mjs, one per side (ports from scripts/skill/lib/ports.mjs).
@@ -32,7 +33,8 @@ import { allocPort, fetchIdentity } from './skill/lib/ports.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const SKILL = join(ROOT, 'scripts', 'skill');
-const GATES = join(ROOT, 'docs', 'gates');
+const GATES_ROOT = join(ROOT, 'docs', 'gates');
+let GATES = GATES_ROOT; // offline/pixel append the target below
 const run = promisify(execFile);
 const args = process.argv.slice(2);
 const cmd = args[0];
@@ -65,18 +67,25 @@ const RESIDUALS = [
 ];
 
 // ---------------------------------------------------------------------------
+// --target src (default): the readable source's static build (dist/, served as plain static
+// files — exactly what nginx does). --target port: the verbatim port (port/site) with assets
+// resolved from the read-only mirror (asset-management.md no-copy policy for stage ②).
+const TARGET = flag('target', 'src');
+if (!['src', 'port'].includes(TARGET)) { console.error('--target must be src or port'); process.exit(2); }
 const SIDES = {
-  mirror: { root: join(ROOT, 'legacy-mirror'), port: allocPort('serve', 'mirror') },
-  rebuild: { root: join(ROOT, 'dist'), port: allocPort('serve', 'rebuild') },
+  mirror: { root: join(ROOT, 'mirror'), port: allocPort('serve', 'mirror'), extra: [] },
+  rebuild: TARGET === 'port'
+    ? { root: join(ROOT, 'port', 'site'), port: allocPort('serve', 'rebuild'), extra: ['--fallback-root', join(ROOT, 'mirror')] }
+    : { root: join(ROOT, 'dist'), port: allocPort('serve', 'rebuild'), extra: [] },
 };
 const spawned = [];
 async function ensureServer(side) {
-  const { root, port } = SIDES[side];
+  const { root, port, extra } = SIDES[side];
   const base = `http://127.0.0.1:${port}`;
   const id = await fetchIdentity(base);
-  if (id && id.side === side) { console.log(`[gates] reusing ${side} server on ${base} (identity ${id.token})`); return base; }
-  if (id) throw new Error(`port ${port} is held by a ${id.side} server; expected ${side}`);
-  const child = spawn('node', [join(SKILL, 'serve.mjs'), '--side', side, '--root', root], { stdio: ['ignore', 'pipe', 'pipe'] });
+  if (id && id.side === side && (!id.root || id.root === root)) { console.log(`[gates] reusing ${side} server on ${base} (identity ${id.token}, root ${id.root || '?'})`); return base; }
+  if (id) throw new Error(`port ${port} is held by a ${id.side} server rooted at ${id.root || '?'}; expected ${side} at ${root} — stop it first`);
+  const child = spawn('node', [join(SKILL, 'serve.mjs'), '--side', side, '--root', root, ...extra], { stdio: ['ignore', 'pipe', 'pipe'] });
   spawned.push(child);
   for (let i = 0; i < 40; i++) {
     await new Promise((r) => setTimeout(r, 250));
@@ -124,8 +133,8 @@ function judge(parsed, { route, side, base }) {
 
 async function gateMirror() {
   const out = join(GATES, 'mirror'); await mkdir(out, { recursive: true });
-  const argv = [join(SKILL, 'verify-mirror.mjs'), '--mirror', join(ROOT, 'legacy-mirror'), '--origin', 'https://landonorris.com',
-    '--allow-missing', join(ROOT, 'legacy-mirror', 'external.txt'), '--max-report', '200'];
+  const argv = [join(SKILL, 'verify-mirror.mjs'), '--mirror', join(ROOT, 'mirror'), '--origin', 'https://landonorris.com',
+    '--allow-missing', join(ROOT, 'mirror', 'external.txt'), '--max-report', '200'];
   const n = flag('resample', null); if (n) argv.push('--resample', n);
   let code = 0, text = '';
   try { const r = await run('node', argv, { maxBuffer: 64 * 1024 * 1024 }); text = r.stdout + r.stderr; }
@@ -137,7 +146,7 @@ async function gateMirror() {
 }
 
 async function gateOffline() {
-  const out = join(GATES, 'offline'); await rm(out, { recursive: true, force: true }); await mkdir(out, { recursive: true });
+  const out = join(GATES, TARGET === 'port' ? 'offline-port' : 'offline'); await rm(out, { recursive: true, force: true }); await mkdir(out, { recursive: true });
   const bases = { mirror: await ensureServer('mirror'), rebuild: await ensureServer('rebuild') };
   const cells = [];
   for (const side of ['mirror', 'rebuild']) {
@@ -279,7 +288,7 @@ async function pixelRun({ a, b, name, out, c, self }) {
 }
 
 async function gatePixel() {
-  const out = join(GATES, 'pixel');
+  const out = join(GATES, TARGET === 'port' ? 'pixel-port' : 'pixel');
   const only = flag('only', null)?.split(',').map((x) => x.trim()).filter(Boolean) ?? null;
   let previous = [];
   if (only) { try { previous = JSON.parse(await readFile(join(out, 'results.json'), 'utf8')).results; } catch {} }

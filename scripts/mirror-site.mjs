@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 /**
- * Mirror landonorris.com into legacy-mirror/.
+ * Mirror landonorris.com into mirror/.
  *
  * - Crawls all same-origin pages starting from "/".
- * - Saves pages as legacy-mirror/<path>/index.html.
+ * - Saves pages as mirror/<path>/index.html.
  * - Scans every fetched text file (html/css/js) for asset URLs on a host
- *   whitelist and downloads them under legacy-mirror/assets/<host>/<path>,
+ *   whitelist and downloads them under mirror/assets/<host>/<path>,
  *   repeating until no new URLs appear (CSS fonts, JS-referenced .riv, etc.).
- * - Writes legacy-mirror/mirror-manifest.json (url -> local path, size, type).
+ * - Writes mirror/mirror-manifest.json (url -> local path, size, type).
  */
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 
 const ORIGIN = 'https://landonorris.com';
-const OUT = new URL('../legacy-mirror/', import.meta.url).pathname;
+const OUT = new URL('../mirror/', import.meta.url).pathname;
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36';
 

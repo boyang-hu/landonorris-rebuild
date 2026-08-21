@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite --port 5180",
     "build": "node scripts/gen-shells.mjs && vite build && node scripts/postbuild.mjs",
-    "serve:mirror": "node scripts/skill/serve.mjs --side mirror --root legacy-mirror",
+    "serve:mirror": "node scripts/skill/serve.mjs --side mirror --root mirror",
     "serve:dist": "node scripts/skill/serve.mjs --side rebuild --root dist",
     "probe": "node scripts/probe.mjs",
     "shells": "node scripts/gen-shells.mjs",
@@ -17,11 +17,17 @@
     "gate:pixel": "node scripts/run-gates.mjs pixel",
     "gates": "node scripts/run-gates.mjs all",
     "zerodep": "node scripts/skill/verify-zerodep.mjs --dir scripts --tools tools",
-    "port:check": "node scripts/skill/extract-source.mjs --slices scripts/slices.config.mjs --check && node scripts/skill/extract-source.mjs --slices scripts/slices.config.mjs --balance-check"
+    "port:check": "node scripts/skill/extract-source.mjs --slices scripts/slices.config.mjs --check && node scripts/skill/extract-source.mjs --slices scripts/slices.config.mjs --balance-check",
+    "port:shells": "node scripts/skill/build-site.mjs --config scripts/shell-config.port.mjs --mirror mirror --out port/site",
+    "port:build": "npm run port:prelude && npm run port:shells",
+    "port:serve": "node scripts/skill/serve.mjs --side rebuild --root port/site --fallback-root mirror",
+    "shell:verify:port": "node scripts/skill/verify-shell.mjs --config scripts/shell-config.port.mjs --mirror mirror --site port/site",
+    "port:prelude": "esbuild port/vendor-globals.js --bundle --format=iife --target=es2022 --outfile=port/_build/vendor-globals.js --log-level=warning"
   },
   "dependencies": {
     "@rive-app/canvas-lite": "2.26.4",
     "@unseenco/taxi": "^1.8.0",
+    "dat.gui": "0.7.9",
     "gsap": "3.13.0",
     "lenis": "1.1.20",
     "lil-gui": "^0.21.0",

@@ -1,4 +1,4 @@
 $ node /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/skill/extract-source.mjs --slices /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/slices.config.mjs --check
 exit 0
 
-port/_gen/app.gen.js is in sync with the pinned slices of legacy-mirror/_pretty/lando.OFF+BRAND.gold-android-fix-03.pretty.js.
+port/_gen/app.gen.js is in sync with the pinned slices of mirror/_pretty/lando.OFF+BRAND.gold-android-fix-03.js.

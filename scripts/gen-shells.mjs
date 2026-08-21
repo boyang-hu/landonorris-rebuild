@@ -16,7 +16,7 @@ import { dirname, join } from 'node:path';
 import { rewriteExt } from './lib/ext-rewrite.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
-const MIRROR = join(ROOT, 'legacy-mirror');
+const MIRROR = join(ROOT, 'mirror');
 const OUT = join(ROOT, 'shells');
 
 const PAGES = [

@@ -51,7 +51,7 @@ node scripts/skill/verify-offline.mjs --base https://landonorris-rebuild.boyang.
 
 ### 步骤
 
-1. 本地构建并上传（`-L` 必须——dist/ext 是指向 legacy-mirror/assets 的软链，要解引用成真实文件，共约 40MB）：
+1. 本地构建并上传（`-L` 必须——dist/ext 是指向 mirror/assets 的软链，要解引用成真实文件，共约 40MB）：
 
    ```bash
    npm run build

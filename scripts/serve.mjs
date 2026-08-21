@@ -2,13 +2,13 @@
 /**
  * Zero-dependency local server for the legacy mirror (and later the rebuild).
  *
- *   node scripts/serve.mjs [--port 5177] [--root legacy-mirror]
+ *   node scripts/serve.mjs [--port 5177] [--root mirror]
  *
- * Serves legacy-mirror/ at the site root exactly like the origin:
+ * Serves mirror/ at the site root exactly like the origin:
  *   /            -> index.html
  *   /calendar    -> calendar/index.html
  *
- * External-host assets were mirrored under legacy-mirror/assets/<host>/<path>.
+ * External-host assets were mirrored under mirror/assets/<host>/<path>.
  * Instead of touching the mirrored files on disk, text responses are rewritten
  * on the fly so absolute URLs point at /ext/<host>/<path>, which this server
  * resolves back into the local mirror (same trick as samsyninja-rebuild).
@@ -23,7 +23,7 @@ const flag = (name, dflt) => {
   return i >= 0 ? args[i + 1] : dflt;
 };
 const PORT = Number(flag('port', 5177));
-const ROOT = new URL('../' + flag('root', 'legacy-mirror') + '/', import.meta.url).pathname;
+const ROOT = new URL('../' + flag('root', 'mirror') + '/', import.meta.url).pathname;
 
 const EXT_HOSTS = [
   'cdn.prod.website-files.com',

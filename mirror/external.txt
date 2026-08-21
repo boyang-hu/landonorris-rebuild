@@ -58,3 +58,13 @@ JOINED | https://landonorris.com/textures/plastic/plastic__matcap-02.webp | root
 JOINED | https://landonorris.com/textures/tracks/lando__matcap-02.webp | root-relative literal joined onto lando.itsoffbrand.io/gl (or unpkg rive) at runtime; origin 404; on disk: assets/lando.itsoffbrand.io/gl/textures/tracks/lando__matcap-02.webp
 NOTFILE | https://static.klaviyo.com/onsite/js/build | fragment: klaviyo.js chunk base (origin 403 for the bare path); the klaviyo <script> is inside an HTML comment on every page (quirk Q1)
 NOTFILE | https://cdn.jsdelivr.net/npm/ | bare package-CDN base literal inside a mirrored third-party script; never fetched as such (origin 400)
+
+# ---- netcapture.mjs second pass (2026-08-21, real Chrome, 7 routes × desktop/mobile, 250 requests, 246 HAVE) ----
+# 4 GAP rows + 3 off-list hosts, one decision each:
+DRIFT | https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/css/lando-offbrand.shared.5b4e934f7.css | post-snapshot Webflow publish: today's HTML references this CSS; the pinned 2026-08-10 HTML references lando-offbrand.shared.{043b62fef,4f53262f0}.css, both on disk. The mirror stays the 08-10 snapshot (coordinate system is pinned); drift is recorded, not chased
+DRIFT | https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/js/lando-offbrand.schunk.7321a5097fb66f41.js | same publish; the snapshot's schunk.79b71263bda4d666.js is on disk
+STUB | https://landonorris.com/avljl2rk9q5pNjdiNWEwMmRjNWQzMzg5NjBiMTdhN2U5/7ZblqsTeeE5q7zjxhGjeEUmRx4o | Webflow GA reverse-proxy blob, per-publish rotating path; telemetry -> not mirrored, same-origin stub in serve.mjs + stripped from shells (6.1/6.11)
+STUB | https://landonorris.com/nvhc9u4gxsagNjdiNWEwMmRjNWQzMzg5NjBiMTdhN2U5/Cfd3dFR423I13UX8BGRslFKw2jo | same (second GA blob)
+STUB | www.googletagmanager.com | downstream of the GA blobs; never reached once they are stubbed
+STUB | www.google-analytics.com | same
+CONTENT | www.iubenda.com | legal-page body fetched from iubenda's API at runtime (6.3); the only external host a rebuild may call, named as a residual in scripts/run-gates.mjs

@@ -1,12 +1,14 @@
 /**
  * slices.config.mjs — slice table for scripts/skill/extract-source.mjs (porting-discipline.md §2.2).
  *
- * RETROACTIVE port/ (2026-08-20, skill v0.1.51 M(n+1) gate): this project ported
- * mirror -> src/app/*.ts directly in M2-M6 with pretty-line provenance comments.
- * port/_gen/app.gen.js is the verbatim byte slice of every APPLICATION region of
- * the OFF+BRAND bundle — the other end of the symbol-equivalence gate
- * (docs/rename-map.json + scripts/verify-decls.mjs / scripts/skill/verify-symbols.mjs).
- * It is a coordinate artifact: never executed, never hand-edited, regenerate with
+ * port/_gen/app.gen.js is the verbatim byte slice of the esbuild runtime helpers
+ * plus every APPLICATION region of the OFF+BRAND bundle. It RUNS as a CLASSIC
+ * script (like the source bundle: `<script defer>`, sloppy mode — the source
+ * assigns the undeclared `debug` (Q9) and a module would throw), with the
+ * vendor bindings supplied as globals by port/vendor-globals.js (the §2.2 alias
+ * table in global-assignment form). It is also the other end of the symbol
+ * equivalence gate (docs/rename-map.json + scripts/verify-decls.mjs).
+ * Never hand-edited; regenerate with
  *   node scripts/skill/extract-source.mjs --slices scripts/slices.config.mjs
  *   node scripts/skill/extract-source.mjs --slices scripts/slices.config.mjs --check --balance-check
  *
@@ -26,7 +28,7 @@
  */
 export default {
   root: "..",
-  source: "legacy-mirror/_pretty/lando.OFF+BRAND.gold-android-fix-03.pretty.js",
+  source: "mirror/_pretty/lando.OFF+BRAND.gold-android-fix-03.js",
   sha256: "3a888487166a91bd070d1b967447a42b7c50d14b4071957be643e7835313d6c0",
   out: "port/_gen/app.gen.js",
   generator: "scripts/skill/extract-source.mjs",
@@ -37,6 +39,7 @@ export default {
     "packages in package.json, not sliced. Symbol map: docs/rename-map.json.",
   ],
   slices: [
+    { from: 1, to: 32, note: "esbuild runtime helpers: __create/__defProp/__getOwnPropNames/__hasOwnProp, dJ=__toESM, DK=__commonJS, QD=__export, VA=__esm — bundler plumbing the app slices call", symbols: [] },
     { from: 33, to: 89, note: "esbuild helpers tail + utils: BD(34) ED(41) ID(46) CD(56) KD(75) — safari/iphone flags, Webflow destroy+ready, w--current, breakpoint reload", symbols: [] },
     { from: 9407, to: 10280, note: "LB (9408) + vC Rive system (9438-10280): runtime aliases, file preload, components, window.loadedRiveFiles", symbols: [] },
     { from: 10281, to: 10333, note: "tR WebGL2 capability detect (three/examples WebGL.js shape, ported verbatim as WebGLSupport) + eR alias + AX init wrapper", symbols: [] },

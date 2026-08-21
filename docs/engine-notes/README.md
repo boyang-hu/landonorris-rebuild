@@ -1,6 +1,6 @@
 # engine-notes — 逆向笔记索引
 
-行号均指 legacy-mirror/_pretty/lando.OFF+BRAND.gold-android-fix-03.pretty.js（47120 行）。
+行号均指 mirror/_pretty/lando.OFF+BRAND.gold-android-fix-03.js（47120 行）。
 
 - 00-boot.md — 启动链路、taxi 路由、页面 init/cleanup 矩阵、模块地图
 - 01-rive.md — Rive DOM 集成层（预载、组件工厂、导航、滚动驱动）

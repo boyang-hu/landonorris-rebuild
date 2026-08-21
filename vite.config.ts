@@ -5,7 +5,7 @@ import { join, extname, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
-const MIRROR_ASSETS = join(ROOT, 'legacy-mirror', 'assets');
+const MIRROR_ASSETS = join(ROOT, 'mirror', 'assets');
 
 const MIME: Record<string, string> = {
   '.css': 'text/css; charset=utf-8',
@@ -25,7 +25,7 @@ const MIME: Record<string, string> = {
 };
 
 /** Serve mirrored external-host assets at /ext/<host>/<path> in dev (deviation 6.2/6.4:
- *  heavy assets stay in legacy-mirror, never copied into the source tree). */
+ *  heavy assets stay in mirror, never copied into the source tree). */
 function extAssets(): Plugin {
   return {
     name: 'ext-assets',

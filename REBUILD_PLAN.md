@@ -4,7 +4,7 @@
 
 ## §0 纪律（宪法级）
 
-1. 源站代码是唯一裁决：每个改动先归属到 `legacy-mirror/_pretty/*.pretty.js` 行号（或镜像 HTML/CSS 位置）再落地。
+1. 源站代码是唯一裁决：每个改动先归属到 `mirror/_pretty/*.js` 行号（或镜像 HTML/CSS 位置）再落地。
 2. 源站有的都要有，没有的不做；bug 与死代码照抄不修，登记为怪癖（§Q）。
 3. 有意偏差必须登记在 §6；未登记的差异一律视为 bug。
 4. 不自创补偿性 CSS/JS。
@@ -22,7 +22,8 @@
 - [x] M5 Three GL 层（六场景 + 流体/噪声/idle + bloom 链）
 - [x] M6 各页专属逻辑（calendar 同步/404 切换器/heroflip）
 - [x] M7 三重验证 + 收尾（verify.mjs 全路由×双端门 + 真机对拍）
-- [x] M8 skill v0.1.51 对账补门（2026-08-20）：镜像自检门 / 零外联完整断言面 / 像素门（自比带宽+确定性 shim）/ 冷头清点 + 符号门（port/ 切片 + rename-map）/ 自包含门；全部判据固化在 `scripts/run-gates.mjs`，产物在 `docs/gates/`
+- [x] M8 skill v0.1.51 对账补门（2026-08-20）：镜像自检门 / 零外联完整断言面 / 像素门（自比带宽+确定性 shim）/ 冷头清点 + 符号门（port/ 切片 + rename-map）；全部判据固化在 `scripts/run-gates.mjs`，产物在 `docs/gates/`
+- [ ] M9 按 skill 三段契约重整（2026-08-21 起）：① `mirror/` 规范目录 + Step 0 判级记录 + netcapture 第二遍 + `_pretty` 可再生复核；② `port/` 从坐标产物变为**可运行的逐字移植**（esbuild 运行时切入、vendor 别名表、skill 外壳流水线、`--fallback-root` 不复制资产）并过 CLEAN/零外联/像素门；③ `src/` 自包含包（自己的 package.json、资产账本 + `assets:restore`、外壳进包、`src/README.md`、注释三档、rename-map 证据档位）+ `verify-standalone --full`
 
 ## §2 源站技术栈（Phase 0 结论，详见 README；M1 后补充行号）
 
@@ -42,20 +43,23 @@ Three r174 / GSAP 3.13.0（ScrollTrigger/SplitText/Observer/MotionPath）/ Lenis
 | 6.1 | GA/Webflow 反代 blob（/nvhc*、/avljl*）不复刻，本地 serve 返回 stub | 遥测非站点行为；私有部署不应上报 |
 | 6.2 | 外部 host 的绝对 URL 改写为 /ext/<host>/：镜像侧在服务层（skill serve.mjs），复刻侧在构建期（shells + dist/ext 文本资产），**两侧同一套拼写**（`https://h/`、`http://h/`、JSON 转义 `https:\/\/h\/`、`\u002F`、标记/样式里的 `//h/`、**裸 host 常量** `https://h`）——复刻侧实现唯一入口 `scripts/lib/ext-rewrite.mjs`（2026-08-20 修订：此前 shells 漏了裸 host 拼写，`<link rel=preconnect/dns-prefetch href="https://cdn.prod.website-files.com">` 在每个页面真实发起 DNS+TLS 预热） | 磁盘镜像保持纯净；零外联门 §1.6 第 1 类 |
 | 6.3 | iubenda badge CSS 在本地镜像服务下 404（脚本从自身 src 反推 base 所致）；legal 页正文依赖 iubenda 线上 API | 源站本身即三方运行时行为，无法离线化；badge 纯装饰 |
-| 6.4 | dist/ext 是真实目录树：二进制按文件软链到 legacy-mirror/assets（单份落盘），**文本资产（css/js/json/svg…）为经 6.2 改写的副本**（2026-08-20 修订：此前整目录软链让 dist 原样伺服 Webflow CSS，其绝对 `cdn.prod.website-files.com` 字体/图片 url 使每次静态部署都从线上 CDN 取字体——零外联门第一次跑就抓到 3 条 CSS 发起的外联；字体随之与 load 事件竞速，SplitText 告警 34 次） | 部署仍 rsync -L 解引用；重资产不复制 |
+| 6.4 | dist/ext 是真实目录树：二进制按文件软链到 mirror/assets（单份落盘），**文本资产（css/js/json/svg…）为经 6.2 改写的副本**（2026-08-20 修订：此前整目录软链让 dist 原样伺服 Webflow CSS，其绝对 `cdn.prod.website-files.com` 字体/图片 url 使每次静态部署都从线上 CDN 取字体——零外联门第一次跑就抓到 3 条 CSS 发起的外联；字体随之与 load 事件竞速，SplitText 告警 34 次） | 部署仍 rsync -L 解引用；重资产不复制 |
 | 6.5 | gen-shells 对首页一处畸形 SVG 属性边界（`"stroke=`）插入空格 | 浏览器 DOM 等价；vite/parse5 严格解析所需（怪癖 Q5 保留在镜像中） |
 | 6.6 | Rive WASM 从本地镜像 /ext/unpkg.com/... 提供而非 unpkg CDN | 字节相同；使复刻可离线自包含 |
 | 6.7 | @unseenco/taxi@1.8.0 npm 替代 vendored 拷贝（bundle 无版本标记） | 行为经探针验证（拦截/预取/pushState/removeOldContent 语义一致） |
 | 6.8 | three-msdf-text-utils@1.5.0 npm 替代 vendored 同库（peer 声明要求 three>=0.178，实际与 r174 兼容——源站即此组合打包） | samsyninja 同策（vendored 库改同版 npm） |
-| 6.9 | lil-gui/stats-gl 仅作 ?debug 桩，不复刻完整调试面板 | 非站点功能；?debug 为开发者通道 |
+| 6.9 | `?debug` 调试面板：src 里 GUI/stats 只是桩，不复刻完整面板（M2 时把 bundle 35889-37996 误认为 lil-gui——它是 **dat.gui**（`__state.conversionName`/`litmus`/`conversions` 是 dat.gui 的 Color 实现），37997-38003 是 stats-gl）；**port 按逐字要求真绑 dat.gui@0.7.9 + stats-gl@4.2.3**（bundle 未携带版本串，版本是就近取的，登记为不确定） | 非站点功能；?debug 为开发者通道 |
 | 6.10 | 镜像 serve.mjs 在改写 HTML 时剥离 SRI integrity 属性；2026-08-20 起 gen-shells 在构建期同样剥离（dist/ext 下的 Webflow CSS/JS 是改写副本，见 6.4） | 改写后的字节无法匹配原哈希，Chrome 会静默拦截主 CSS（安全报错只走 Log 域） |
 | 6.11 | shells 剥离 GA 反代脚本与 gtag 内联（同 6.1 的构建期实现） | 遥测非站点行为 |
 | 6.12 | postbuild 把 dist HTML 中的 %2520 还原为 %20 | vite 构建的 HTML 资产管线会把 srcset 里已编码的 %20 二次编码，含空格文件名的图（helmet 墙 7 款）全部 404；shells 源无 %2520，整体替换即精确恢复源编码 |
-| 6.13 | 镜像账本 2026-08-20 对账（字节一字未动）：`scripts/ledger-backfill.mjs` 补 sha256 列 + `inventory.tsv`；`scripts/ledger-reconcile.mjs` 把 3 组双拼写行并为别名（MonaSans `%2C`/`,`、jQuery `?site=`/裸、klaviyo `?company_id=`/裸——前两组线上重取 sha256 与磁盘一致，klaviyo 裸 URL 无任何文件引用，是爬虫正则截断产物）、写 `urlpath-policy.json`（`ignore:["site"]`，两次取回字节相同；`company_id` **不**忽略，实测 6243B vs 863B 字节不同）、把 klaviyo 文件迁到查询感知路径 `klaviyo@@company_id=XWvzdS.js`；6 条失败行（placeholder.svg 源站 403、iubenda `core-`/klaviyo `build`/jsdelivr `npm/` 片段、`assets.itsoffbrand.io/lando/{gl,rive/}` 目录基址）与闭包差集 52 条逐条登记在 `legacy-mirror/external.txt`（36 JOINED 运行时拼接且解析副本在盘 / 5 DEADREF 仅被注释掉的 dev bundle 引用且基址 404 / 10 NOTFILE / 1 NOTFETCHED） | skill v0.1.51 镜像自检门（映射单射/账本一致/真实性/闭包/回源抽样 12/12）全绿的前提 |
+| 6.13 | 镜像账本 2026-08-20 对账（字节一字未动）：`scripts/ledger-backfill.mjs` 补 sha256 列 + `inventory.tsv`；`scripts/ledger-reconcile.mjs` 把 3 组双拼写行并为别名（MonaSans `%2C`/`,`、jQuery `?site=`/裸、klaviyo `?company_id=`/裸——前两组线上重取 sha256 与磁盘一致，klaviyo 裸 URL 无任何文件引用，是爬虫正则截断产物）、写 `urlpath-policy.json`（`ignore:["site"]`，两次取回字节相同；`company_id` **不**忽略，实测 6243B vs 863B 字节不同）、把 klaviyo 文件迁到查询感知路径 `klaviyo@@company_id=XWvzdS.js`；6 条失败行（placeholder.svg 源站 403、iubenda `core-`/klaviyo `build`/jsdelivr `npm/` 片段、`assets.itsoffbrand.io/lando/{gl,rive/}` 目录基址）与闭包差集 52 条逐条登记在 `mirror/external.txt`（36 JOINED 运行时拼接且解析副本在盘 / 5 DEADREF 仅被注释掉的 dev bundle 引用且基址 404 / 10 NOTFILE / 1 NOTFETCHED） | skill v0.1.51 镜像自检门（映射单射/账本一致/真实性/闭包/回源抽样 12/12）全绿的前提 |
 | 6.14 | `scripts/skill/serve.mjs` 是 skill 脚本的逐字拷贝，唯一改动是按 skill 设计的"per-project 常量"填了 `STUB_PREFIXES = ["/nvhc", "/avljl"]`（Webflow GA 反代 blob 走 stub，同 6.1） | 镜像侧 CLEAN 门需要 |
 | 6.15 | legal 页 iubenda 徽章样式表请求畸形：iubenda.js 把 `/ext/cdn.iubenda.com/iubenda_badge.css` 再前缀 `"https:"` → `https://ext/...`（两侧同样发生，serve 层与构建期改写一致）；连同 iubenda 线上 API（6.3）、镜像侧 `/images/site/icons/owner.png` 404，作为**具名残差**写在 `scripts/run-gates.mjs` 的 RESIDUALS 里 | 徽章为装饰；可触发的外联只剩 iubenda API（内容源） |
 | 6.16 | src 相对 port 的结构性改写（`docs/rename-map.json` 的 collapsed / allow_orphans / omitted 节逐条登记，`scripts/verify-decls.mjs` 据此判定）：① 源站字节相同的函数对 k_/j_（hideBrand）、w_/__（showBrand）各保留一份；② dK/KI 两个模块标志折成 navState 对象；③ mj/cj 折成 PAGE_TRANSITION_SRC；④ 每个 rive init 函数尾部相同的 `if (!rive) retry` 守卫抽成 whenRiveReady；⑤ mL/cL 里重复的页面 switch 抽成 dispatchPageInit；⑥ Vimeo IIFE（U_）内部绑定提升到模块作用域；⑦ 内联字面量提升为具名常量（HEAD_COMPOSITE_FRAG / START_SVG / COLOR_MAP×2）；⑧ EZ 包装器函数体拆为 initLandoGL / buildAssets / constructGlApp；⑨ src 独有的取值器（getApp/getGL/hasGL/isAllLoaded/getPendingCount/taxi/getScrollManager/registerSimplexChunk）；⑩ `e2 = K` 死存储未移植（Q14） | 可读性；全部不改行为，行为由运行时门裁决 |
 | 6.17 | `port/_gen/app.gen.js` 是**追溯性**产物（2026-08-20）：M2–M6 当年是 mirror → src 直接逐函数移植；现在用 `scripts/skill/extract-source.mjs` 按 `scripts/slices.config.mjs`（29 个切片、9,548 行、sha256 钉死）把 bundle 的全部应用区段逐字切出，作为符号等价门的另一端，**从不执行**。vendor 区段（three/gsap/lenis/rive/taxi/msdf/lil-gui/loaders）不切片——它们是 package.json 钉死的同版本 npm 包（6.7/6.8） | 三段坐标系 mirror → port → src 补齐 |
+| 6.19 | 外壳经 skill 的 `build-site.mjs`（策略 A 登记变换表 `scripts/lib/shell-common.mjs`：T-LOCALIZE 六种拼写 / T-GA / T-ENTRY / T-SRI / T-SVG / T-NOINDEX，逐条下限按 08-10 镜像量出并钉死）生成，`verify-shell.mjs` 逐 hunk 回放（225 hunk 全部可重放）。**T-NOINDEX 新增**：每页 `<head>` 后注入"非官方学习复刻"声明注释 + `<meta name="robots" content="noindex,nofollow">`（skill 法务默认；此前只靠 nginx 的 X-Robots-Tag） | skill 的外壳字节门取代自写 gen-shells；两侧同一张表 |
+| 6.20 | **port/ 的运行形态**：`port/_gen/app.gen.js`（esbuild 运行时 L1-32 + 全部应用区段，30 片）作为 **classic `<script defer>`** 运行（与源站同模式——源码 `j$(debug = !1)` 隐式全局 Q9 在 module 严格模式下会抛），vendor 绑定由 `port/vendor-globals.js`（每行带品牌/行号证据的别名表，esbuild 打成 IIFE）以全局赋值提供；外壳不经打包器（Vite 会把 module 前奏提到 defer 脚本之后、且二次编码 srcset 6.12）；资产不复制，`serve.mjs --root port/site --fallback-root mirror`。未绑定的三个运行时名：`OrbitControls`（Q8 源站同样未定义）、`Vimeo`（按需加载的 window 全局）、`debug`（Q9） | 逐字移植的另一端必须真能跑并过门，而不只是坐标产物 |
+| 6.21 | 源站漂移（2026-08-21 探测）：首页 HTML 与 Webflow 运行时 chunk/CSS 已换版（`schunk.7321a5097fb66f41.js`、`shared.5b4e934f7.css`），应用 bundle sha256 不变。镜像按宪法保持 08-10 快照，netcapture 的 2 条 DRIFT + 2 条 GA blob（STUB）+ 3 个表外 host（googletagmanager/google-analytics STUB、www.iubenda.com CONTENT）逐条登记在 `mirror/external.txt` | 坐标系钉死；漂移只记不追 |
 | 6.18 | 像素门仪器：`scripts/skill/probe-shim.js` 由两侧 serve.mjs 在 `?__probe` 时注入 `<head>` 首部（服务层 query 注入路线：两侧是各自独立的服务器、不带参数时字节一字不变）；pump dt=16.7ms | 仅验收时存在；镜像磁盘与 dist 字节不变 |
 
 ## §Q 怪癖登记（源站 bug/死代码，照抄不修）
@@ -81,6 +85,13 @@ Three r174 / GSAP 3.13.0（ScrollTrigger/SplitText/Observer/MotionPath）/ Lenis
 | Q17 | 导航主题切换 V$ 里的 ScrollTrigger 分支是**死分支**：`window.ScrollTrigger \|\| window.gsap && window.gsap.ScrollTrigger`（43968）在源站 bundle 里恒为 undefined（esbuild ESM 打包，gsap 从未挂到 window；线上实测两者均 undefined、`window.themeScrollTriggers` 恒为空）。线上实际生效的是 100ms 节流的"最近 section 顶边"滚动监听 + 200ms 冷却。复刻曾把它写成 `if (TA)` 走了"活"分支（4 个真 ScrollTrigger + 1s 后多一次 `ScrollTrigger.refresh()`），M8 像素门抓到：首页 33% 处镜像 dark / 复刻 light，且那次多出来的 refresh 让 on-track heroflip 头盔在泵驱动下晚一拍（cross 7.19）。已按字节回抄死分支 | pretty 43968 |
 
 ## §7 里程碑日志（倒序）
+
+### 2026-08-21 M9 阶段一：规范目录 + Step 0/M0 补全 + port/ 可运行（进行中）
+- `legacy-mirror/` → `mirror/`（全仓引用同步，字节未动，账本/切片/门全部复验 PASS）；`_pretty/` 用 skill `beautify-bundle.mjs`（js-beautify@1.15.1）原地再生：4 个文件与 08-10 产物**逐字节相同**（主 bundle sha256 `3a888487…` 不变，坐标系可再生），文件名改为 skill 约定的源名（去掉 `.pretty`），生成 `_pretty/README.md` 再生账本。
+- Step 0：`fingerprint.mjs` 六步探测 → `docs/fingerprint/verdict.md` 判 **A 类**（双抓 byte-identical、无框架标记、three 强签名、bundle 内 `/api/` 2 处都是 Vimeo 播放器加载器）。顺手记下源站漂移（6.21）。
+- M0 第二遍：`netcapture.mjs` 真浏览器 7 路由 × 双视口 250 请求，246 HAVE / 4 GAP，GAP 与表外 host 逐条决策进 `external.txt`（DRIFT/STUB/CONTENT），镜像自检门仍 PASS。
+- port/ 可运行：`tools/free-idents.mjs`（acorn 作用域分析，tools/ 允许依赖）从 9,580 行切片里算出 **92 个自由标识符** = 3 个 esbuild 助手（现已切入 L1-32）+ 86 个 vendor 绑定 + 3 个运行时全局；`port/vendor-globals.js` 逐个按品牌/构造函数形状/常量值绑到钉死的 npm 包（常量按数值在加载时断言）。首跑两次红：Vite 把 module 前奏排到 defer 脚本之后（`cU is not defined`）→ 改为双 classic defer 脚本 + esbuild IIFE，不再让打包器碰外壳；`OJ` 因 80 行窗口里下一类的 `isLight` 品牌被错绑成 Light，实际是 `extends Loader` 的 TextureLoader（`this.textureLoader = new OJ`）——教训：品牌证据必须落在类体内，不能用行窗口。修后 5 路由探针 CLEAN、0 外联。
+- skill 外壳流水线接管两侧（6.19）：`build-site` 8 页逐条下限 PASS、`verify-shell` 225 hunk 全部可回放。
 
 ### 2026-08-20 M8 skill v0.1.51 对账补门（关闭）
 - skill 装入项目：`.claude/skills/website-rebuild`（v0.1.51，源仓 commit 4c06798）；判据脚本逐字拷入 `scripts/skill/`（唯一改动 6.14），生产工具拷入 `tools/`；`verify-zerodep.mjs --dir scripts --tools tools` PASS。

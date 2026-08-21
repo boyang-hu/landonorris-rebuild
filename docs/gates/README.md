@@ -5,7 +5,7 @@
 
 | 门 | 命令 | 判据 | 产物 |
 |---|---|---|---|
-| 镜像自检（M0） | `npm run gate:mirror` [`-- --resample N`] | `scripts/skill/verify-mirror.mjs` 五项：映射单射 / 账本一致 / 真实性 / 闭包 / 回源抽样；豁免 = `legacy-mirror/external.txt` | `mirror/verify-mirror.txt` |
+| 镜像自检（M0） | `npm run gate:mirror` [`-- --resample N`] | `scripts/skill/verify-mirror.mjs` 五项：映射单射 / 账本一致 / 真实性 / 闭包 / 回源抽样；豁免 = `mirror/external.txt` | `mirror/verify-mirror.txt` |
 | 零外联 + CLEAN（M0.5 / M7） | `npm run gate:offline` | `probe.mjs --no-external` 两侧 × 8 路由 × 2 视口 + 5 条全滚动 walk；`verify-offline.mjs` 静态面两侧；具名残差见 RESIDUALS | `offline/summary.md` + 每格原始输出 |
 | 符号等价（M(n) 冷头清点 + M(n+1)） | `npm run gate:symbols` | `extract-source --check/--balance-check`（port/ 字节在位且可解析）+ `scripts/verify-decls.mjs`（294 port 声明 ↔ 233 src 声明，按 `docs/rename-map.json`）；skill `verify-symbols.mjs` 存档不判定 | `symbols/summary.md` + 各步输出 |
 | 像素对拍（M(n-1)） | `npm run gate:pixel` | `pixelcompare.mjs` + probe-shim 确定性泵；每格两侧各 4 次自比（交错）→ 带宽 = 两侧自比最大值 → 跨侧 ≤ 带宽 + 0.5；非空帧前置 ≥1000 色 | `pixel/summary.md`、`pixel/results.json`、`pixel/composites/*.jpg` |

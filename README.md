@@ -15,7 +15,7 @@ M8 按 website-rebuild-skill v0.1.51（装在 `.claude/skills/website-rebuild`�
 
 | 门 | 结果 |
 |---|---|
-| 镜像自检（映射单射 / 账本 sha256 / 真实性 / 闭包 / 回源抽样） | PASS，551 行账本、52 条闭包决策（`legacy-mirror/external.txt`） |
+| 镜像自检（映射单射 / 账本 sha256 / 真实性 / 闭包 / 回源抽样） | PASS，551 行账本、52 条闭包决策（`mirror/external.txt`） |
 | 零外联 + CLEAN（2 侧 × 8 路由 × 2 视口 + 5 条全滚动 walk；静态面 verify-offline） | 42/42 PASS；抓到并修掉两处真实外联（preconnect 裸 host、CSS 字体走 CDN） |
 | 符号等价（`port/_gen/app.gen.js` 29 片逐字切片 ↔ `src/app`，`docs/rename-map.json`） | 294/294 port 声明归位，0 未登记孤儿，13/13 GLSL 字面量逐字相同 |
 | 像素对拍（probe-shim 确定性泵；29 格 = 位置 × 状态；每格两侧各 4 次自比交错建带宽，再跨侧） | 29/29 PASS，27 格跨侧 meanAbsDiff = 0；过程中抓到并修掉一个真移植差异（Q17 导航主题死分支） |
@@ -30,11 +30,11 @@ three-msdf-text-utils@1.5.0（偏差 6.8）。
 
 ### 镜像
 
-- 2026-08-10 完成全站镜像：`legacy-mirror/`，508 文件 / 约 37MB（含双端 webp+ktx2 纹理变体），清单见 `legacy-mirror/mirror-manifest.json`
-- 逆向坐标系：`legacy-mirror/_pretty/`（js-beautify@1.15.1 钉死版本展开）
-  - `lando.OFF+BRAND.gold-android-fix-03.pretty.js` — 主应用 bundle，47,120 行
-  - `transitions-rive-isolate.pretty.js` — 已停用的历史过渡脚本（4,210 行，HTML 中被注释）
-  - `lando-offbrand.webflow.pretty.js` / `lando-offbrand.schunk.pretty.js` — Webflow 平台运行时
+- 2026-08-10 完成全站镜像：`mirror/`，508 文件 / 约 37MB（含双端 webp+ktx2 纹理变体），清单见 `mirror/mirror-manifest.json`
+- 逆向坐标系：`mirror/_pretty/`（js-beautify@1.15.1 钉死版本展开）
+  - `lando.OFF+BRAND.gold-android-fix-03.js` — 主应用 bundle，47,120 行
+  - `transitions-rive-isolate.js` — 已停用的历史过渡脚本（4,210 行，HTML 中被注释）
+  - `lando-offbrand.751e0867.148dc658e77a3916.js` / `lando-offbrand.schunk.79b71263bda4d666.js` — Webflow 平台运行时
 
 ## 镜像方式（scripts/mirror-site.mjs）
 
@@ -48,7 +48,7 @@ three-msdf-text-utils@1.5.0（偏差 6.8）。
    - Rive 基址 `mj="https://lando.itsoffbrand.io/rive/"`：8 个 .riv
    - Rive WASM：unpkg `@rive-app/canvas-lite@2.26.4` / `@2.26.6`
 
-已知未入镜像（全部有登记，`legacy-mirror/external.txt` + REBUILD_PLAN 6.13）：Webflow GA 反代 blob（`/avljl.../...`，逐次动态，本地 stub）、Klaviyo/iubenda cookie banner 的二级加载（两者的 `<script>` 在每个页面里都被注释掉了，从不执行）、Webflow 占位图 `placeholder.60f9b1840c.svg`（源站 CDN 对任何访客 403）。账本：`mirror-manifest.json`（url → path/bytes/type/sha256，+ aliases）、`inventory.tsv`、`urlpath-policy.json`。
+已知未入镜像（全部有登记，`mirror/external.txt` + REBUILD_PLAN 6.13）：Webflow GA 反代 blob（`/avljl.../...`，逐次动态，本地 stub）、Klaviyo/iubenda cookie banner 的二级加载（两者的 `<script>` 在每个页面里都被注释掉了，从不执行）、Webflow 占位图 `placeholder.60f9b1840c.svg`（源站 CDN 对任何访客 403）。账本：`mirror-manifest.json`（url → path/bytes/type/sha256，+ aliases）、`inventory.tsv`、`urlpath-policy.json`。
 
 ## 源站技术栈（Phase 0 逆向结论，证据在 _pretty 行号）
 
@@ -85,7 +85,7 @@ three-msdf-text-utils@1.5.0（偏差 6.8）。
 ## 目录
 
 ```
-legacy-mirror/          源站镜像（URL 空间 1:1 落盘，只读）
+mirror/          源站镜像（URL 空间 1:1 落盘，只读）
   assets/<host>/<path>  跨域资产按 host 组织
   _pretty/              js-beautify@1.15.1 展开的 bundle（逆向行号坐标系）
   mirror-manifest.json  权威清单（url → path/bytes/type/sha256 + aliases）

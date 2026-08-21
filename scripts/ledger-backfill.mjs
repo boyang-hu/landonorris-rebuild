@@ -13,7 +13,7 @@
  * verbatim and listed, never dropped: the ledger must keep saying what was
  * attempted. Idempotent.
  *
- *   node scripts/ledger-backfill.mjs [--mirror legacy-mirror] [--check]
+ *   node scripts/ledger-backfill.mjs [--mirror mirror] [--check]
  */
 import { createHash } from 'node:crypto';
 import { readFile, writeFile, stat } from 'node:fs/promises';
@@ -22,7 +22,7 @@ import { join } from 'node:path';
 
 const args = process.argv.slice(2);
 const flag = (n, d) => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : d; };
-const MIRROR = flag('mirror', 'legacy-mirror');
+const MIRROR = flag('mirror', 'mirror');
 const CHECK = args.includes('--check');
 
 const sha256 = (p) => new Promise((res, rej) => {

@@ -18,7 +18,7 @@
  *     mapping chooses (file renamed, bytes + sha256 unchanged) instead of
  *     lying in the policy.
  *
- *   node scripts/ledger-reconcile.mjs [--mirror legacy-mirror]
+ *   node scripts/ledger-reconcile.mjs [--mirror mirror]
  */
 import { readFile, writeFile, rename, stat } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -26,7 +26,7 @@ import { localRelPath, loadPolicy, savePolicy, normalizePolicy } from './skill/l
 
 const args = process.argv.slice(2);
 const flag = (n, d) => { const i = args.indexOf('--' + n); return i >= 0 ? args[i + 1] : d; };
-const MIRROR = flag('mirror', 'legacy-mirror');
+const MIRROR = flag('mirror', 'mirror');
 const ORIGIN_HOST = 'landonorris.com';
 
 const ALIASES = {
