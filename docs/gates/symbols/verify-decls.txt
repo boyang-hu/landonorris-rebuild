@@ -1,0 +1,324 @@
+$ node /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/verify-decls.mjs --port /Users/boyang/Documents/GitHub/landonorris-rebuild/port/_gen/app.gen.js --src /Users/boyang/Documents/GitHub/landonorris-rebuild/src/app --map /Users/boyang/Documents/GitHub/landonorris-rebuild/docs/rename-map.json --list
+exit 1
+
+=== verify-decls  port=/Users/boyang/Documents/GitHub/landonorris-rebuild/port/_gen/app.gen.js (294 declarations)  src=/Users/boyang/Documents/GitHub/landonorris-rebuild/src/app (231 declarations)  map=/Users/boyang/Documents/GitHub/landonorris-rebuild/docs/rename-map.json ===
+
+--- 1 coverage: 294/294 port declarations classified (208 declarations, 8 collapsed, 77 plumbing, 1 omitted-registered) ---
+  info omitted e2: dead store: `e2 = K` (9967, the hamburger Rive instance) is assigned and never read; not ported — quirk Q14 / REBUILD_PLAN §6.16
+  ok   every port declaration is classified
+  ok   no stale map entries
+
+--- 2 targets: 212 mapped targets checked against src ---
+  ok   every mapped target exists in src
+  info 2 src name(s) declared in more than one file (qualify targets as path#name): COLOR_MAP instances
+
+--- 3 injective: 208 declaration mappings ---
+  ok   injective outside registered collapses
+  info collapsed k_ + j_ -> hideBrand: source declares the byte-identical function twice (partnerships k_ 46016, not-found j_ 46134); src keeps one (structural rewrite, REBUILD_PLAN §6.16)
+  info collapsed w_ + __ -> showBrand: same pair for show (w_ 46024, __ 46142); REBUILD_PLAN §6.16
+  info collapsed dK + KI -> navState: two module flags (dK hamburger inputs, KI menu-open) folded into one state object navState {hamburgerInputs, menuOpen} (rive/preload.ts:44); REBUILD_PLAN §6.16
+  info collapsed mj + cj -> PAGE_TRANSITION_SRC: mj = rive base, cj = mj + "page-transition.riv" (41743/41746) folded into one constant; REBUILD_PLAN §6.16
+
+--- 4 orphans: 233 src declarations checked for a port ancestor ---
+  ok   no unregistered orphans (21 registered)
+
+--- 5 content: template-string constants ---
+  FAIL GN -> trackFrag: literal differs (port 1452 chars, src 1129 chars)
+
+--- full table ---
+BD    L   34 function   -> detectBrowser
+ED    L   41 function   -> resetWebflow
+ID    L   46 function   -> refreshCurrentLinks
+CD    L   56 function   -> printBanner
+KD    L   75 function   -> watchBreakpointReload
+dR    L 9409 function   -> applyScrollerDefaults
+t2    L 9416 function   -> debounce
+r2    L 9424 chain      -> plumbing: gsap defaults object `{}` (r2 = {}; E1.defaults(r2)) — inlined as the literal in gsap.ts:15 `gsap.defaults({})`
+uR    L 9424 chain      -> SCROLLER
+m     L 9424 chain      -> plumbing: import alias: m = gsap (E1) — `import { gsap as m }` everywhere in src
+LB    L 9426 wrapper    -> plumbing: esbuild __esm init wrapper — registerPlugin(ScrollTrigger, MotionPathPlugin, SplitText), defaults, applyScrollerDefaults(), resize debounce; in src the module body is the module scope of gsap.ts
+g8    L 9439 function   -> setMenuClosedState
+HE    L 9447 function   -> setHamburgerTheme
+kI    L 9457 function   -> preloadAllRiveFiles
+mR    L 9474 function   -> settle
+sR    L 9482 function   -> dispatchComponentsReady
+A4    L 9487 function   -> loadRiveFile
+cR    L 9502 function   -> riveUrl
+u8    L 9507 function   -> fitFromAttr
+lR    L 9521 function   -> resizeAll
+IH    L 9527 function   -> instanceOf
+Q4    L 9531 function   -> cleanupCanvas
+CH    L 9546 function   -> playOnEnter
+oR    L 9574 function   -> bindScrollDriven
+KH    L 9670 function   -> isInHeroContainer
+B4    L 9679 function   -> initReef
+E4    L 9736 function   -> initSignature
+I4    L 9791 function   -> initCircuits
+C4    L 9870 function   -> initBtnUi
+iR    L 9926 function   -> initNavHamburger
+K4    L 9996 function   -> initPhrases
+nR    L10043 function   -> initLn4Logo
+pK    L10099 function   -> setLogoActive
+AC    L10109 function   -> setLogoColor
+S1    L10135 function   -> initRiveComponents
+o0    L10139 function   -> fireHeroRiveAnimations
+aR    L10191 class      -> MobileLandscape
+rR    L10254 function   -> createMobileLandscape
+jQ    L10257 chain      -> plumbing: import binding: jQ = __toESM(require_rive()) — `import * as rive from "@rive-app/canvas-lite"` (rive/preload.ts)
+UI    L10257 chain      -> rive/preload.ts#instances
+JI    L10257 chain      -> pendingCount
+s0    L10257 chain      -> allLoaded
+pR    L10257 chain      -> RIVE_BASE
+p6    L10257 chain      -> RIVE_MANIFEST
+DB    L10257 chain      -> fileCache
+e2    L10257 chain      -> omitted: dead store: `e2 = K` (9967, the hamburger Rive instance) is assigned and never read; not ported — quirk Q14 / REBUILD_PLAN §6.16
+dK    L10257 chain      -> navState (collapsed)
+KI    L10257 chain      -> navState (collapsed)
+JH    L10257 chain      -> logoRegistry
+vC    L10264 wrapper    -> plumbing: esbuild __esm init wrapper — runtime import, RIVE_MANIFEST (p6), caches, window.loadedRiveFiles; in src the module body is the module scope of rive/preload.ts
+tR    L10282 class      -> WebGLSupport
+eR    L10331 var        -> plumbing: alias: eR = tR (AX wrapper 10331) — src imports WebGLSupport directly
+AX    L10332 wrapper    -> plumbing: esbuild __esm init wrapper — eR = tR; src has no alias
+Y9    L30145 class      -> Camera
+g5    L30153 wrapper    -> plumbing: esbuild __esm init wrapper — camera module deps; in src the module body is the module scope of gl/core/app.ts
+$9    L30157 class      -> Renderer
+u5    L30177 wrapper    -> plumbing: esbuild __esm init wrapper — renderer module deps; in src the module body is the module scope of gl/core/app.ts
+W9    L30716 class      -> HeadDefault
+c5    L30813 wrapper    -> plumbing: esbuild __esm init wrapper — HeadDefault module deps; in src the module body is the module scope of gl/scenes/head.ts
+FT    L30943 chain      -> randomGoogleVariant
+R9    L30943 chain      -> plumbing: alias: R9 = FT (EY 30943) — src reads randomGoogleVariant() directly
+EY    L30944 wrapper    -> plumbing: esbuild __esm init wrapper whose whole body is `FT = Math.random() > 0.5` — ported as the function randomGoogleVariant (head.ts:36)
+o5    L30948 function   -> createLensFlareMaterial
+i5    L31017 function   -> createDiscoMaterial
+n5    L31094 wrapper    -> plumbing: esbuild __esm init wrapper — DiscoController deps; in src the module body is the module scope of gl/scenes/head.ts
+I8    L31098 class      -> DiscoController
+X9    L31160 wrapper    -> plumbing: esbuild __esm init wrapper — Helmet deps; in src the module body is the module scope of gl/scenes/head.ts
+F9    L31166 class      -> Helmet
+a5    L31375 wrapper    -> plumbing: esbuild __esm init wrapper — LightingDefault deps; in src the module body is the module scope of gl/scenes/head.ts
+N9    L31383 class      -> LightingDefault
+r5    L31389 wrapper    -> plumbing: esbuild __esm init wrapper — HeadScene deps; in src the module body is the module scope of gl/scenes/head.ts
+O9    L31393 class      -> HeadScene
+t5    L32003 wrapper    -> plumbing: esbuild __esm init wrapper — head module aggregate init (calls c5 a5 r5); in src the module body is the module scope of gl/scenes/head.ts
+V9    L32503 class      -> TrackPoint
+JN    L32514 wrapper    -> plumbing: esbuild __esm init wrapper — TrackPoint/Tracks deps; in src the module body is the module scope of gl/scenes/tracks.ts
+z9    L32517 class      -> Tracks
+UN    L32850 string     -> trackVert
+GN    L32850 string     -> trackFrag
+ZN    L32940 wrapper    -> plumbing: esbuild __esm init wrapper — TracksScene deps; in src the module body is the module scope of gl/scenes/tracks.ts
+k9    L32946 class      -> TracksScene
+HN    L33063 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of gl/scenes/background.ts
+w9    L33073 class      -> BackgroundScene
+qN    L33176 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of gl/scenes/background.ts
+sN    L33998 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of gl/scenes/carousel.ts
+_9    L34003 class      -> CarouselScene
+oN    L34179 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of gl/scenes/helmetScroll.ts
+y9    L34186 class      -> HelmetScrollScene
+iN    L34415 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of gl/scenes/notFound.ts
+x9    L34422 class      -> NotFoundScene
+nN    L34755 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of gl/noise.ts
+f9    L34762 class      -> BackgroundNoise
+aN    L34871 wrapper    -> plumbing: esbuild __esm init wrapper — shader module deps; in src the module body is the module scope of gl/fluid.ts
+AI    L34875 string     -> faceVert
+KK    L34890 empty-init -> plumbing: esbuild empty init (side-effect-free GLSL module) — fluid.ts
+tN    L34891 string     -> colorFrag
+rN    L34906 empty-init -> plumbing: esbuild empty init — fluid.ts
+AO    L34907 string     -> lineVert
+eN    L34922 empty-init -> plumbing: esbuild empty init — fluid.ts
+qY    L34923 string     -> advectionFrag
+QO    L34964 empty-init -> plumbing: esbuild empty init — fluid.ts
+zE    L34965 class      -> ShaderPass
+JK    L34976 wrapper    -> plumbing: esbuild __esm init wrapper — ShaderPass deps; in src the module body is the module scope of gl/fluid.ts
+b9    L34980 var        -> Advection
+BO    L34981 wrapper    -> plumbing: esbuild __esm init wrapper — b9 Advection class body (hoisted var b9 = class …); in src the module body is the module scope of gl/fluid.ts
+IO    L35044 string     -> mouseVert
+EO    L35059 empty-init -> plumbing: esbuild empty init — fluid.ts
+KO    L35060 string     -> mouseFrag
+CO    L35075 empty-init -> plumbing: esbuild empty init — fluid.ts
+wJ    L35076 class      -> FluidMouse
+YY    L35104 wrapper    -> plumbing: esbuild __esm init wrapper — FluidMouse deps; in src the module body is the module scope of gl/fluid.ts
+h9    L35108 var        -> ExternalForce
+JO    L35109 wrapper    -> plumbing: esbuild __esm init wrapper — h9 ExternalForce class body; in src the module body is the module scope of gl/fluid.ts
+GO    L35158 string     -> viscousFrag
+UO    L35181 empty-init -> plumbing: esbuild empty init — fluid.ts
+v9    L35182 var        -> Viscous
+ZO    L35183 wrapper    -> plumbing: esbuild __esm init wrapper — v9 Viscous class body; in src the module body is the module scope of gl/fluid.ts
+qO    L35237 string     -> divergenceFrag
+HO    L35253 empty-init -> plumbing: esbuild empty init — fluid.ts
+g9    L35254 var        -> Divergence
+YO    L35255 wrapper    -> plumbing: esbuild __esm init wrapper — g9 Divergence class body; in src the module body is the module scope of gl/fluid.ts
+DO    L35291 string     -> poissonFrag
+$O    L35310 empty-init -> plumbing: esbuild empty init — fluid.ts
+u9    L35311 var        -> Poisson
+WO    L35312 wrapper    -> plumbing: esbuild __esm init wrapper — u9 Poisson class body; in src the module body is the module scope of gl/fluid.ts
+XO    L35359 string     -> pressureFrag
+RO    L35380 empty-init -> plumbing: esbuild empty init — fluid.ts
+d9    L35381 var        -> Pressure
+FO    L35382 wrapper    -> plumbing: esbuild __esm init wrapper — d9 Pressure class body; in src the module body is the module scope of gl/fluid.ts
+p9    L35422 class      -> FluidSimulation
+NO    L35535 wrapper    -> plumbing: esbuild __esm init wrapper — FluidSimulation deps; in src the module body is the module scope of gl/fluid.ts
+m9    L35545 class      -> FluidCursor
+OO    L35569 wrapper    -> plumbing: esbuild __esm init wrapper — FluidCursor deps; in src the module body is the module scope of gl/fluid.ts
+c9    L35577 class      -> IdleState
+MO    L35627 wrapper    -> plumbing: esbuild __esm init wrapper — IdleState deps; in src the module body is the module scope of gl/fluid.ts
+VO    L35632 string     -> simplexChunk
+LO    L35706 empty-init -> plumbing: esbuild empty init — noise.ts (simplex chunk module)
+l9    L35707 class      -> World
+zO    L35781 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of gl/world.ts
+PJ    L35795 class      -> EventEmitter
+s9    L35854 var        -> Time
+kO    L35855 wrapper    -> plumbing: esbuild __esm init wrapper — s9 Time class body; in src the module body is the module scope of gl/core/support.ts
+o9    L35878 var        -> Sizes
+wO    L35879 wrapper    -> plumbing: esbuild __esm init wrapper — o9 Sizes class body; in src the module body is the module scope of gl/core/support.ts
+t9    L38005 class      -> Debug
+tO    L38017 wrapper    -> plumbing: esbuild __esm init wrapper — Debug deps; in src the module body is the module scope of gl/core/app.ts
+e9    L38022 class      -> Mouse
+eO    L38114 wrapper    -> plumbing: esbuild __esm init wrapper — Mouse deps; in src the module body is the module scope of gl/core/support.ts
+AZ    L38118 class      -> ShaderChunks
+BZ    L41232 class      -> Assets
+tM    L41439 wrapper    -> plumbing: esbuild __esm init wrapper — deps (three loaders); in src the module body is the module scope of gl/core/Assets.ts
+RQ    L41448 class      -> GL
+G$    L41506 var        -> singleton
+_B    L41507 wrapper    -> plumbing: esbuild __esm init wrapper — GL app module deps; in src the module body is the module scope of gl/core/app.ts
+eM    L41520 function   -> glLoad
+AL    L41523 function   -> glInit
+yU    L41527 function   -> glAdd
+QL    L41531 function   -> glDestroyWorld
+vQ    L41534 chain      -> GL_BASE
+iQ    L41534 chain      -> texFormat
+bI    L41534 chain      -> app
+EZ    L41536 wrapper    -> initLandoGL
+BL    L41687 function   -> loadPageTransition
+EL    L41725 function   -> transitionOut
+H$    L41733 function   -> transitionIn
+xU    L41744 chain      -> plumbing: import binding: xU = __toESM(require_rive()) in the page-transition module (transition.ts imports rive)
+mj    L41744 chain      -> PAGE_TRANSITION_SRC (collapsed)
+cj    L41744 chain      -> PAGE_TRANSITION_SRC (collapsed)
+ZK    L41744 chain      -> wrap
+IZ    L41744 chain      -> canvas
+Z$    L41744 chain      -> btn
+xJ    L41744 chain      -> inputs
+lj    L41744 chain      -> transition.ts#instances
+q$    L41746 wrapper    -> initDom
+FL    L42435 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of components/text.ts
+JZ    L42439 class      -> SplitTextManager
+e0    L42556 function   -> initOvalScroll
+AE    L42643 function   -> initAnimHigh
+UZ    L42718 function   -> initStatListReveal
+QE    L42776 function   -> initTextHover
+fJ    L42829 function   -> initImgHighlight
+NL    L42893 function   -> initCarCounter
+k0    L42930 function   -> playHeroTextTimelines
+GZ    L42944 function   -> formatText
+A_    L42948 function   -> applyFlexDisplay
+Q_    L42959 function   -> cleanupFormatting
+B_    L42967 function   -> formatPositions
+E_    L42980 function   -> formatRounds
+OL    L42993 function   -> initRichTextReveal
+F$    L43121 function   -> cleanupRichTextReveal
+N$    L43129 var        -> plumbing: alias: N$ = JZ (43155) — the export name of SplitTextManager
+VC    L43130 wrapper    -> plumbing: esbuild __esm init wrapper — JZ.prototype._ensureScreenReaderClone & co. (43129-43155) are SplitTextManager methods in src; in src the module body is the module scope of components/text.ts
+I_    L43159 function   -> initHorizontalScroll
+C_    L43233 function   -> initHorizontalTextReveal
+Z8    L43294 function   -> initHorizontalSections
+H8    L43298 function   -> killHorizontalSections
+O$    L43304 function   -> initMarquees
+LL    L43375 function   -> destroyMarquees
+ZZ    L43393 function   -> initHelmetGrid
+HZ    L43426 function   -> resetHelmetGrid
+q8    L43438 function   -> initSocialCallout
+bJ    L43716 function   -> initCampCollection
+K_    L43742 function   -> killCampTriggers
+ML    L43751 var        -> horizontalTweens
+qK    L43752 wrapper    -> plumbing: esbuild __esm init wrapper — ML = new Map (horizontalTweens); in src the module body is the module scope of components/layout.ts
+VL    L43756 chain      -> hideTimer
+vU    L43756 chain      -> visible
+J_    L43756 chain      -> HIDE_DELAY
+qZ    L43756 chain      -> createScrollIndicator
+zL    L43844 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of components/scrollIndicator.ts
+L$    L43848 function   -> initNavScale
+V$    L43911 function   -> initNavTheme
+kL    L44002 function   -> initNavMenu
+M$    L44400 chain      -> plumbing: import binding: M$ = __toESM(require_rive()) in the nav module (nav.ts imports rive as riveNS)
+hJ    L44400 chain      -> navScaleTween
+wL    L44401 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of components/nav.ts
+YZ    L44407 function   -> destroyAllVideos
+U_    L44410 var        -> vimeoManager
+z$    L44411 wrapper    -> plumbing: esbuild __esm init wrapper — U_ = (() => {…})() IIFE (44411-44583); its inner bindings are module-scope declarations in vimeo.ts; in src the module body is the module scope of components/vimeo.ts
+PL    L44587 function   -> initGlColorTracks
+$Z    L44660 var        -> triggers
+SL    L44661 wrapper    -> plumbing: esbuild __esm init wrapper — $Z = [] (triggers); in src the module body is the module scope of components/glBridge.ts
+Z_    L44666 function   -> initStickyHeroSequence
+H_    L44724 function   -> initOtotSection
+k$    L44761 function   -> initOtotBottomParallax
+q_    L44779 function   -> initExeVisor
+Y_    L44796 function   -> initExeSection
+$_    L44827 function   -> initHomeSwipeToggle
+D_    L44913 function   -> destroyHomeSwipeToggle
+w$    L44925 function   -> initHomePage
+W_    L44934 function   -> killStickyHero
+R_    L44940 function   -> killHeroAnim
+X_    L44946 function   -> killOtot
+F_    L44952 function   -> killOtotBottom
+N_    L44958 function   -> killExeVisor
+O_    L44964 function   -> killExeSection
+M_    L44970 function   -> killSocialCallout
+TL    L44980 function   -> cleanupHomePage
+w0    L44988 var        -> swipeState
+P$    L44989 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of pages/home.ts
+S$    L45003 function   -> initCountdowns
+jL    L45046 function   -> clearCountdowns
+L_    L45053 function   -> initPodiumParallax
+T$    L45084 function   -> initStatHover
+V_    L45198 function   -> initPodiumScrub
+j$    L45290 function   -> initCalendarSync
+_L    L45621 function   -> initHeroflipGl
+_$    L45780 function   -> initOnTrackPage
+yL    L45792 function   -> cleanupOnTrackPage
+y$    L45823 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of pages/onTrack.ts
+z_    L45831 function   -> initHeroflipImages
+x$    L45983 function   -> initOffTrackPage
+xL    L45990 function   -> cleanupOffTrackPage
+DZ    L45994 var        -> heroflipCleanup
+fL    L45995 wrapper    -> plumbing: esbuild __esm init wrapper — deps; in src the module body is the module scope of pages/offTrack.ts
+f$    L46003 function   -> initPartnershipsPage
+bL    L46010 function   -> cleanupPartnershipsPage
+hL    L46011 wrapper    -> plumbing: esbuild __esm init wrapper — partnerships deps; in src the module body is the module scope of pages/misc.ts
+k_    L46017 function   -> hideBrand (collapsed)
+w_    L46025 function   -> showBrand (collapsed)
+P_    L46033 function   -> pruneEmptyMoreList
+WZ    L46042 function   -> initPartnershipsItemPage
+vL    L46051 function   -> cleanupPartnershipsItemPage
+gL    L46054 wrapper    -> plumbing: esbuild __esm init wrapper — partnerships-item deps; in src the module body is the module scope of pages/misc.ts
+S_    L46060 function   -> initCalendarHistory
+b$    L46107 function   -> initCalendarPage
+uL    L46115 wrapper    -> plumbing: esbuild __esm init wrapper — calendar deps; in src the module body is the module scope of pages/misc.ts
+T_    L46122 function   -> initGlSwitchers
+j_    L46135 function   -> hideBrand (collapsed)
+__    L46143 function   -> showBrand (collapsed)
+h$    L46151 function   -> initNotFoundPage
+dL    L46159 function   -> cleanupNotFoundPage
+pL    L46162 wrapper    -> plumbing: esbuild __esm init wrapper — not-found deps; in src the module body is the module scope of pages/misc.ts
+mL    L46167 function   -> initialLoad
+cL    L46238 function   -> transitionEnter
+lL    L46298 function   -> transitionLeave
+v$    L46338 chain      -> TRANSITION_MS
+YK    L46338 chain      -> scrollIndicator
+RZ    L46338 chain      -> splitManager
+oB    L46338 chain      -> PAGES
+g$    L46338 chain      -> EVENTS
+sL    L46341 wrapper    -> plumbing: esbuild __esm init wrapper — deps + oB/g$ constant objects (PAGES/EVENTS); in src the module body is the module scope of lifecycle.ts
+nL    L46373 empty-ns   -> plumbing: esbuild empty namespace object for the sL module (nL = {}; imported by the entry as a side-effect module)
+oL    L46377 chain      -> DefaultTransition
+iL    L46377 chain      -> DefaultRenderer
+y_    L46377 chain      -> core
+aL    L46378 wrapper    -> initRouter
+AV    L47012 wrapper    -> plumbing: esbuild __esm init wrapper — Y8 = { passive: false } listener-options literal, inlined in scroll.ts; in src the module body is the module scope of scroll.ts
+BV    L47017 empty-ns   -> plumbing: esbuild empty namespace object for the Lenis-manager module (BV = {})
+QV    L47021 class      -> LenisManager
+d$    L47092 chain      -> manager
+p_    L47092 chain      -> plumbing: alias: p_ = d$ (47097) — the module export of the LenisManager singleton (src: getScrollManager reads `manager` directly)
+EV    L47093 wrapper    -> initScroll
+m_    L47107 function   -> allRiveLoaded
+c_    L47114 function   -> boot
+
+FAIL — 1 assertion(s) failed.

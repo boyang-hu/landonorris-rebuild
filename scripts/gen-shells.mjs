@@ -13,6 +13,7 @@
  */
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
+import { rewriteExt } from './lib/ext-rewrite.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const MIRROR = join(ROOT, 'legacy-mirror');
@@ -27,17 +28,6 @@ const PAGES = [
   'legal/privacy-policy/index.html',
   'legal/terms-conditions/index.html',
   '404.html',
-];
-
-const EXT_HOSTS = [
-  'cdn.prod.website-files.com',
-  'lando.itsoffbrand.io',
-  'assets.itsoffbrand.io',
-  'd3e54v103j8qbb.cloudfront.net',
-  'static.klaviyo.com',
-  'cs.iubenda.com',
-  'cdn.iubenda.com',
-  'unpkg.com',
 ];
 
 const APP_BUNDLE_TAG =
@@ -56,14 +46,15 @@ function transform(html) {
   if (!APP_BUNDLE_TAG.test(html)) throw new Error('active OFF+BRAND bundle tag not found');
   html = html.replace(APP_BUNDLE_TAG, '<script type="module" src="/src/app/main.ts"></script>');
 
-  // 2. local asset routing. Absolute https:// URLs everywhere; the protocol-
-  // relative form only appears in markup (see serve.mjs note on JS concat).
-  for (const h of EXT_HOSTS) {
-    html = html
-      .replaceAll(`https://${h}/`, `/ext/${h}/`)
-      .replaceAll(`http://${h}/`, `/ext/${h}/`)
-      .replaceAll(`//${h}/`, `/ext/${h}/`);
-  }
+  // 2. local asset routing (deviation 6.2): every spelling of an external-host
+  // absolute URL -> /ext/<host>/..., via the one shared rewriter (lib/ext-rewrite.mjs)
+  // that postbuild.mjs also applies to the text assets under dist/ext.
+  html = rewriteExt(html, '.html');
+  // Rewritten bytes can no longer match their SRI hashes: the Webflow CSS/JS
+  // under dist/ext are rewritten copies (postbuild.mjs), so Chrome would block
+  // them ("Failed to find a valid digest", Log domain). Same rule as the mirror
+  // serve layer (deviation 6.10), applied at build time.
+  html = html.replace(/ integrity="[^"]*"/g, '');
 
   // 4. DOM-equivalent normalization (deviation 6.5): the source home page has one
   // malformed SVG attribute boundary (`..."stroke="currentColor"`, quirk Q5) that

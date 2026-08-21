@@ -1,0 +1,41 @@
+$ node scripts/skill/probe.mjs http://127.0.0.1:22001/partnerships --no-external --wait 8000 --mobile --scroll 0.5
+verdict: PASS
+
+
+[probe] target http://127.0.0.1:22001/partnerships (side MIRROR)
+[probe] cdp port 22011 = slot 1 / probe.cdp / side MIRROR
+
+=== console (13) ===
+[debug] Starting initial load...
+[debug] Starting basic initialization...
+[warning] Scroll indicator elements not found
+[log] No Reef Rive canvases found on page
+[log] No Signature Rive canvases found on page
+[log] div.utility__gl
+[debug] Initializing page: not-found
+[log] switchers NodeList(4)
+[log] gl Object
+[debug] Page enter started
+[debug] Page enter completed
+[log] %c
+   ██╗      █████╗ ███╗   ██╗██████╗  ██████╗ 
+   ██║     ██╔══██╗████╗  ██║██╔══██╗██╔═══██╗
+   ██║     ███████║██╔██╗ ██║██║  ██║██║   ██║
+   ██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║
+   ███████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝ 
+  %c
+   ███╗   ██╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
+   ████╗  ██║██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
+   ██╔██╗ ██║██║   ██║██████╔╝██████╔╝██║███████╗
+   ██║╚██╗██║██║   ██║██╔══██╗██╔══██╗██║╚════██║
+   ██║ ╚████║╚██████╔╝██║  ██║██║  ██║██║███████║
+   ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+  
+   %c%c color: #d2ff00; font: 400 1em monospace;  background-color: #d2ff00; color: black; font: 400 1em monospace; padding: 0.5em 0; font-weight: bold; 
+[log] resize issue prevention
+=== page errors (0) ===
+=== request failures (0) ===
+=== external requests (0, FATAL) ===
+
+RESULT: CLEAN

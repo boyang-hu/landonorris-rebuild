@@ -1,0 +1,34 @@
+$ node scripts/skill/probe.mjs http://127.0.0.1:22002/legal/terms-conditions --no-external --wait 8000 --scroll 0.5
+verdict: PASS
+
+
+[probe] target http://127.0.0.1:22002/legal/terms-conditions (side REBUILD)
+[probe] cdp port 22012 = slot 1 / probe.cdp / side REBUILD
+
+=== console (6) ===
+[debug] Starting basic initialization...
+[log] No Reef Rive canvases found on page
+[debug] Initializing page: legal
+[warning] No specific initialization for page: legal, initializing defaults
+[log] %c
+   ██╗      █████╗ ███╗   ██╗██████╗  ██████╗
+   ██║     ██╔══██╗████╗  ██║██╔══██╗██╔═══██╗
+   ██║     ███████║██╔██╗ ██║██║  ██║██║   ██║
+   ██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║
+   ███████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝
+  %c
+   ███╗   ██╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
+   ████╗  ██║██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
+   ██╔██╗ ██║██║   ██║██████╔╝██████╔╝██║███████╗
+   ██║╚██╗██║██║   ██║██╔══██╗██╔══██╗██║╚════██║
+   ██║ ╚████║╚██████╔╝██║  ██║██║  ██║██║███████║
+   ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+
+   %c%c color: #d2ff00; font: 400 1em monospace;  background-color: #d2ff00; color: black; font: 400 1em monospace; padding: 0.5em 0; font-weight: bold; 
+[log] resize issue prevention
+=== page errors (0) ===
+=== request failures (0) ===
+=== external requests (0, FATAL) ===
+
+RESULT: CLEAN

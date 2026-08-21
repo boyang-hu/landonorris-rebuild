@@ -1,0 +1,4 @@
+$ node /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/skill/extract-source.mjs --slices /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/slices.config.mjs --balance-check
+exit 0
+
+port/_gen/app.gen.js <- 29 verbatim slices, 9548 source lines, 0 exported symbols

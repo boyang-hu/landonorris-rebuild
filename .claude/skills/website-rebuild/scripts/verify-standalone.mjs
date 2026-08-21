@@ -1,0 +1,193 @@
+#!/usr/bin/env node
+/**
+ * verify-standalone.mjs — will src/ still run once it leaves this repo?
+ *
+ * The M(n+1) contract (readable-source.md §2) is: copy src/ anywhere, install
+ * offline, run, and the site comes up. In place, that contract is untestable —
+ * the project root sits one directory up with node_modules, mirror/ and its own
+ * package.json, and those three are exactly what self-containment has to do
+ * without. A dev server started in src/ resolves them happily and proves
+ * nothing (verification-gates.md §2.1: a gate must not depend on the thing it
+ * audits being nearby).
+ *
+ * Two halves:
+ *
+ *   static (default)  Scan every file for references that escape src/: "../",
+ *                     absolute paths into this repo, and mirror//port/ mentions.
+ *                     Cheap, deterministic, catches most breaks.
+ *
+ *   --full            Actually copy src/ to a temp dir outside the repo,
+ *                     npm install --offline, npm run build. Proves it.
+ *                     Then point probe.mjs at the result for CLEAN + no-egress.
+ *
+ * ⚠ Green here means "the ROUTES YOU BUILT resolve". An asset only referenced by
+ * an untested route can be missing and both halves still pass — run probe with
+ * --walk against the copy, and keep the asset ledger complete (§2.2: assets may
+ * be skipped for technical reasons only, never legal ones).
+ *
+ *   node scripts/verify-standalone.mjs [--src src] [--full] [--keep]
+ */
+import { readFile, readdir, stat, cp, mkdtemp, rm } from "node:fs/promises";
+import { spawn } from "node:child_process";
+import { tmpdir } from "node:os";
+import path from "node:path";
+
+const args = process.argv.slice(2);
+const has = (n) => args.includes("--" + n);
+const flag = (n, d) => {
+  const i = args.indexOf("--" + n);
+  return i >= 0 && args[i + 1] !== undefined ? args[i + 1] : d;
+};
+const SRC = path.resolve(flag("src", "src"));
+const ROOT = process.cwd();
+
+const SKIP_DIRS = new Set(["node_modules", ".git", "dist", ".output", ".astro", ".nuxt"]);
+const TEXT = /\.(m?[jt]sx?|vue|astro|svelte|css|scss|html|json|glsl|frag|vert|md)$/i;
+
+async function files(dir) {
+  const out = [];
+  const walk = async (d) => {
+    let entries;
+    try { entries = await readdir(d, { withFileTypes: true }); } catch { return; }
+    for (const e of entries) {
+      if (e.isDirectory()) { if (!SKIP_DIRS.has(e.name)) await walk(path.join(d, e.name)); continue; }
+      out.push(path.join(d, e.name));
+    }
+  };
+  await walk(dir);
+  return out;
+}
+
+// Escapes worth reporting. Each one is a concrete way the directory stops being
+// portable, so each gets its own label rather than one generic "bad path".
+// ⛔ `../` is not by itself an escape, and treating it as one made this gate's
+// first real run 102 false positives deep: `src/engine/*.js` importing
+// `../vendor-aliases.js` resolves to `src/vendor-aliases.js`, which is inside.
+// The question is where the path LANDS, so resolve it and compare.
+const escapesSrc = (file, spec) => {
+  const target = path.resolve(path.dirname(file), spec.replace(/^['"`\s(=]+/, ""));
+  return !target.startsWith(SRC + path.sep) && target !== SRC;
+};
+
+const ESCAPES = [
+  { id: "parent-relative", re: /(?:^|[\s'"`(=])\.\.\/[^\s'"`)]*/g, why: "resolves outside src/ once copied", resolve: true, codeOnly: true },
+  { id: "repo-absolute", re: new RegExp(ROOT.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "[^\\s'\"`)]*", "g"), why: "absolute path into this repo" },
+  { id: "mirror-ref", re: /\bmirror\/(?!manifest)[^\s'"`)]*/g, why: "reads the read-only mirror, which does not travel", codeOnly: true },
+  { id: "port-ref", re: /\bport\/_?gen[^\s'"`)]*/g, why: "reads the verbatim port, which does not travel", codeOnly: true },
+];
+
+console.log(`=== verify-standalone ===`);
+console.log(`  src   ${path.relative(ROOT, SRC)}\n`);
+
+if (!(await stat(SRC).catch(() => null))?.isDirectory()) {
+  console.log(`FATAL — ${SRC} is not a directory.`);
+  process.exit(5);
+}
+
+const all = await files(SRC);
+if (all.length === 0) {
+  console.log(`FATAL — src/ is empty. A gate that finds nothing agrees with everything.`);
+  process.exit(5);
+}
+
+const hits = [];
+for (const f of all.filter((f) => TEXT.test(f))) {
+  const text = await readFile(f, "utf8").catch(() => "");
+  const lines = text.split("\n");
+  for (const esc of ESCAPES) {
+    lines.forEach((l, i) => {
+      // A gate's own prose describing what it forbids is not a violation.
+      if (/^\s*(?:\/\/|\*|#|<!--)/.test(l)) return;
+      // Prose is not a dependency. A README pointing at ../REBUILD_PLAN.md
+      // describes where things live in the development repo; it cannot make the
+      // copied directory fail to run. Only code can actually reach for a path.
+      // ⚠ It CAN go stale in the copy, though — say "a mirror", not "../mirror".
+      if (esc.codeOnly && !/\.(m?[jt]sx?|vue|astro|svelte|css|scss|html|json)$/i.test(f)) return;
+      for (const m of l.matchAll(esc.re)) {
+        if (esc.resolve && !escapesSrc(f, m[0])) continue;
+        hits.push({ file: path.relative(ROOT, f), line: i + 1, id: esc.id, text: m[0].slice(0, 70), why: esc.why });
+      }
+    });
+  }
+}
+
+const pkg = await readFile(path.join(SRC, "package.json"), "utf8").then(JSON.parse).catch(() => null);
+let fail = 0;
+
+if (!pkg) {
+  fail++;
+  console.log(`  FAIL src/package.json missing — a directory without one is not a project.`);
+} else {
+  console.log(`  ok   src/package.json present (${pkg.name || "unnamed"})`);
+  const linked = Object.entries({ ...pkg.dependencies, ...pkg.devDependencies }).filter(([, v]) => /^(file:|link:|\.\.)/.test(String(v)));
+  if (linked.length) {
+    fail++;
+    console.log(`  FAIL ${linked.length} dependency(ies) point outside src/:`);
+    for (const [k, v] of linked) console.log(`         "${k}": "${v}"`);
+  } else console.log(`  ok   no file:/link: dependencies escaping src/`);
+}
+
+if (hits.length) {
+  fail++;
+  const byId = new Map();
+  for (const h of hits) byId.set(h.id, (byId.get(h.id) || []).concat(h));
+  console.log(`\n  FAIL ${hits.length} escaping reference(s):`);
+  for (const [id, list] of byId) {
+    console.log(`\n       ${id} (${list.length}) — ${list[0].why}`);
+    for (const h of list.slice(0, 8)) console.log(`         ${h.file}:${h.line}  ${h.text}`);
+    if (list.length > 8) console.log(`         … ${list.length - 8} more`);
+  }
+  console.log(`\n       Assets belong inside src/ (readable-source.md §2). Copying is required`);
+  console.log(`       here — the no-copy policy applies to port/, and reverses at this stage.`);
+} else console.log(`  ok   no references escape src/ (${all.length} files scanned)`);
+
+if (!has("full")) {
+  console.log(`\n  ⚠    static half only. Run with --full to copy out, install offline and build.`);
+  console.log(fail ? `\nFAIL — ${fail} assertion(s) failed.` : `\nPASS — static assertions only.`);
+  process.exit(fail ? 1 : 0);
+}
+
+// --- full half: prove it outside the repo ---------------------------------
+const run = (cmd, cwd) =>
+  new Promise((res) => {
+    const p = spawn(cmd[0], cmd.slice(1), { cwd, stdio: ["ignore", "pipe", "pipe"] });
+    let out = "";
+    p.stdout.on("data", (d) => (out += d));
+    p.stderr.on("data", (d) => (out += d));
+    p.on("close", (code) => res({ code, out }));
+    p.on("error", (e) => res({ code: -1, out: String(e) }));
+  });
+
+const tmp = await mkdtemp(path.join(tmpdir(), "standalone-"));
+const dest = path.join(tmp, "src");
+console.log(`\n  copying to ${dest} (outside ${ROOT})`);
+await cp(SRC, dest, { recursive: true, filter: (s) => !SKIP_DIRS.has(path.basename(s)) });
+
+// ⛔ Not every deliverable has a build step, and assuming one made this gate
+// FAIL on a project that was fine: a site loaded through an importmap ships its
+// module tree as-is, so there is nothing to bundle. Run what the package
+// actually declares; say plainly when there is no build rather than inventing
+// a failure.
+const steps = [["npm", "install", "--offline", "--no-audit", "--no-fund"]];
+if (pkg?.scripts?.build) steps.push(["npm", "run", "build"]);
+else console.log(`  (no build script — nothing to bundle; the tree ships as source)`);
+
+for (const step of steps) {
+  process.stdout.write(`  ${step.join(" ")} … `);
+  const { code, out } = await run(step, dest);
+  if (code !== 0) {
+    fail++;
+    console.log(`FAIL (exit ${code})`);
+    console.log(out.split("\n").slice(-25).map((l) => "         " + l).join("\n"));
+    break;
+  }
+  console.log(`ok`);
+}
+
+if (has("keep")) console.log(`\n  kept: ${dest}`);
+else await rm(tmp, { recursive: true, force: true });
+
+console.log(`\n  ⚠    build success ≠ correct. Point probe.mjs --walk and the pixel gate at the`);
+console.log(`       copy: an asset only reachable from an untested route can still be missing.`);
+console.log(fail ? `\nFAIL — ${fail} assertion(s) failed.` : `\nPASS — copied out, installed offline, built.`);
+process.exit(fail ? 1 : 0);

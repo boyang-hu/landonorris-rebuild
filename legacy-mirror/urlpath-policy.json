@@ -1,0 +1,7 @@
+{
+  "_comment": "url -> local path query policy for this mirror (scripts/lib/urlpath.mjs). Serving or auditing the mirror under a different policy is a defect: verify-mirror.mjs reports it as MAPPING DRIFT.",
+  "ignore": [
+    "site"
+  ],
+  "only": null
+}

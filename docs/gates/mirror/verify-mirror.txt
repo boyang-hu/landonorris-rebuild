@@ -1,0 +1,42 @@
+$ node scripts/skill/verify-mirror.mjs --mirror legacy-mirror --origin https://landonorris.com --allow-missing legacy-mirror/external.txt --max-report 200
+
+=== verify-mirror  /Users/boyang/Documents/GitHub/landonorris-rebuild/legacy-mirror ===
+  origin        https://landonorris.com
+  ledger        551 files recorded, 6 failed rows
+  query policy: all params except [site]
+
+--- gate MAPPING INJECTIVITY ---
+  ok   recorded — 551 ledger rows -> 507 distinct files, injective on canonical URLs
+  ok   computed — lib/urlpath.mjs maps those URLs to 506 distinct paths
+  ok   drift — recorded paths agree with the mapping in force
+
+--- gate LEDGER CONSISTENCY ---
+  ok   on-disk — all 551 ledger rows resolve to a file
+  ok   bytes — sha256 + size verified against disk for 551 files
+  ok   coverage — 507 files on disk, all named by the ledger
+  ok   inventory — inventory.tsv agrees with the manifest on 551 rows
+  info 6 ledger row(s) record a FAILED fetch — each must be a registered deviation or be re-fetched (--seeds), not a silent hole:
+         https://cdn.prod.website-files.com/plugins/Basic/assets/placeholder.60f9b1840c.svg  (HTTP 403)
+         https://cdn.iubenda.com/cookie_solution/iubenda_cs/1.104.2/core-  (HTTP 404)
+         https://cdn.jsdelivr.net/npm/  (HTTP 400)
+         https://static.klaviyo.com/onsite/js/build  (HTTP 403)
+         https://assets.itsoffbrand.io/lando/rive/  (HTTP 404)
+         https://assets.itsoffbrand.io/lando/gl  (HTTP 404)
+
+--- gate AUTHENTICITY (a 200 is not proof you got the resource) ---
+  ok   interstitial — no mirrored file matches a known challenge/block body (15 patterns)
+  ok   type-confusion — every declared image / font / media / script body matches its own magic bytes
+  info 2 small-response lead(s) — far below their peers. NOT a failure: read
+       each one and confirm it is honestly small (a swatch, a stub, a short feed) rather
+       than a refusal body nobody has a pattern for yet:
+         assets/cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/js/lando-offbrand.751e0867.148dc658e77a3916.js  1062 B  (peer group js, median 57529 B)
+         assets/cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/68ea48448e634fcc425b0e28_transp.webp  94 B  (peer group webp, median 40078 B)
+
+--- gate CLOSURE (reference set − disk set = ∅) ---
+  info excuses from /Users/boyang/Documents/GitHub/landonorris-rebuild/legacy-mirror/external.txt: 52 exact URL(s), 0 whole-host, 0 declared prefix(es)
+  info scanned 126 text files (0 of them identified by sniffing the bytes, not by extension), 475 distinct references
+  ok   closure — reference set − disk set = ∅
+
+--- gate RESAMPLE — skipped (--resample N to re-check N URLs against the live origin) ---
+
+PASS — 0 mirror-level problem(s). A green run here is what makes the downstream render-level gates mean something.

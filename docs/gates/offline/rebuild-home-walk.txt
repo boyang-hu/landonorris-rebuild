@@ -1,0 +1,32 @@
+$ node scripts/skill/probe.mjs http://127.0.0.1:22002/ --no-external --wait 8000 --walk 16 --walk-dwell 700
+verdict: PASS
+
+
+[probe] target http://127.0.0.1:22002/ (side REBUILD)
+[probe] cdp port 22012 = slot 1 / probe.cdp / side REBUILD
+
+=== console (4) ===
+[debug] Starting basic initialization...
+[debug] Initializing page: home
+[log] %c
+   ██╗      █████╗ ███╗   ██╗██████╗  ██████╗
+   ██║     ██╔══██╗████╗  ██║██╔══██╗██╔═══██╗
+   ██║     ███████║██╔██╗ ██║██║  ██║██║   ██║
+   ██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║
+   ███████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝
+  %c
+   ███╗   ██╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
+   ████╗  ██║██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
+   ██╔██╗ ██║██║   ██║██████╔╝██████╔╝██║███████╗
+   ██║╚██╗██║██║   ██║██╔══██╗██╔══██╗██║╚════██║
+   ██║ ╚████║╚██████╔╝██║  ██║██║  ██║██║███████║
+   ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+
+   %c%c color: #d2ff00; font: 400 1em monospace;  background-color: #d2ff00; color: black; font: 400 1em monospace; padding: 0.5em 0; font-weight: bold; 
+[log] resize issue prevention
+=== page errors (0) ===
+=== request failures (0) ===
+=== external requests (0, FATAL) ===
+
+RESULT: CLEAN

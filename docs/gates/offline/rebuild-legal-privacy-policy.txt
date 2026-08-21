@@ -1,0 +1,38 @@
+$ node scripts/skill/probe.mjs http://127.0.0.1:22002/legal/privacy-policy --no-external --wait 8000 --scroll 0.5
+verdict: PASS (registered: 6.3-iubenda-badge-css, 6.3-iubenda-api, 6.3-iubenda-badge-css-host)
+
+
+[probe] target http://127.0.0.1:22002/legal/privacy-policy (side REBUILD)
+[probe] cdp port 22012 = slot 1 / probe.cdp / side REBUILD
+
+=== console (6) ===
+[debug] Starting basic initialization...
+[log] No Reef Rive canvases found on page
+[debug] Initializing page: legal
+[warning] No specific initialization for page: legal, initializing defaults
+[log] %c
+   ██╗      █████╗ ███╗   ██╗██████╗  ██████╗
+   ██║     ██╔══██╗████╗  ██║██╔══██╗██╔═══██╗
+   ██║     ███████║██╔██╗ ██║██║  ██║██║   ██║
+   ██║     ██╔══██║██║╚██╗██║██║  ██║██║   ██║
+   ███████╗██║  ██║██║ ╚████║██████╔╝╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝
+  %c
+   ███╗   ██╗ ██████╗ ██████╗ ██████╗ ██╗███████╗
+   ████╗  ██║██╔═══██╗██╔══██╗██╔══██╗██║██╔════╝
+   ██╔██╗ ██║██║   ██║██████╔╝██████╔╝██║███████╗
+   ██║╚██╗██║██║   ██║██╔══██╗██╔══██╗██║╚════██║
+   ██║ ╚████║╚██████╔╝██║  ██║██║  ██║██║███████║
+   ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+
+   %c%c color: #d2ff00; font: 400 1em monospace;  background-color: #d2ff00; color: black; font: 400 1em monospace; padding: 0.5em 0; font-weight: bold; 
+[log] resize issue prevention
+=== page errors (1) ===
+[network] Failed to load resource: net::ERR_CONNECTION_CLOSED
+=== request failures (1) ===
+FAILED net::ERR_CONNECTION_CLOSED https://ext/cdn.iubenda.com/iubenda_badge.css
+=== external requests (2, FATAL) ===
+1x www.iubenda.com
+1x ext
+
+RESULT: 4 problems

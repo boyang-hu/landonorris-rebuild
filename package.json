@@ -6,10 +6,18 @@
   "description": "1:1 engineering rebuild of landonorris.com for learning purposes",
   "scripts": {
     "dev": "vite --port 5180",
-    "build": "vite build && node scripts/postbuild.mjs",
-    "serve:mirror": "node scripts/serve.mjs --port 5177",
-    "serve:dist": "node scripts/serve.mjs --port 5178 --root dist",
-    "probe": "node scripts/probe.mjs"
+    "build": "node scripts/gen-shells.mjs && vite build && node scripts/postbuild.mjs",
+    "serve:mirror": "node scripts/skill/serve.mjs --side mirror --root legacy-mirror",
+    "serve:dist": "node scripts/skill/serve.mjs --side rebuild --root dist",
+    "probe": "node scripts/probe.mjs",
+    "shells": "node scripts/gen-shells.mjs",
+    "gate:mirror": "node scripts/run-gates.mjs mirror",
+    "gate:offline": "node scripts/run-gates.mjs offline",
+    "gate:symbols": "node scripts/run-gates.mjs symbols",
+    "gate:pixel": "node scripts/run-gates.mjs pixel",
+    "gates": "node scripts/run-gates.mjs all",
+    "zerodep": "node scripts/skill/verify-zerodep.mjs --dir scripts --tools tools",
+    "port:check": "node scripts/skill/extract-source.mjs --slices scripts/slices.config.mjs --check && node scripts/skill/extract-source.mjs --slices scripts/slices.config.mjs --balance-check"
   },
   "dependencies": {
     "@rive-app/canvas-lite": "2.26.4",

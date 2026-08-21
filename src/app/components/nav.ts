@@ -177,11 +177,20 @@ export function initNavTheme() {
 
   function build() {
     destroy();
-    if (TA) {
+    // Verbatim global lookup (43968): `window.ScrollTrigger || window.gsap && window.gsap.ScrollTrigger`.
+    // The source bundle never exposes gsap on window (esbuild ESM bundle), so on the live site
+    // this branch is DEAD and the nav theme is driven by the throttled nearest-section fallback
+    // below (quirk Q17). Porting it as `if (TA)` made the rebuild create 4 real ScrollTriggers +
+    // an extra ScrollTrigger.refresh() at +1s — the pixel gate caught the resulting theme
+    // mismatch at home 33% (mirror dark / rebuild light) and a heroflip timing difference.
+    const Z = (window as unknown as { ScrollTrigger?: typeof TA }).ScrollTrigger ||
+      ((window as unknown as { gsap?: { ScrollTrigger?: typeof TA } }).gsap &&
+        (window as unknown as { gsap?: { ScrollTrigger?: typeof TA } }).gsap!.ScrollTrigger);
+    if (Z) {
       targets.forEach((t) => {
         const theme = t.getAttribute('data-nav-theme-target');
         try {
-          const st = TA.create({
+          const st = Z.create({
             trigger: t,
             start: 'top top',
             end: 'bottom top',
@@ -196,7 +205,7 @@ export function initNavTheme() {
         }
       });
       try {
-        setTimeout(() => TA.refresh(), 1000);
+        setTimeout(() => Z.refresh(), 1000);
       } catch (e) {
         console.error('Error refreshing ScrollTrigger:', e);
       }

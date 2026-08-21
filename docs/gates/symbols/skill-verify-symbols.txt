@@ -1,0 +1,66 @@
+$ node /Users/boyang/Documents/GitHub/landonorris-rebuild/scripts/skill/verify-symbols.mjs --port /Users/boyang/Documents/GitHub/landonorris-rebuild/port/_gen --src /Users/boyang/Documents/GitHub/landonorris-rebuild/src/app --map /Users/boyang/Documents/GitHub/landonorris-rebuild/docs/gates/symbols/rename-map.symbols.json
+exit 1
+
+=== verify-symbols ===
+  port  port/_gen  260 top-level declarations
+  src   src/app  231 top-level declarations
+  map   216 renames, 20 registered orphans
+
+  FAIL 74 port declaration(s) absent from src/:
+         r2   port/_gen/app.gen.js:97
+         LB   port/_gen/app.gen.js:99
+         jQ   port/_gen/app.gen.js:930
+         vC   port/_gen/app.gen.js:937
+         eR   port/_gen/app.gen.js:1007
+         AX   port/_gen/app.gen.js:1008
+         g5   port/_gen/app.gen.js:1022
+         u5   port/_gen/app.gen.js:1046
+         c5   port/_gen/app.gen.js:1150
+         EY   port/_gen/app.gen.js:1159
+         n5   port/_gen/app.gen.js:1309
+         X9   port/_gen/app.gen.js:1375
+         a5   port/_gen/app.gen.js:1590
+         r5   port/_gen/app.gen.js:1604
+         t5   port/_gen/app.gen.js:2218
+         JN   port/_gen/app.gen.js:2241
+         ZN   port/_gen/app.gen.js:2667
+         HN   port/_gen/app.gen.js:2793
+         qN   port/_gen/app.gen.js:2906
+         sN   port/_gen/app.gen.js:2913
+         … 54 more
+
+  FAIL 2 src symbol(s) claimed by more than one port declaration:
+         hideBrand  ←  k_, j_
+         showBrand  ←  w_, __
+         two declarations collapsed into one is a structural rewrite (readable-source.md §3.4)
+
+  FAIL 27 src declaration(s) with no port origin:
+         navScaleTween   src/app/components/nav.ts:10
+         visible   src/app/components/scrollIndicator.ts:5
+         HIDE_DELAY   src/app/components/scrollIndicator.ts:6
+         createScrollIndicator   src/app/components/scrollIndicator.ts:14
+         app   src/app/gl/index.ts:10
+         texFormat   src/app/gl/params.ts:9
+         trackFrag   src/app/gl/scenes/tracks.ts:62
+         SCROLLER   src/app/gsap.ts:17
+         PAGES   src/app/lifecycle.ts:34
+         EVENTS   src/app/lifecycle.ts:47
+         scrollIndicator   src/app/lifecycle.ts:55
+         splitManager   src/app/lifecycle.ts:56
+         RIVE_BASE   src/app/rive/preload.ts:15
+         RIVE_MANIFEST   src/app/rive/preload.ts:18
+         instances   src/app/transition.ts:26
+         fileCache   src/app/rive/preload.ts:40
+         logoRegistry   src/app/rive/preload.ts:42
+         navState   src/app/rive/preload.ts:44
+         pendingCount   src/app/rive/preload.ts:49
+         allLoaded   src/app/rive/preload.ts:50
+         … 7 more
+         invented code, or a rename missing from the map. Register it in
+         REBUILD_PLAN §6 and add to allow_orphans, or remove it.
+
+  ⚠    identity only — this gate does not claim any of them behave correctly
+  ⚠    invented NAMES are invisible here: a wrong-but-plausible rename passes every
+       gate forever. Spot-check tier 2-4 entries by hand (readable-source.md §3.2).
+
+FAIL — 3 assertion(s) failed.

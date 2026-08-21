@@ -53,6 +53,8 @@ const trackVert = `
 
     gl_Position = projectionMatrix * modelViewMatrix * p;
 
+    // gl_Position = projectionMatrix * modelViewMatrix * vec4(position + normal * uThickness, 1.0);
+
     vUv = uv;
   }
 `;
@@ -68,24 +70,29 @@ const trackFrag = `
   varying vec2 vN;
 
   void main() {
-    // Color
+    // Color 
     vec3 cYellow = vec3(0.824, 1.0, 0.0);
     vec3 cBackground = vec3(0.09, 0.098, 0.063);
 
     // Animation
     float animation = 0.5 + tan(vUv.x * 10.0 - uTime * uRaceDirection * 2.) * 0.5;
+    // float animation = fract(vUv.x * 10.0 - uTime);
 
     float animationFract = pow(fract(vUv.x * 5.0 - uTime * uRaceDirection), 2.) * 10. - 5.0;
 
     // Outline
+    // vec3 upperOutline = vec3(step(vUv.y, 0.05));
     vec3 upperOutline = vec3(smoothstep(0.075, 0.025, vUv.y));
     upperOutline -= animationFract * upperOutline * 0.3;
 
     vec3 bottomOutline = vec3(step(0.975, vUv.y));
+    // bottomOutline += animation * bottomOutline;
     bottomOutline *= 0.25;
 
     // Transition
     float transition = smoothstep(uProgress * 1.2, uProgress * 1.2 - 0.2, abs(uReverse - fract(vUv.x * 8.)));
+    
+    // float transition = animation;
 
     // Matcap
     vec3 matcap = texture2D( uTextureMatcap, vN ).rgb;
@@ -104,6 +111,9 @@ const trackFrag = `
     color += cYellow * bottomOutline;
 
     gl_FragColor = vec4(color, alpha );
+    // gl_FragColor = vec4(vec3(animation), 1.0);
+    // gl_FragColor = vec4(vec3(animationFract), 1.0);
+    // gl_FragColor = vec4(vUv.x, vUv.y, 0.0, 1.0);
   }
 `;
 
