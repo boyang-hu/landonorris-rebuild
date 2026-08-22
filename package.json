@@ -25,7 +25,9 @@
     "gate:pixel": "node scripts/run-gates.mjs pixel",
     "gate:standalone": "node scripts/skill/verify-standalone.mjs --src src --full",
     "gates": "node scripts/run-gates.mjs all",
-    "zerodep": "node scripts/skill/verify-zerodep.mjs --dir scripts --tools tools"
+    "zerodep": "node scripts/skill/verify-zerodep.mjs --dir scripts --tools tools",
+    "pages:build": "npm run build && node deploypages/build.mjs",
+    "pages:deploy": "npm --prefix deploypages run deploy"
   },
   "dependencies": {
     "@rive-app/canvas-lite": "2.26.4",

@@ -1,0 +1,17 @@
+{
+  "name": "landonorris-rebuild-deploypages",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Pages deployment of the landonorris.com study rebuild: build.mjs turns ../src/dist into ./site (Pages-specific layout + _headers), wrangler uploads it.",
+  "scripts": {
+    "build": "node build.mjs",
+    "login": "wrangler login",
+    "whoami": "wrangler whoami",
+    "project:create": "wrangler pages project create landonorris-rebuild --production-branch main",
+    "deploy": "wrangler pages deploy site --project-name landonorris-rebuild --branch main --commit-dirty=true",
+    "deployments": "wrangler pages deployment list --project-name landonorris-rebuild"
+  },
+  "devDependencies": {
+    "wrangler": "4.125.0"
+  }
+}

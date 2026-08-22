@@ -1,0 +1,5 @@
+# Cloudflare Pages project config (wrangler >= 3.45 reads pages_build_output_dir).
+# `npx wrangler pages deploy` run in this directory uploads ./site as-is — nothing is built on Cloudflare.
+name = "landonorris-rebuild"
+pages_build_output_dir = "site"
+compatibility_date = "2026-08-01"

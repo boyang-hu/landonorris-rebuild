@@ -1,0 +1,16 @@
+# Cloudflare Pages response headers (https://developers.cloudflare.com/pages/configuration/headers/)
+# Copied verbatim into site/ by build.mjs.
+
+/*
+  X-Robots-Tag: noindex, nofollow
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: same-origin
+
+# mirrored source-site assets: pinned snapshot, safe to cache hard
+/ext/*
+  Cache-Control: public, max-age=2592000, immutable
+
+# vite output is content-hashed
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -47,6 +47,10 @@ node scripts/skill/verify-offline.mjs --base https://landonorris-rebuild.boyang.
 - 已知轻微偏差：/partnerships 线上源站返回 404 状态（页面已下架），我们因镜像落盘了
   该路径的 404 变体文件而返回 200——内容相同（not-found 模板），仅状态码不同
 
+## Cloudflare Pages 私密预览（推荐的"真私密"方案）
+
+`deploypages/` 是完整的上传包与操作说明（`deploypages/README.md`）：`npm run pages:build` 生成 `deploypages/site/`，`cd deploypages && npm run deploy` 直传；上锁靠 Cloudflare Access（免费档 50 用户，邮箱验证码），URL 泄露出去也没人能看。Pages 专用适配只有两处：`route.html` 副本（消掉目录索引的 308）与 `_headers`。
+
 ## 1Panel 部署（选「静态网站」，不是 Node.js）
 
 站点是纯静态产物：无 SSR、无 API、无服务端逻辑（serve.mjs 仅本地开发用）。
