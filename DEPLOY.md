@@ -35,17 +35,17 @@ node scripts/skill/verify-offline.mjs --base https://landonorris-rebuild.boyang.
 ```
 产物与判据说明见 `docs/gates/README.md`。旧的 `scripts/verify.mjs` 仍可用（它走项目自己的 serve/probe）。
 
-## 当前部署（2026-08-11）
+## 当前部署（2026-08-22 起：Cloudflare Pages）
 
-- 预览地址：**https://landonorris-rebuild.boyang.hu**（noindex + HSTS）
-- 服务器：V.PS 1Panel 静态站（与前作同机同约定）；站点目录
-  `/opt/1panel/1panel/www/sites/landonorris-rebuild/index`（owner boyang，可直接 rsync）；
-  nginx 配置 `/opt/1panel/1panel/www/conf.d/landonorris-rebuild.conf`（root 所有，
-  改动经 ~/deploy-staging 暂存 + sudo cp + 容器内 nginx -t && reload）
-- 重新部署：本地 `bash scripts/deploy.sh`（gitignored，含主机/端口/密钥约定；内部 `npm run src:build` + `rsync -avz --delete src/dist/`——M9 起 dist 自包含，不再需要 `-L`）
-- 2026-08-20 起 dist 对静态托管**真正零外联**：Webflow CSS 里的字体/图片 url 与 preconnect 裸 host 都被改写到 /ext/（REBUILD_PLAN 6.2/6.4 修订）。此前线上版本每次加载都从 cdn.prod.website-files.com 取字体——要重新部署一次。
-- 已知轻微偏差：/partnerships 线上源站返回 404 状态（页面已下架），我们因镜像落盘了
-  该路径的 404 变体文件而返回 200——内容相同（not-found 模板），仅状态码不同
+- 预览地址：**https://landonorris-rebuild.boyang.hu**（Pages 自定义域，`boyang.hu` 的 DNS 在 Cloudflare，CNAME 由 Pages 自动写入；`landonorris-rebuild.pages.dev` 为同一部署）
+- 重新部署：仓库根 `npm run pages:build` → `cd deploypages && npm run deploy`（直传 `deploypages/site`，Cloudflare 侧不构建；详见 `deploypages/README.md`）
+- 响应层：`deploypages/_headers`（noindex / HSTS / nosniff / `/ext` `/assets` 长缓存）；`/calendar` 与 `/calendar/` 都 200（`route.html` 副本消掉了 Pages 的目录索引 308）；未知路径 404 + 源站模板
+- 访问控制：Cloudflare Access（Zero Trust）按主机名生效——**自定义域要单独加进 Access application**，否则只有 noindex 没有锁
+- 2026-08-22 线上验收：首页 / calendar 桌面全滚动 / on-track 移动全滚动 CLEAN、0 外联、0 SplitText 告警；legal 页只剩登记的 iubenda 残差（6.3/6.15）；静态面 0 条外部 URL
+
+### 历史：1Panel 静态站（2026-08-11 → 2026-08-22，已下线）
+
+曾部署在 V.PS 1Panel（`/opt/1panel/1panel/www/sites/landonorris-rebuild/index`，nginx 配置 `/opt/1panel/1panel/www/conf.d/landonorris-rebuild.conf`）。DNS 已改指 Pages，该站点目录与 nginx 配置未删除（可在 1Panel 里删站点）。下面的 1Panel 配置说明保留作参考。
 
 ## Cloudflare Pages 私密预览（推荐的"真私密"方案）
 

@@ -1,6 +1,6 @@
 # landonorris-rebuild
 
-以学习为目的，对 [landonorris.com](https://landonorris.com/)（Lando Norris 官网，OFF+BRAND 出品，Awwwards 风格 Webflow + WebGL 站）做 1:1 工程化重建。私有仓库，不公开部署。
+以学习为目的，对 [landonorris.com](https://landonorris.com/)（Lando Norris 官网，OFF+BRAND 出品，Awwwards 风格 Webflow + WebGL 站）做 1:1 工程化重建。私有仓库；私密预览部署在 Cloudflare Pages（`deploypages/`，noindex + Access，见 DEPLOY.md）。
 
 沿用 rogierdeboeve → oryzo → samsyninja → careers-kimi → storytellingnoomo 五个前作的同一套方法论：
 **镜像 → 逆向（_pretty 行号坐标系）→ 严格溯源移植 → 里程碑推进 + 三重验证**。
